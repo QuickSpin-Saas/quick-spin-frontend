@@ -86,6 +86,11 @@ export const useRequireAuth = () => {
   const router = useRouter()
   
   useEffect(() => {
+    // Development bypass - skip authentication check in development
+    if (process.env.NODE_ENV === "development") {
+      return
+    }
+    
     if (!isLoading && !isAuthenticated) {
       router.push("/auth/login")
     }

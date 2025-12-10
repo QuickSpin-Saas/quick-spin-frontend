@@ -7,6 +7,11 @@ export async function middleware(request: NextRequest) {
   const isAuthPage = request.nextUrl.pathname.startsWith("/auth")
   const isApiRoute = request.nextUrl.pathname.startsWith("/api")
   
+  // Development bypass - skip authentication in development
+  if (process.env.NODE_ENV === "development") {
+    return NextResponse.next()
+  }
+  
   // Allow API routes to be handled by their own authentication
   if (isApiRoute) {
     return NextResponse.next()

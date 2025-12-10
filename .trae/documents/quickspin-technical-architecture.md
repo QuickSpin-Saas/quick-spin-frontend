@@ -43,37 +43,45 @@ graph TD
 
 ## 2. Technology Description
 
-- **Frontend**: Next.js 14+ (App Router) + React 18+ + TypeScript
-- **State Management**: Redux Toolkit + RTK Query
-- **UI Components**: shadcn/ui (Radix UI primitives) + Lucide React icons
-- **Styling**: Tailwind CSS 3+ with custom design system
-- **Forms**: React Hook Form + Zod validation
-- **Charts**: Recharts for data visualization
-- **Authentication**: NextAuth.js with JWT strategy
-- **Animation**: Framer Motion for transitions
-- **Initialization Tool**: create-next-app
+* **Frontend**: Next.js 14+ (App Router) + React 18+ + TypeScript
+
+* **State Management**: Redux Toolkit + RTK Query
+
+* **UI Components**: shadcn/ui (Radix UI primitives) + Lucide React icons
+
+* **Styling**: Tailwind CSS 3+ with custom design system
+
+* **Forms**: React Hook Form + Zod validation
+
+* **Charts**: Recharts for data visualization
+
+* **Authentication**: NextAuth.js with JWT strategy
+
+* **Animation**: Framer Motion for transitions
+
+* **Initialization Tool**: create-next-app
 
 ## 3. Route Definitions
 
-| Route | Purpose | Protection |
-|-------|---------|------------|
-| / | Landing page with product information | Public |
-| /login | User authentication page | Public |
-| /signup | User registration page | Public |
-| /reset-password | Password reset flow | Public |
-| /dashboard | Main dashboard overview | Protected |
-| /dashboard/services | Services list and management | Protected |
-| /dashboard/services/new | Create new service wizard | Protected |
-| /dashboard/services/[id] | Individual service details | Protected |
-| /dashboard/billing | Billing and usage information | Protected |
-| /dashboard/settings | User settings and preferences | Protected |
-| /admin | Admin dashboard overview | Admin only |
-| /admin/users | User management interface | Admin only |
-| /admin/services | All services management | Admin only |
-| /admin/billing | Revenue analytics and reports | Admin only |
-| /admin/health | System health monitoring | Admin only |
-| /admin/analytics | Platform analytics and insights | Admin only |
-| /admin/support | Support ticket management | Admin only |
+| Route                     | Purpose                               | Protection |
+| ------------------------- | ------------------------------------- | ---------- |
+| /                         | Landing page with product information | Public     |
+| /login                    | User authentication page              | Public     |
+| /signup                   | User registration page                | Public     |
+| /reset-password           | Password reset flow                   | Public     |
+| /dashboard                | Main dashboard overview               | Protected  |
+| /dashboard/services       | Services list and management          | Protected  |
+| /dashboard/services/new   | Create new service wizard             | Protected  |
+| /dashboard/services/\[id] | Individual service details            | Protected  |
+| /dashboard/billing        | Billing and usage information         | Protected  |
+| /dashboard/settings       | User settings and preferences         | Protected  |
+| /admin                    | Admin dashboard overview              | Admin only |
+| /admin/users              | User management interface             | Admin only |
+| /admin/services           | All services management               | Admin only |
+| /admin/billing            | Revenue analytics and reports         | Admin only |
+| /admin/health             | System health monitoring              | Admin only |
+| /admin/analytics          | Platform analytics and insights       | Admin only |
+| /admin/support            | Support ticket management             | Admin only |
 
 ## 4. API Definitions
 
@@ -341,6 +349,7 @@ interface DataTableProps<T> {
 ## 7. State Management Patterns
 
 ### 7.1 Authentication Flow
+
 ```typescript
 // Auth slice with NextAuth.js integration
 const authSlice = createSlice({
@@ -381,6 +390,7 @@ const authSlice = createSlice({
 ```
 
 ### 7.2 Optimistic Updates Pattern
+
 ```typescript
 // Optimistic update for service actions
 const updateServiceStatus = async (serviceId: string, status: string) => {
@@ -402,6 +412,7 @@ const updateServiceStatus = async (serviceId: string, status: string) => {
 ## 8. Performance Optimizations
 
 ### 8.1 Code Splitting Strategy
+
 ```typescript
 // Dynamic imports for heavy components
 const MetricsChart = dynamic(() => import('@/components/dashboard/MetricsChart'), {
@@ -416,6 +427,7 @@ const ServiceLogs = dynamic(() => import('@/components/dashboard/ServiceLogs'), 
 ```
 
 ### 8.2 Caching Strategy
+
 ```typescript
 // RTK Query cache configuration
 const baseQuery = fetchBaseQuery({
@@ -445,6 +457,7 @@ export const servicesApi = createApi({
 ## 9. Security Implementation
 
 ### 9.1 Authentication Security
+
 ```typescript
 // NextAuth.js configuration with JWT
 export const authOptions: NextAuthOptions = {
@@ -494,6 +507,7 @@ export const authOptions: NextAuthOptions = {
 ```
 
 ### 9.2 Route Protection
+
 ```typescript
 // Middleware for route protection
 export async function middleware(request: NextRequest) {
@@ -522,6 +536,7 @@ export const config = {
 ## 10. Error Handling Strategy
 
 ### 10.1 Global Error Boundary
+
 ```typescript
 // Error boundary for graceful error handling
 export default function GlobalError({
@@ -557,6 +572,7 @@ export default function GlobalError({
 ```
 
 ### 10.2 API Error Handling
+
 ```typescript
 // Centralized error handling for RTK Query
 const baseQueryWithErrorHandling = async (
@@ -585,3 +601,4 @@ const baseQueryWithErrorHandling = async (
   return result;
 };
 ```
+
