@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Loading, LoadingCard } from "@/components/ui/loading"
+import { EmptyState } from "@/components/ui/empty-state"
 import { 
   Server, 
   Search, 
@@ -99,13 +100,13 @@ export default function ServicesPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "running":
-        return <Badge className="bg-green-100 text-green-800 border-green-200">Running</Badge>
+        return <Badge variant="success">Running</Badge>
       case "stopped":
-        return <Badge variant="secondary" className="bg-gray-100 text-gray-800">Stopped</Badge>
+        return <Badge variant="secondary">Stopped</Badge>
       case "deploying":
-        return <Badge variant="outline" className="border-blue-200 text-blue-800">Deploying</Badge>
+        return <Badge variant="info">Deploying</Badge>
       case "error":
-        return <Badge className="bg-red-100 text-red-800 border-red-200">Error</Badge>
+        return <Badge variant="error">Error</Badge>
       default:
         return <Badge variant="secondary">Unknown</Badge>
     }
@@ -114,20 +115,28 @@ export default function ServicesPage() {
   const getServiceIcon = (type: string) => {
     switch (type) {
       case "redis":
-        return <div className="w-10 h-10 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
-                 <span className="text-red-600 dark:text-red-400 font-bold text-sm">R</span>
+        return <div className="w-10 h-10 bg-service-redis-light rounded-lg flex items-center justify-center">
+                 <span className="text-service-redis font-bold text-sm">R</span>
                </div>
       case "rabbitmq":
-        return <div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
-                 <span className="text-orange-600 dark:text-orange-400 font-bold text-sm">RM</span>
+        return <div className="w-10 h-10 bg-service-rabbitmq-light rounded-lg flex items-center justify-center">
+                 <span className="text-service-rabbitmq font-bold text-sm">RM</span>
                </div>
       case "elasticsearch":
-        return <div className="w-10 h-10 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg flex items-center justify-center">
-                 <span className="text-yellow-600 dark:text-yellow-400 font-bold text-sm">ES</span>
+        return <div className="w-10 h-10 bg-service-elasticsearch-light rounded-lg flex items-center justify-center">
+                 <span className="text-service-elasticsearch font-bold text-sm">ES</span>
+               </div>
+      case "postgres":
+        return <div className="w-10 h-10 bg-service-postgres-light rounded-lg flex items-center justify-center">
+                 <span className="text-service-postgres font-bold text-sm">PG</span>
+               </div>
+      case "mongodb":
+        return <div className="w-10 h-10 bg-service-mongodb-light rounded-lg flex items-center justify-center">
+                 <span className="text-service-mongodb font-bold text-sm">MG</span>
                </div>
       default:
-        return <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
-                 <Server className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+        return <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                 <Server className="w-5 h-5 text-primary" />
                </div>
     }
   }
@@ -147,24 +156,24 @@ export default function ServicesPage() {
       <DashboardLayout>
         <div className="space-y-6">
           {/* Page Header Loading */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <LoadingCard className="w-64" lines={2} />
-            <div className="h-10 w-32 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
+            <div className="h-10 w-full md:w-32 bg-muted rounded-lg animate-pulse" />
           </div>
 
           {/* Search and Filters Loading */}
           <div className="flex items-center gap-4">
-            <div className="h-10 flex-1 max-w-md bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
-            <div className="h-10 w-24 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />
+            <div className="h-10 flex-1 max-w-md bg-muted rounded-lg animate-pulse" />
+            <div className="h-10 w-24 bg-muted rounded-lg animate-pulse" />
           </div>
 
           {/* Results Summary Loading */}
-          <div className="h-4 w-48 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+          <div className="h-4 w-48 bg-muted rounded animate-pulse" />
 
           {/* Services Grid Loading */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {Array.from({ length: 6 }).map((_, i) => (
-              <LoadingCard key={i} className="p-6 bg-white dark:bg-slate-800 rounded-lg border" lines={5} />
+              <LoadingCard key={i} className="p-6 bg-card rounded-lg border border-border" lines={5} />
             ))}
           </div>
         </div>
@@ -176,15 +185,15 @@ export default function ServicesPage() {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Page Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Services</h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">Services</h1>
+            <p className="text-muted-foreground mt-1 text-sm sm:text-base">
               Manage and monitor your deployed microservices
             </p>
           </div>
-          <Link href="/dashboard/services/create">
-            <Button className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700">
+          <Link href="/dashboard/services/create" className="w-full md:w-auto">
+            <Button variant="gradient" className="w-full md:w-auto">
               <Plus className="w-4 h-4 mr-2" />
               Create Service
             </Button>
@@ -195,7 +204,7 @@ export default function ServicesPage() {
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
                 placeholder="Search services..."
                 value={searchTerm}
@@ -224,15 +233,15 @@ export default function ServicesPage() {
           </div>
 
           {showFilters && (
-            <div className="grid gap-4 md:grid-cols-3 p-4 bg-gray-50 dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 bg-muted/50 rounded-lg border border-border">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Status
                 </label>
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-slate-700 text-gray-900 dark:text-white"
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground transition-theme"
                 >
                   <option value="all">All Status</option>
                   <option value="running">Running</option>
@@ -242,13 +251,13 @@ export default function ServicesPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Type
                 </label>
                 <select
                   value={typeFilter}
                   onChange={(e) => setTypeFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-slate-700 text-gray-900 dark:text-white"
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground transition-theme"
                 >
                   <option value="all">All Types</option>
                   <option value="redis">Redis</option>
@@ -259,13 +268,13 @@ export default function ServicesPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-medium text-foreground mb-2">
                   Environment
                 </label>
                 <select
                   value={environmentFilter}
                   onChange={(e) => setEnvironmentFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-slate-700 text-gray-900 dark:text-white"
+                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground transition-theme"
                 >
                   <option value="all">All Environments</option>
                   <option value="development">Development</option>
@@ -278,7 +287,7 @@ export default function ServicesPage() {
         </div>
 
         {/* Results Summary */}
-        <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+        <div className="flex items-center justify-between text-sm text-muted-foreground">
           <p>
             Showing {filteredServices.length} of {services.length} services
           </p>
@@ -291,9 +300,9 @@ export default function ServicesPage() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {filteredServices.map((service) => (
-            <Card key={service.id} className="border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow">
+            <Card key={service.id} className="hover-lift animate-in">
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
@@ -305,27 +314,27 @@ export default function ServicesPage() {
                       </CardDescription>
                     </div>
                   </div>
-                  <button className="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
-                    <MoreVertical className="w-4 h-4 text-gray-400" />
+                  <button className="p-1 rounded-md hover:bg-accent transition-theme">
+                    <MoreVertical className="w-4 h-4 text-muted-foreground" />
                   </button>
                 </div>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Status</span>
+                    <span className="text-sm text-muted-foreground">Status</span>
                     {getStatusBadge(service.status)}
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600 dark:text-gray-400">Created</span>
-                    <span className="text-sm text-gray-900 dark:text-white">
+                    <span className="text-sm text-muted-foreground">Created</span>
+                    <span className="text-sm text-foreground">
                       {formatDistanceToNow(new Date(service.createdAt), { addSuffix: true })}
                     </span>
                   </div>
                   {service.metrics && service.metrics.cpu && service.metrics.cpu.length > 0 && (
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">CPU Usage</span>
-                      <span className="text-sm text-gray-900 dark:text-white">
+                      <span className="text-sm text-muted-foreground">CPU Usage</span>
+                      <span className="text-sm text-foreground">
                         {service.metrics.cpu[service.metrics.cpu.length - 1]?.value || 0}%
                       </span>
                     </div>
@@ -367,31 +376,26 @@ export default function ServicesPage() {
         </div>
 
         {filteredServices.length === 0 && (
-          <div className="text-center py-12">
-            <Server className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-              No services found
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              {searchTerm || statusFilter !== "all" || typeFilter !== "all" || environmentFilter !== "all"
+          <EmptyState
+            icon={Server}
+            title="No services found"
+            description={
+              searchTerm || statusFilter !== "all" || typeFilter !== "all" || environmentFilter !== "all"
                 ? "Try adjusting your search or filter criteria"
                 : "Get started by creating your first service"
-              }
-            </p>
-            {!(searchTerm || statusFilter !== "all" || typeFilter !== "all" || environmentFilter !== "all") ? (
-              <Link href="/dashboard/services/create">
-                <Button>
-                  <Plus className="w-4 h-4 mr-2" />
-                  Create Service
-                </Button>
-              </Link>
-            ) : (
-              <Button onClick={clearFilters}>
-                <RotateCcw className="w-4 h-4 mr-2" />
-                Clear Filters
-              </Button>
-            )}
-          </div>
+            }
+            action={
+              !(searchTerm || statusFilter !== "all" || typeFilter !== "all" || environmentFilter !== "all")
+                ? {
+                    label: "Create Service",
+                    href: "/dashboard/services/create"
+                  }
+                : {
+                    label: "Clear Filters",
+                    onClick: clearFilters
+                  }
+            }
+          />
         )}
       </div>
     </DashboardLayout>

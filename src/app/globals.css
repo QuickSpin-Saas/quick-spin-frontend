@@ -9,61 +9,160 @@
 
 @layer base {
   :root {
+    /* Base colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
+
+    /* Primary colors - Light mode */
     --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
+    --primary-50: 221 91% 95%;
+    --primary-100: 221 91% 90%;
+    --primary-200: 221 90% 80%;
+    --primary-300: 221 89% 70%;
+    --primary-400: 221 85% 60%;
+    --primary-500: 221 83% 53%;
+    --primary-600: 221 70% 45%;
+    --primary-700: 221 65% 38%;
+    --primary-800: 221 60% 30%;
+    --primary-900: 221 55% 22%;
+
+    /* Secondary colors */
     --secondary: 210 40% 96%;
     --secondary-foreground: 222.2 84% 4.9%;
+
+    /* Muted colors */
     --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Accent colors */
     --accent: 210 40% 96%;
     --accent-foreground: 222.2 84% 4.9%;
+
+    /* Destructive colors */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
+
+    /* Border and input */
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
 
-    /* QuickSpin brand colors - Light Mode */
-    --brand-purple: 251 74% 64%;
-    --brand-violet: 271 47% 55%;
-    --brand-gradient-start: 224 76% 48%; /* Strong Blue */
-    --brand-gradient-end: 262 83% 58%;   /* Purple */
+    /* Status colors - Light mode */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 71% 95%;
+    --success-dark: 142 76% 26%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 38 100% 95%;
+    --warning-dark: 38 92% 40%;
+
+    --error: 0 84% 60%;
+    --error-foreground: 0 0% 100%;
+    --error-light: 0 86% 95%;
+    --error-dark: 0 84% 50%;
+
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+    --info-light: 217 91% 95%;
+    --info-dark: 217 91% 50%;
+
+    /* Service colors - Light mode */
+    --service-redis: 0 84% 60%;
+    --service-redis-light: 0 86% 95%;
+    --service-rabbitmq: 25 95% 53%;
+    --service-rabbitmq-light: 25 100% 95%;
+    --service-elasticsearch: 45 93% 47%;
+    --service-elasticsearch-light: 45 100% 95%;
+    --service-postgres: 217 91% 60%;
+    --service-postgres-light: 217 91% 95%;
+    --service-mongodb: 142 76% 36%;
+    --service-mongodb-light: 142 71% 95%;
   }
 
   .dark {
-    /* Dark Mode - Deep Navy Background based on image */
-    --background: 224 71% 4%; /* Very dark blue */
+    /* Base colors - Dark mode */
+    --background: 224 71% 4%;
     --foreground: 210 40% 98%;
     --card: 224 71% 6%;
     --card-foreground: 210 40% 98%;
     --popover: 224 71% 4%;
     --popover-foreground: 210 40% 98%;
+
+    /* Primary colors - Dark mode */
     --primary: 217.2 91.2% 59.8%;
     --primary-foreground: 222.2 84% 4.9%;
+    --primary-50: 217 91% 12%;
+    --primary-100: 217 91% 18%;
+    --primary-200: 217 90% 25%;
+    --primary-300: 217 89% 35%;
+    --primary-400: 217 85% 45%;
+    --primary-500: 217 83% 55%;
+    --primary-600: 217 91% 60%;
+    --primary-700: 217 91% 65%;
+    --primary-800: 217 91% 70%;
+    --primary-900: 217 91% 80%;
+
+    /* Secondary colors - Dark mode */
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
+
+    /* Muted colors - Dark mode */
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
+
+    /* Accent colors - Dark mode */
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
+
+    /* Destructive colors - Dark mode */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
+
+    /* Border and input - Dark mode */
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 94.1%;
-    
-    /* QuickSpin brand colors - Dark Mode */
-    --brand-purple: 251 74% 64%;
-    --brand-violet: 271 47% 55%;
-    --brand-gradient-start: 199 89% 48%; /* Cyan/Blue */
-    --brand-gradient-end: 271 91% 65%;   /* Purple */
+
+    /* Status colors - Dark mode */
+    --success: 142 71% 45%;
+    --success-foreground: 222.2 84% 4.9%;
+    --success-light: 142 71% 15%;
+    --success-dark: 142 71% 55%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 222.2 84% 4.9%;
+    --warning-light: 38 92% 15%;
+    --warning-dark: 38 92% 65%;
+
+    --error: 0 72% 55%;
+    --error-foreground: 210 40% 98%;
+    --error-light: 0 72% 15%;
+    --error-dark: 0 72% 65%;
+
+    --info: 217 91% 65%;
+    --info-foreground: 222.2 84% 4.9%;
+    --info-light: 217 91% 20%;
+    --info-dark: 217 91% 75%;
+
+    /* Service colors - Dark mode */
+    --service-redis: 0 72% 60%;
+    --service-redis-light: 0 72% 20%;
+    --service-rabbitmq: 25 90% 60%;
+    --service-rabbitmq-light: 25 90% 20%;
+    --service-elasticsearch: 45 90% 55%;
+    --service-elasticsearch-light: 45 90% 20%;
+    --service-postgres: 217 91% 65%;
+    --service-postgres-light: 217 91% 20%;
+    --service-mongodb: 142 71% 45%;
+    --service-mongodb-light: 142 71% 15%;
   }
 }
 
@@ -77,6 +176,7 @@
 }
 
 @layer utilities {
+  /* Background patterns */
   .bg-grid-white {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
   }
@@ -85,27 +185,334 @@
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(0 0 0 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
   }
 
+  /* Gradient utilities */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--brand-gradient-start))] to-[hsl(var(--brand-gradient-end))];
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, hsl(var(--primary-600)), hsl(var(--primary-500)), hsl(var(--primary-600)));
+  }
+
+  .bg-gradient-primary {
+    background-image: linear-gradient(to right, hsl(var(--primary-600)), hsl(var(--primary-500)));
+  }
+
+  .bg-gradient-success {
+    background-image: linear-gradient(to right, hsl(var(--success)), hsl(var(--success-dark)));
+  }
+
+  .bg-gradient-warning {
+    background-image: linear-gradient(to right, hsl(var(--warning)), hsl(var(--warning-dark)));
+  }
+
+  .bg-gradient-error {
+    background-image: linear-gradient(to right, hsl(var(--error)), hsl(var(--error-dark)));
+  }
+
+  /* Status background utilities with proper dark mode */
+  .bg-status-success {
+    background-color: hsl(var(--success-light));
+    color: hsl(var(--success-foreground));
+  }
+
+  .bg-status-warning {
+    background-color: hsl(var(--warning-light));
+    color: hsl(var(--warning-foreground));
+  }
+
+  .bg-status-error {
+    background-color: hsl(var(--error-light));
+    color: hsl(var(--error-foreground));
+  }
+
+  .bg-status-info {
+    background-color: hsl(var(--info-light));
+    color: hsl(var(--info-foreground));
+  }
+
+  /* Service-specific backgrounds */
+  .bg-service-redis {
+    background-color: hsl(var(--service-redis-light));
+    color: hsl(var(--service-redis));
+  }
+
+  .bg-service-rabbitmq {
+    background-color: hsl(var(--service-rabbitmq-light));
+    color: hsl(var(--service-rabbitmq));
+  }
+
+  .bg-service-elasticsearch {
+    background-color: hsl(var(--service-elasticsearch-light));
+    color: hsl(var(--service-elasticsearch));
+  }
+
+  .bg-service-postgres {
+    background-color: hsl(var(--service-postgres-light));
+    color: hsl(var(--service-postgres));
+  }
+
+  .bg-service-mongodb {
+    background-color: hsl(var(--service-mongodb-light));
+    color: hsl(var(--service-mongodb));
+  }
+
+  /* Smooth transitions */
+  .transition-theme {
+    @apply transition-colors duration-200;
+  }
+
+  /* Focus utilities */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Responsive text sizing */
+  .text-display {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  .text-heading-1 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+
+  .text-heading-2 {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  .text-heading-3 {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  /* Animation utilities */
+  .animate-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.4s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    @apply shadow-lg shadow-primary/20;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300;
+  }
+
+  .hover-scale:hover {
+    @apply scale-105;
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .transition-fast {
+    @apply transition-all duration-150 ease-in-out;
+  }
+
+  .transition-slow {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  /* Loading animations */
+  .skeleton {
+    @apply bg-muted animate-pulse rounded;
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  /* Keyframes */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
   }
 }
 
 @layer components {
-  /* Status badges */
+  /* Status badges - now using theme colors */
   .status-running {
-    @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300;
+    background-color: hsl(var(--success-light));
+    color: hsl(var(--success));
+  }
+
+  .dark .status-running {
+    background-color: hsl(var(--success-dark) / 0.2);
+    color: hsl(var(--success));
   }
 
   .status-stopped {
-    @apply bg-gray-100 text-gray-800 dark:bg-gray-800/50 dark:text-gray-300;
+    background-color: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
   }
 
   .status-error {
-    @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300;
+    background-color: hsl(var(--error-light));
+    color: hsl(var(--error));
+  }
+
+  .dark .status-error {
+    background-color: hsl(var(--error-dark) / 0.2);
+    color: hsl(var(--error));
   }
 
   .status-pending {
-    @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300;
+    background-color: hsl(var(--warning-light));
+    color: hsl(var(--warning));
+  }
+
+  .dark .status-pending {
+    background-color: hsl(var(--warning-dark) / 0.2);
+    color: hsl(var(--warning));
+  }
+
+  .status-deploying {
+    background-color: hsl(var(--info-light));
+    color: hsl(var(--info));
+  }
+
+  .dark .status-deploying {
+    background-color: hsl(var(--info-dark) / 0.2);
+    color: hsl(var(--info));
+  }
+
+  /* Payment status badges */
+  .payment-paid {
+    background-color: hsl(var(--success-light));
+    color: hsl(var(--success));
+  }
+
+  .dark .payment-paid {
+    background-color: hsl(var(--success-dark) / 0.2);
+    color: hsl(var(--success));
+  }
+
+  .payment-pending {
+    background-color: hsl(var(--warning-light));
+    color: hsl(var(--warning));
+  }
+
+  .dark .payment-pending {
+    background-color: hsl(var(--warning-dark) / 0.2);
+    color: hsl(var(--warning));
+  }
+
+  .payment-failed {
+    background-color: hsl(var(--error-light));
+    color: hsl(var(--error));
+  }
+
+  .dark .payment-failed {
+    background-color: hsl(var(--error-dark) / 0.2);
+    color: hsl(var(--error));
+  }
+
+  /* Environment badges */
+  .env-production {
+    background-color: hsl(var(--error-light));
+    color: hsl(var(--error));
+  }
+
+  .dark .env-production {
+    background-color: hsl(var(--error-dark) / 0.2);
+    color: hsl(var(--error));
+  }
+
+  .env-staging {
+    background-color: hsl(var(--warning-light));
+    color: hsl(var(--warning));
+  }
+
+  .dark .env-staging {
+    background-color: hsl(var(--warning-dark) / 0.2);
+    color: hsl(var(--warning));
+  }
+
+  .env-development {
+    background-color: hsl(var(--info-light));
+    color: hsl(var(--info));
+  }
+
+  .dark .env-development {
+    background-color: hsl(var(--info-dark) / 0.2);
+    color: hsl(var(--info));
   }
 }
 

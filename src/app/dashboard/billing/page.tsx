@@ -40,11 +40,11 @@ export default function BillingPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "paid":
-        return <Badge className="bg-green-100 text-green-800 border-green-200">Paid</Badge>
+        return <Badge variant="success">Paid</Badge>
       case "pending":
-        return <Badge variant="outline" className="border-yellow-200 text-yellow-800">Pending</Badge>
+        return <Badge variant="warning">Pending</Badge>
       case "failed":
-        return <Badge className="bg-red-100 text-red-800 border-red-200">Failed</Badge>
+        return <Badge variant="error">Failed</Badge>
       default:
         return <Badge variant="secondary">Unknown</Badge>
     }
@@ -54,7 +54,7 @@ export default function BillingPage() {
     return (
       <DashboardLayout>
         <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
         </div>
       </DashboardLayout>
     )
@@ -64,19 +64,19 @@ export default function BillingPage() {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Billing & Usage</h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">Billing & Usage</h1>
+            <p className="text-muted-foreground mt-1 text-sm sm:text-base">
               Monitor your usage, manage payments, and view billing history
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <Button variant="outline">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+            <Button variant="outline" className="w-full sm:w-auto">
               <FileText className="w-4 h-4 mr-2" />
               View Invoices
             </Button>
-            <Button className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700">
+            <Button variant="gradient" className="w-full sm:w-auto">
               <Plus className="w-4 h-4 mr-2" />
               Add Payment Method
             </Button>
@@ -84,22 +84,22 @@ export default function BillingPage() {
         </div>
 
         {/* Current Balance Card */}
-        <Card className="border-gray-200 dark:border-gray-700 bg-gradient-to-r from-primary-50 to-blue-50 dark:from-primary-900/20 dark:to-blue-900/20">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
+        <Card className="border-border bg-primary/5">
+          <CardContent className="p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Current Balance</p>
-                <p className="text-3xl font-bold text-gray-900 dark:text-white">$312.45</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                <p className="text-sm font-medium text-muted-foreground">Current Balance</p>
+                <p className="text-2xl sm:text-3xl font-bold text-foreground">$312.45</p>
+                <p className="text-sm text-muted-foreground mt-1">
                   Due on July 1, 2024
                 </p>
               </div>
-              <div className="flex items-center gap-2">
-                <Button variant="outline">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                <Button variant="outline" className="w-full sm:w-auto">
                   <Download className="w-4 h-4 mr-2" />
                   Download Invoice
                 </Button>
-                <Button className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700">
+                <Button className="bg-success hover:bg-success/90 text-success-foreground w-full sm:w-auto">
                   <CreditCard className="w-4 h-4 mr-2" />
                   Pay Now
                 </Button>
@@ -110,7 +110,7 @@ export default function BillingPage() {
 
         {/* Tabs */}
         <Tabs>
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2">
             <TabsTrigger 
               className={activeTab === 'overview' ? 'data-[state=active]' : ''}
               onClick={() => setActiveTab('overview')}
@@ -139,48 +139,48 @@ export default function BillingPage() {
 
           {activeTab === 'overview' && <div className="space-y-6">
             {/* Usage Summary */}
-            <div className="grid gap-6 md:grid-cols-3">
-              <Card className="border-gray-200 dark:border-gray-700">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+              <Card className="border-border">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">
                     This Month
                   </CardTitle>
-                  <DollarSign className="h-4 w-4 text-gray-500" />
+                  <DollarSign className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">$312.45</div>
-                  <p className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
+                  <div className="text-2xl font-bold text-foreground">$312.45</div>
+                  <p className="text-xs text-success flex items-center gap-1">
                     <TrendingUp className="w-3 h-3" />
                     +16.5% from last month
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-border">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">
                     Active Services
                   </CardTitle>
-                  <Activity className="h-4 w-4 text-blue-500" />
+                  <Activity className="h-4 w-4 text-info" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">7</div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <div className="text-2xl font-bold text-foreground">7</div>
+                  <p className="text-xs text-muted-foreground">
                     Across 3 environments
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-border">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <CardTitle className="text-sm font-medium text-muted-foreground">
                     Average Daily Cost
                   </CardTitle>
-                  <BarChart3 className="h-4 w-4 text-purple-500" />
+                  <BarChart3 className="h-4 w-4 text-primary" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">$10.42</div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <div className="text-2xl font-bold text-foreground">$10.42</div>
+                  <p className="text-xs text-muted-foreground">
                     Based on current usage
                   </p>
                 </CardContent>
@@ -188,11 +188,11 @@ export default function BillingPage() {
             </div>
 
             {/* Monthly Spending Trend */}
-            <Card className="border-gray-200 dark:border-gray-700">
+            <Card className="border-border">
               <CardHeader className="flex flex-row items-center justify-between">
                 <div>
-                  <CardTitle>Current Month Summary</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-foreground">Current Month Summary</CardTitle>
+                  <CardDescription className="text-muted-foreground">
                     Your current billing period overview
                   </CardDescription>
                 </div>
@@ -205,17 +205,17 @@ export default function BillingPage() {
                 {billingSummary && (
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">Total Services</span>
-                      <span className="font-medium">{billingSummary.currentMonth.services.length}</span>
+                      <span className="text-sm text-muted-foreground">Total Services</span>
+                      <span className="font-medium text-foreground">{billingSummary.currentMonth.services.length}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-600 dark:text-gray-400">Total Cost</span>
-                      <span className="font-medium">${billingSummary.currentMonth.total.toFixed(2)}</span>
+                      <span className="text-sm text-muted-foreground">Total Cost</span>
+                      <span className="font-medium text-foreground">${billingSummary.currentMonth.total.toFixed(2)}</span>
                     </div>
                     {billingSummary.currentMonth.services.slice(0, 3).map((service, index) => (
                       <div key={index} className="flex justify-between items-center text-sm">
-                        <span className="text-gray-600 dark:text-gray-400">{service.serviceName}</span>
-                        <span>${service.cost.toFixed(2)}</span>
+                        <span className="text-muted-foreground">{service.serviceName}</span>
+                        <span className="text-foreground">${service.cost.toFixed(2)}</span>
                       </div>
                     ))}
                   </div>
@@ -226,11 +226,11 @@ export default function BillingPage() {
 
           {activeTab === 'usage' && <div className="space-y-6">
             {/* Service Usage Breakdown */}
-            <div className="grid gap-6 lg:grid-cols-2">
-              <Card className="border-gray-200 dark:border-gray-700">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+              <Card className="border-border">
                 <CardHeader>
-                  <CardTitle>Service Usage Breakdown</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-foreground">Service Usage Breakdown</CardTitle>
+                  <CardDescription className="text-muted-foreground">
                     Cost breakdown by service type this month
                   </CardDescription>
                 </CardHeader>
@@ -240,10 +240,10 @@ export default function BillingPage() {
                       {billingSummary.currentMonth.services.map((service, index) => (
                         <div key={index} className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full bg-primary-600" />
-                            <span className="text-sm">{service.serviceName}</span>
+                            <div className="w-3 h-3 rounded-full bg-primary" />
+                            <span className="text-sm text-foreground">{service.serviceName}</span>
                           </div>
-                          <span className="text-sm font-medium">${service.cost.toFixed(2)}</span>
+                          <span className="text-sm font-medium text-foreground">${service.cost.toFixed(2)}</span>
                         </div>
                       ))}
                     </div>
@@ -251,10 +251,10 @@ export default function BillingPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-border">
                 <CardHeader>
-                  <CardTitle>Usage Statistics</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-foreground">Usage Statistics</CardTitle>
+                  <CardDescription className="text-muted-foreground">
                     Current month service usage details
                   </CardDescription>
                 </CardHeader>
@@ -262,16 +262,16 @@ export default function BillingPage() {
                   {billingSummary && (
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                          <div className="text-2xl font-bold text-primary-600">{billingSummary.currentMonth.services.length}</div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">Active Services</div>
+                        <div className="text-center p-3 bg-muted rounded-lg">
+                          <div className="text-2xl font-bold text-primary">{billingSummary.currentMonth.services.length}</div>
+                          <div className="text-sm text-muted-foreground">Active Services</div>
                         </div>
-                        <div className="text-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                          <div className="text-2xl font-bold text-primary-600">${billingSummary.currentMonth.total.toFixed(2)}</div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">Total Cost</div>
+                        <div className="text-center p-3 bg-muted rounded-lg">
+                          <div className="text-2xl font-bold text-primary">${billingSummary.currentMonth.total.toFixed(2)}</div>
+                          <div className="text-sm text-muted-foreground">Total Cost</div>
                         </div>
                       </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 text-center">
+                      <div className="text-sm text-muted-foreground text-center">
                         Current billing period: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                       </div>
                     </div>
@@ -281,45 +281,45 @@ export default function BillingPage() {
             </div>
 
             {/* Usage Alerts */}
-            <Card className="border-gray-200 dark:border-gray-700">
+            <Card className="border-border">
               <CardHeader>
-                <CardTitle>Usage Alerts</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-foreground">Usage Alerts</CardTitle>
+                <CardDescription className="text-muted-foreground">
                   Monitor your usage and spending
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-warning-light border border-warning rounded-lg">
                     <div className="flex items-center gap-3">
-                      <AlertCircle className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+                      <AlertCircle className="w-5 h-5 text-warning flex-shrink-0" />
                       <div>
-                        <p className="font-medium text-yellow-800 dark:text-yellow-400">
+                        <p className="font-medium text-warning">
                           80% of monthly budget reached
                         </p>
-                        <p className="text-sm text-yellow-700 dark:text-yellow-300">
+                        <p className="text-sm text-warning-dark">
                           You've used $249.96 of your $300 monthly budget
                         </p>
                       </div>
                     </div>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="w-full sm:w-auto">
                       View Details
                     </Button>
                   </div>
 
-                  <div className="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-info-light border border-info rounded-lg">
                     <div className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                      <CheckCircle className="w-5 h-5 text-info flex-shrink-0" />
                       <div>
-                        <p className="font-medium text-blue-800 dark:text-blue-400">
+                        <p className="font-medium text-info">
                           Auto-scaling enabled
                         </p>
-                        <p className="text-sm text-blue-700 dark:text-blue-300">
+                        <p className="text-sm text-info-dark">
                           Your services will automatically scale based on demand
                         </p>
                       </div>
                     </div>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="w-full sm:w-auto">
                       Configure
                     </Button>
                   </div>
@@ -330,15 +330,15 @@ export default function BillingPage() {
 
           {activeTab === 'payment' && <div className="space-y-6">
             {/* Payment Methods */}
-            <Card className="border-gray-200 dark:border-gray-700">
-              <CardHeader className="flex flex-row items-center justify-between">
+            <Card className="border-border">
+              <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <CardTitle>Payment Methods</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-foreground">Payment Methods</CardTitle>
+                  <CardDescription className="text-muted-foreground">
                     Manage your payment methods
                   </CardDescription>
                 </div>
-                <Button size="sm">
+                <Button size="sm" className="w-full sm:w-auto">
                   <Plus className="w-4 h-4 mr-2" />
                   Add Method
                 </Button>
@@ -346,29 +346,29 @@ export default function BillingPage() {
               <CardContent>
                 <div className="space-y-4">
                   {paymentMethods?.map((method) => (
-                    <div key={method.id} className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                    <div key={method.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 border border-border rounded-lg">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-8 bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center">
-                          <CreditCard className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                        <div className="w-12 h-8 bg-muted rounded flex items-center justify-center flex-shrink-0">
+                          <CreditCard className="w-6 h-6 text-muted-foreground" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900 dark:text-white">
+                          <p className="font-medium text-foreground">
                             {method.brand} •••• {method.last4}
                           </p>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                          <p className="text-sm text-muted-foreground">
                             Expires {method.expMonth}/{method.expYear}
                           </p>
                           {method.isDefault && (
-                            <Badge className="mt-1 bg-green-100 text-green-800 border-green-200">Default</Badge>
+                            <Badge variant="success" className="mt-1">Default</Badge>
                           )}
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Button variant="ghost" size="sm">
+                        <Button variant="ghost" size="sm" className="flex-1 sm:flex-none">
                           <Settings className="w-4 h-4" />
                         </Button>
                         {!method.isDefault && (
-                          <Button variant="outline" size="sm">
+                          <Button variant="outline" size="sm" className="flex-1 sm:flex-none">
                             Make Default
                           </Button>
                         )}
@@ -380,40 +380,40 @@ export default function BillingPage() {
             </Card>
 
             {/* Billing Settings */}
-            <Card className="border-gray-200 dark:border-gray-700">
+            <Card className="border-border">
               <CardHeader>
-                <CardTitle>Billing Settings</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-foreground">Billing Settings</CardTitle>
+                <CardDescription className="text-muted-foreground">
                   Configure your billing preferences
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <Label>Automatic Payments</Label>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <Label className="text-foreground">Automatic Payments</Label>
+                    <p className="text-sm text-muted-foreground">
                       Automatically charge your default payment method
                     </p>
                   </div>
-                  <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-primary-600">
-                    <span className="inline-block h-4 w-4 transform rounded-full bg-white translate-x-6" />
+                  <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-primary">
+                    <span className="inline-block h-4 w-4 transform rounded-full bg-primary-foreground translate-x-6" />
                   </button>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <Label>Paperless Billing</Label>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <Label className="text-foreground">Paperless Billing</Label>
+                    <p className="text-sm text-muted-foreground">
                       Receive invoices by email only
                     </p>
                   </div>
-                  <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-primary-600">
-                    <span className="inline-block h-4 w-4 transform rounded-full bg-white translate-x-6" />
+                  <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-primary">
+                    <span className="inline-block h-4 w-4 transform rounded-full bg-primary-foreground translate-x-6" />
                   </button>
                 </div>
 
                 <div>
-                  <Label>Billing Email</Label>
+                  <Label className="text-foreground">Billing Email</Label>
                   <Input
                     type="email"
                     defaultValue="billing@company.com"
@@ -428,15 +428,15 @@ export default function BillingPage() {
 
           {activeTab === 'history' && <div className="space-y-6">
             {/* Recent Invoices */}
-            <Card className="border-gray-200 dark:border-gray-700">
-              <CardHeader className="flex flex-row items-center justify-between">
+            <Card className="border-border">
+              <CardHeader className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <CardTitle>Billing History</CardTitle>
-                  <CardDescription>
+                  <CardTitle className="text-foreground">Billing History</CardTitle>
+                  <CardDescription className="text-muted-foreground">
                     Your recent invoices and payment history
                   </CardDescription>
                 </div>
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="w-full sm:w-auto">
                   <Download className="w-4 h-4 mr-2" />
                   Export History
                 </Button>
@@ -444,23 +444,23 @@ export default function BillingPage() {
               <CardContent>
                 <div className="space-y-4">
                   {invoices?.map((invoice) => (
-                    <div key={invoice.id} className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                    <div key={invoice.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 border border-border rounded-lg">
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
-                          <FileText className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                        <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center flex-shrink-0">
+                          <FileText className="w-5 h-5 text-muted-foreground" />
                         </div>
                         <div>
-                          <p className="font-medium text-gray-900 dark:text-white">
+                          <p className="font-medium text-foreground">
                             Invoice #{invoice.id.slice(-6)}
                           </p>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                          <p className="text-sm text-muted-foreground">
                             {new Date(invoice.createdAt).toLocaleDateString()}
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4">
-                        <div className="text-right">
-                          <p className="font-semibold text-gray-900 dark:text-white">
+                      <div className="flex items-center justify-between sm:justify-end gap-4">
+                        <div className="text-left sm:text-right">
+                          <p className="font-semibold text-foreground">
                             ${invoice.amount}
                           </p>
                           {getStatusBadge(invoice.status)}

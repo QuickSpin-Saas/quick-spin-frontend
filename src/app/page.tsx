@@ -16,10 +16,10 @@ export default function LandingPage() {
       <header className="relative z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[hsl(var(--brand-gradient-start))] to-[hsl(var(--brand-gradient-end))]">
-              <span className="text-lg font-bold text-white">Q</span>
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-primary">
+              <span className="text-lg font-bold text-primary-foreground">Q</span>
             </div>
-            <span className="text-xl font-bold tracking-tight">QuickSpin</span>
+            <span className="text-xl font-bold tracking-tight text-foreground">QuickSpin</span>
           </div>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
@@ -63,7 +63,7 @@ export default function LandingPage() {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Link href="/auth/signup">
-                <Button size="lg" className="h-12 px-8 text-base bg-gradient-to-r from-[hsl(var(--brand-gradient-start))] to-[hsl(var(--brand-gradient-end))] hover:opacity-90 transition-opacity">
+                <Button size="lg" variant="gradient" className="h-12 px-8 text-base">
                   Start Building Free <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -141,19 +141,19 @@ export default function LandingPage() {
       <footer className="border-t border-border/40 py-12 bg-muted/30">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded bg-gradient-to-br from-[hsl(var(--brand-gradient-start))] to-[hsl(var(--brand-gradient-end))]">
-              <span className="text-xs font-bold text-white">Q</span>
+            <div className="flex h-6 w-6 items-center justify-center rounded bg-gradient-primary">
+              <span className="text-xs font-bold text-primary-foreground">Q</span>
             </div>
-            <span className="font-semibold">QuickSpin</span>
+            <span className="font-semibold text-foreground">QuickSpin</span>
           </div>
           <p className="text-sm text-muted-foreground">
             © 2024 QuickSpin Inc. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-muted-foreground">
-            <Link href="#" className="hover:text-foreground">Privacy</Link>
-            <Link href="#" className="hover:text-foreground">Terms</Link>
-            <Link href="#" className="hover:text-foreground">Twitter</Link>
-            <Link href="#" className="hover:text-foreground">GitHub</Link>
+            <Link href="#" className="hover:text-foreground transition-theme">Privacy</Link>
+            <Link href="#" className="hover:text-foreground transition-theme">Terms</Link>
+            <Link href="#" className="hover:text-foreground transition-theme">Twitter</Link>
+            <Link href="#" className="hover:text-foreground transition-theme">GitHub</Link>
           </div>
         </div>
       </footer>

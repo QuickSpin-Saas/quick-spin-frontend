@@ -249,18 +249,18 @@ export default function CreateServicePage() {
                 {serviceTypes.map((serviceType) => (
                   <div
                     key={serviceType.id}
-                    className={`p-4 border rounded-lg cursor-pointer transition-colors ${
+                    className={`p-4 border rounded-lg cursor-pointer transition-theme ${
                       formData.type === serviceType.id
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-primary bg-primary/5'
+                        : 'border-border hover:border-primary/50'
                     }`}
                     onClick={() => setFormData({ ...formData, type: serviceType.id })}
                   >
                     <div className="flex items-center space-x-3">
-                      <serviceType.icon className="h-6 w-6 text-blue-600" />
+                      <serviceType.icon className="h-6 w-6 text-primary" />
                       <div>
-                        <h3 className="font-medium">{serviceType.name}</h3>
-                        <p className="text-sm text-gray-600">{serviceType.description}</p>
+                        <h3 className="font-medium text-foreground">{serviceType.name}</h3>
+                        <p className="text-sm text-muted-foreground">{serviceType.description}</p>
                       </div>
                     </div>
                   </div>
@@ -278,15 +278,15 @@ export default function CreateServicePage() {
                 {environments.map((env) => (
                   <div
                     key={env.id}
-                    className={`p-4 border rounded-lg cursor-pointer transition-colors ${
+                    className={`p-4 border rounded-lg cursor-pointer transition-theme ${
                       formData.environment === env.id
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-primary bg-primary/5'
+                        : 'border-border hover:border-primary/50'
                     }`}
                     onClick={() => setFormData({ ...formData, environment: env.id })}
                   >
-                    <h3 className="font-medium">{env.name}</h3>
-                    <p className="text-sm text-gray-600">{env.description}</p>
+                    <h3 className="font-medium text-foreground">{env.name}</h3>
+                    <p className="text-sm text-muted-foreground">{env.description}</p>
                   </div>
                 ))}
               </div>
@@ -297,19 +297,19 @@ export default function CreateServicePage() {
                 {plans.map((plan) => (
                   <div
                     key={plan.id}
-                    className={`p-4 border rounded-lg cursor-pointer transition-colors ${
+                    className={`p-4 border rounded-lg cursor-pointer transition-theme ${
                       formData.plan === plan.id
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-primary bg-primary/5'
+                        : 'border-border hover:border-primary/50'
                     }`}
                     onClick={() => setFormData({ ...formData, plan: plan.id })}
                   >
                     <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-medium">{plan.name}</h3>
-                      <span className="text-blue-600 font-medium">{plan.price}</span>
+                      <h3 className="font-medium text-foreground">{plan.name}</h3>
+                      <span className="text-primary font-medium">{plan.price}</span>
                     </div>
-                    <p className="text-sm text-gray-600 mb-3">{plan.description}</p>
-                    <div className="text-sm text-gray-500">
+                    <p className="text-sm text-muted-foreground mb-3">{plan.description}</p>
+                    <div className="text-sm text-muted-foreground">
                       <div>CPU: {plan.specs.cpu}</div>
                       <div>Memory: {plan.specs.memory}</div>
                       <div>Storage: {plan.specs.storage}</div>
@@ -371,9 +371,9 @@ export default function CreateServicePage() {
       case 4:
         return (
           <div className="space-y-6">
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h3 className="font-medium mb-3">Service Summary</h3>
-              <div className="space-y-2 text-sm">
+            <div className="bg-muted/50 p-4 rounded-lg border border-border">
+              <h3 className="font-medium mb-3 text-foreground">Service Summary</h3>
+              <div className="space-y-2 text-sm text-foreground">
                 <div><strong>Name:</strong> {formData.name}</div>
                 <div><strong>Type:</strong> {formData.type}</div>
                 <div><strong>Environment:</strong> {formData.environment}</div>
@@ -382,9 +382,9 @@ export default function CreateServicePage() {
                 <div><strong>Description:</strong> {formData.description || 'None'}</div>
               </div>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h3 className="font-medium mb-3">Features</h3>
-              <div className="space-y-2 text-sm">
+            <div className="bg-muted/50 p-4 rounded-lg border border-border">
+              <h3 className="font-medium mb-3 text-foreground">Features</h3>
+              <div className="space-y-2 text-sm text-foreground">
                 <div><strong>Backup:</strong> {formData.backupEnabled ? 'Enabled' : 'Disabled'}</div>
                 <div><strong>Monitoring:</strong> {formData.monitoringEnabled ? 'Enabled' : 'Disabled'}</div>
                 <div><strong>High Availability:</strong> {formData.highAvailability ? 'Enabled' : 'Disabled'}</div>
@@ -401,8 +401,8 @@ export default function CreateServicePage() {
     <DashboardLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Create New Service</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">Create New Service</h1>
+          <p className="text-muted-foreground text-sm sm:text-base">
             Deploy a new service in just a few steps
           </p>
         </div>
@@ -423,23 +423,24 @@ export default function CreateServicePage() {
           <CardContent>
             {renderStepContent()}
             
-            <div className="flex justify-between mt-6">
+            <div className="flex flex-col sm:flex-row justify-between gap-3 mt-6">
               <Button
                 variant="outline"
                 onClick={handlePrevious}
                 disabled={currentStep === 1}
+                className="w-full sm:w-auto"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Previous
               </Button>
-              
+
               {currentStep < totalSteps ? (
-                <Button onClick={handleNext} disabled={!isStepValid()}>
+                <Button onClick={handleNext} disabled={!isStepValid()} className="w-full sm:w-auto">
                   Next
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               ) : (
-                <Button onClick={handleSubmit} disabled={isLoading}>
+                <Button onClick={handleSubmit} disabled={isLoading} className="w-full sm:w-auto">
                   {isLoading ? "Creating..." : "Create Service"}
                 </Button>
               )}

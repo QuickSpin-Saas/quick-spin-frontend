@@ -29,10 +29,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { LineChart as RechartsLineChart, Line, AreaChart, Area, BarChart, Bar, PieChart as RechartsPieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const systemMetrics = [
-  { name: 'Total Users', value: 1247, change: 12.5, trend: 'up', icon: Users, color: 'text-blue-600' },
-  { name: 'Active Services', value: 892, change: 8.3, trend: 'up', icon: Server, color: 'text-green-600' },
-  { name: 'Revenue', value: 45230, change: -2.1, trend: 'down', icon: DollarSign, color: 'text-purple-600' },
-  { name: 'System Health', value: 98.7, change: 0.3, trend: 'up', icon: Activity, color: 'text-orange-600' },
+  { name: 'Total Users', value: 1247, change: 12.5, trend: 'up', icon: Users, color: 'text-info' },
+  { name: 'Active Services', value: 892, change: 8.3, trend: 'up', icon: Server, color: 'text-success' },
+  { name: 'Revenue', value: 45230, change: -2.1, trend: 'down', icon: DollarSign, color: 'text-primary' },
+  { name: 'System Health', value: 98.7, change: 0.3, trend: 'up', icon: Activity, color: 'text-warning' },
 ];
 
 const serviceDistribution = [
@@ -86,28 +86,28 @@ export default function AdminDashboard() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'success':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
+        return <CheckCircle className="h-4 w-4 text-success" />;
       case 'warning':
-        return <AlertCircle className="h-4 w-4 text-yellow-500" />;
+        return <AlertCircle className="h-4 w-4 text-warning" />;
       case 'error':
-        return <XCircle className="h-4 w-4 text-red-500" />;
+        return <XCircle className="h-4 w-4 text-error" />;
       default:
-        return <CheckCircle className="h-4 w-4 text-gray-500" />;
+        return <CheckCircle className="h-4 w-4 text-muted-foreground" />;
     }
   };
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Admin Dashboard</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">Admin Dashboard</h1>
+          <p className="text-muted-foreground text-sm sm:text-base">
             System overview and analytics
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           <Select value={timeRange} onValueChange={setTimeRange}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-full sm:w-[180px]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -117,11 +117,11 @@ export default function AdminDashboard() {
               <SelectItem value="90d">Last 90 days</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant="outline" size="sm" onClick={handleRefresh} disabled={refreshing}>
+          <Button variant="outline" size="sm" onClick={handleRefresh} disabled={refreshing} className="w-full sm:w-auto">
             <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" className="w-full sm:w-auto">
             <Download className="h-4 w-4" />
             Export
           </Button>
@@ -129,7 +129,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Metrics Cards */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {systemMetrics.map((metric) => {
           const Icon = metric.icon;
           return (
@@ -145,11 +145,11 @@ export default function AdminDashboard() {
                 </div>
                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
                   {metric.trend === 'up' ? (
-                    <TrendingUp className="h-3 w-3 text-green-500" />
+                    <TrendingUp className="h-3 w-3 text-success" />
                   ) : (
-                    <TrendingDown className="h-3 w-3 text-red-500" />
+                    <TrendingDown className="h-3 w-3 text-error" />
                   )}
-                  <span className={metric.trend === 'up' ? 'text-green-500' : 'text-red-500'}>
+                  <span className={metric.trend === 'up' ? 'text-success' : 'text-error'}>
                     {Math.abs(metric.change)}%
                   </span>
                   <span>from last period</span>
@@ -160,7 +160,7 @@ export default function AdminDashboard() {
         })}
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         {/* Usage Trends */}
         <Card>
           <CardHeader>
@@ -314,7 +314,7 @@ export default function AdminDashboard() {
               </CardDescription>
             </div>
             <div className="flex items-center gap-2">
-              <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+              <div className="h-2 w-2 rounded-full bg-success animate-pulse" />
               <span className="text-sm text-muted-foreground">All systems operational</span>
             </div>
           </div>
@@ -327,10 +327,10 @@ export default function AdminDashboard() {
               { name: 'Redis Cache', status: 'operational', uptime: '99.7%' },
               { name: 'Load Balancer', status: 'operational', uptime: '99.9%' },
             ].map((component) => (
-              <div key={component.name} className="rounded-lg border p-4">
+              <div key={component.name} className="rounded-lg border border-border p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="font-medium">{component.name}</p>
-                  <div className="h-2 w-2 rounded-full bg-green-500" />
+                  <p className="font-medium text-foreground">{component.name}</p>
+                  <div className="h-2 w-2 rounded-full bg-success" />
                 </div>
                 <p className="text-sm text-muted-foreground">Uptime: {component.uptime}</p>
               </div>

@@ -15,13 +15,13 @@ export default function ActivityPage() {
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "success":
-        return <CheckCircle className="w-4 h-4 text-green-500" />
+        return <CheckCircle className="w-4 h-4 text-success" />
       case "warning":
-        return <AlertCircle className="w-4 h-4 text-yellow-500" />
+        return <AlertCircle className="w-4 h-4 text-warning" />
       case "error":
-        return <XCircle className="w-4 h-4 text-red-500" />
+        return <XCircle className="w-4 h-4 text-error" />
       default:
-        return <Activity className="w-4 h-4 text-blue-500" />
+        return <Activity className="w-4 h-4 text-info" />
     }
   }
 
@@ -29,8 +29,8 @@ export default function ActivityPage() {
     <DashboardLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Activity Log</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground">Activity Log</h1>
+          <p className="text-muted-foreground mt-1 text-sm sm:text-base">
             History of your service activities and events
           </p>
         </div>
@@ -43,17 +43,17 @@ export default function ActivityPage() {
           <CardContent>
             <div className="space-y-4">
               {activities.map((activity) => (
-                <div key={activity.id} className="flex items-center justify-between p-4 border rounded-lg dark:border-gray-700">
+                <div key={activity.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 border border-border rounded-lg">
                   <div className="flex items-center gap-4">
                     {getStatusIcon(activity.status)}
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">{activity.action}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="font-medium text-foreground">{activity.action}</p>
+                      <p className="text-sm text-muted-foreground">
                         {activity.target}
                       </p>
                     </div>
                   </div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">{activity.time}</span>
+                  <span className="text-sm text-muted-foreground">{activity.time}</span>
                 </div>
               ))}
             </div>

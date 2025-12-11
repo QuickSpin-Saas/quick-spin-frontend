@@ -5,9 +5,11 @@ const badgeVariants = {
   default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
   secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
   destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-  outline: "text-foreground",
-  success: "border-transparent bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400",
-  warning: "border-transparent bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400",
+  outline: "text-foreground border-border",
+  success: "border-transparent bg-success-light text-success hover:bg-success-light/80",
+  warning: "border-transparent bg-warning-light text-warning hover:bg-warning-light/80",
+  error: "border-transparent bg-error-light text-error hover:bg-error-light/80",
+  info: "border-transparent bg-info-light text-info hover:bg-info-light/80",
 }
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {

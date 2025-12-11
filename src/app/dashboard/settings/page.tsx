@@ -181,21 +181,21 @@ export default function SettingsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Settings</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">Settings</h1>
+          <p className="text-muted-foreground text-sm sm:text-base">
             Manage your account settings and preferences
           </p>
         </div>
       </div>
 
       <div className="space-y-4">
-        <div className="grid w-full grid-cols-4 lg:w-[600px] border-b">
+        <div className="grid w-full grid-cols-2 sm:grid-cols-4 lg:w-[600px] border-b border-border">
           <button
             onClick={() => setActiveTab('profile')}
-            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-theme ${
               activeTab === 'profile'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground'
             }`}
           >
             <User className="h-4 w-4" />
@@ -203,10 +203,10 @@ export default function SettingsPage() {
           </button>
           <button
             onClick={() => setActiveTab('organization')}
-            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-theme ${
               activeTab === 'organization'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground'
             }`}
           >
             <Building2 className="h-4 w-4" />
@@ -214,10 +214,10 @@ export default function SettingsPage() {
           </button>
           <button
             onClick={() => setActiveTab('api-keys')}
-            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-theme ${
               activeTab === 'api-keys'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground'
             }`}
           >
             <Key className="h-4 w-4" />
@@ -225,10 +225,10 @@ export default function SettingsPage() {
           </button>
           <button
             onClick={() => setActiveTab('preferences')}
-            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-theme ${
               activeTab === 'preferences'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground'
             }`}
           >
             <Settings className="h-4 w-4" />
