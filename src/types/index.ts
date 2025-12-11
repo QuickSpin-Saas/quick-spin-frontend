@@ -230,10 +230,6 @@ export interface Notification {
   read: boolean;
 }
 
-export interface Theme {
-  mode: 'light' | 'dark' | 'system';
-}
-
 // Form types
 export interface FormField {
   name: string;

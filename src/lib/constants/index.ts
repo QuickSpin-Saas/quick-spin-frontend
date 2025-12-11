@@ -10,10 +10,10 @@ export const SERVICE_TYPES = [
 ] as const
 
 export const SERVICE_STATUS_COLORS = {
-  running: 'text-green-600 bg-green-100 dark:bg-green-900 dark:text-green-200',
-  stopped: 'text-gray-600 bg-gray-100 dark:bg-gray-900 dark:text-gray-200',
-  error: 'text-red-600 bg-red-100 dark:bg-red-900 dark:text-red-200',
-  pending: 'text-yellow-600 bg-yellow-100 dark:bg-yellow-900 dark:text-yellow-200',
+  running: 'text-green-600 bg-green-100',
+  stopped: 'text-gray-600 bg-gray-100',
+  error: 'text-red-600 bg-red-100',
+  pending: 'text-yellow-600 bg-yellow-100',
 } as const
 
 export const REGIONS = [

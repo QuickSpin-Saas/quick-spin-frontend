@@ -9,7 +9,7 @@ This document outlines a comprehensive plan to enhance the QuickSpin frontend ap
 ### Technology Stack
 - **Framework**: Next.js 16.0.8 (App Router)
 - **UI Library**: React 19.2.1
-- **Styling**: Tailwind CSS 4 with next-themes
+- **Styling**: Tailwind CSS 4
 - **State Management**: Redux Toolkit
 - **Component Library**: Radix UI (shadcn/ui pattern)
 - **Forms**: React Hook Form + Zod
@@ -29,26 +29,21 @@ This document outlines a comprehensive plan to enhance the QuickSpin frontend ap
 
 ## Issues Identified
 
-### 1. Dark Mode Implementation Issues
+### 1. Design Consistency Issues
 
 #### Critical Problems:
 1. **Hardcoded Colors**: Extensive use of hardcoded Tailwind colors instead of theme variables
    - Examples: `text-gray-900`, `bg-white`, `border-gray-200`, `bg-gray-50`
    - Should use: `text-foreground`, `bg-background`, `border-border`, `bg-muted`
 
-2. **Inconsistent Dark Variants**: Many components missing `dark:` prefixes
-   - Login page Google button: `bg-white hover:bg-gray-50` (no dark variant)
-   - Service creation cards: `border-blue-500 bg-blue-50` (no dark variant)
-   - Settings tabs: Inconsistent dark mode styling
-   - Dashboard layout: Mixed usage of `dark:bg-slate-800` and theme variables
-
-3. **Poor Contrast in Dark Mode**:
-   - Text visibility issues with hardcoded gray colors
-   - Interactive elements not clearly visible
-   - Status badges may have poor contrast
+2. **Inconsistent Styling**: Many components missing consistent styling
+   - Login page Google button: `bg-white hover:bg-gray-50`
+   - Service creation cards: `border-blue-500 bg-blue-50`
+   - Settings tabs: Inconsistent styling
+   - Dashboard layout: Mixed usage of styling approaches
 
 #### Affected Files:
-- `src/app/page.tsx` - Landing page (partial dark mode)
+- `src/app/page.tsx` - Landing page
 - `src/app/auth/login/page.tsx` - Login form elements
 - `src/app/dashboard/services/create/page.tsx` - Selection cards
 - `src/app/dashboard/settings/page.tsx` - Tab navigation
@@ -164,7 +159,7 @@ colors: {
   background: 'hsl(var(--background))',
   foreground: 'hsl(var(--foreground))',
 
-  // Status colors with dark mode support
+  // Status colors
   success: {
     DEFAULT: 'hsl(var(--success))',
     foreground: 'hsl(var(--success-foreground))',
@@ -194,12 +189,12 @@ colors: {
 
 **Actions**:
 - Add missing CSS custom properties
-- Define status color variants for dark mode
+- Define status color variants
 - Create utility classes for common patterns
 - Add smooth transitions
 - Define focus-visible styles
 
-### Phase 2: Dark Mode Systematic Fix (Priority: CRITICAL)
+### Phase 2: Design Standardization (Priority: HIGH)
 
 #### 2.1 Component Color Audit & Replacement
 
@@ -235,10 +230,10 @@ border-gray-300              → border-input
 - Environment badges
 - Payment status badges
 
-#### 2.3 Dark Mode Testing Checklist
-- [ ] All text is readable in dark mode
+#### 2.3 Styling Verification
+- [ ] All text is readable
 - [ ] All interactive elements are visible
-- [ ] Hover/focus states work in dark mode
+- [ ] Hover/focus states work correctly
 - [ ] Forms have proper contrast
 - [ ] Charts/graphs are visible
 - [ ] Modal overlays work correctly
@@ -457,9 +452,8 @@ border-gray-300              → border-input
 - E2E tests for critical paths
 
 #### 8.2 Visual Regression Testing
-- Screenshot tests for all pages
-- Dark mode variations
-- Responsive breakpoints
+- [ ] Screenshot tests for all pages
+- [ ] Responsive breakpoints
 
 #### 8.3 Documentation
 - Component Storybook
@@ -474,16 +468,16 @@ border-gray-300              → border-input
 - [ ] Tailwind configuration enhancement
 - [ ] CSS custom properties expansion
 
-### Sprint 2 (Week 2): Dark Mode Fix
+### Sprint 2 (Week 2): Design Standardization
 - [ ] Update all UI components (Phase 2.1)
-- [ ] Fix auth pages dark mode (Phase 2.1)
-- [ ] Fix landing page dark mode (Phase 2.1)
+- [ ] Fix auth pages styling (Phase 2.1)
+- [ ] Fix landing page styling (Phase 2.1)
 
-### Sprint 3 (Week 3): Dark Mode Complete
-- [ ] Fix dashboard components dark mode (Phase 2.1)
+### Sprint 3 (Week 3): Styling Complete
+- [ ] Fix dashboard components styling (Phase 2.1)
 - [ ] Fix all dashboard pages (Phase 2.1)
 - [ ] Status badge system (Phase 2.2)
-- [ ] Dark mode testing (Phase 2.3)
+- [ ] Styling verification (Phase 2.3)
 
 ### Sprint 4 (Week 4): Responsiveness - Core
 - [ ] Mobile navigation (Phase 3.1)
@@ -557,12 +551,6 @@ border-gray-300              → border-input
 - [ ] Enhanced for desktop (1024px+)
 - [ ] No horizontal scroll on any breakpoint
 
-### Dark Mode
-- [ ] 100% dark mode coverage
-- [ ] Consistent color usage
-- [ ] Proper contrast ratios
-- [ ] Smooth theme transitions
-
 ### Code Quality
 - [ ] 0 hardcoded colors (all use theme variables)
 - [ ] Consistent component patterns
@@ -610,7 +598,6 @@ border-gray-300              → border-input
 ## Conclusion
 
 This enhancement plan transforms the QuickSpin frontend into a production-ready, modern SaaS application with:
-- ✅ Flawless dark mode implementation
 - ✅ Full responsive design across all devices
 - ✅ Consistent, professional UI/UX
 - ✅ Complete feature set

@@ -4,7 +4,6 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useAuth } from "@/lib/auth-utils"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { cn } from "@/lib/utils"
 import {
   LayoutDashboard,
@@ -213,17 +212,6 @@ export default function Sidebar({ className }: SidebarProps) {
 
           {/* Logout */}
           <div className="p-4 border-t border-border space-y-2">
-            {!isCollapsed && (
-              <div className="flex items-center justify-between px-3 py-2">
-                <span className="text-sm font-medium text-foreground">Theme</span>
-                <ThemeToggle />
-              </div>
-            )}
-            {isCollapsed && (
-              <div className="flex justify-center py-2">
-                <ThemeToggle />
-              </div>
-            )}
             <button
               onClick={logout}
               className={cn(

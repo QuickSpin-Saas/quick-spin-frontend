@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Zap, Database, Server, Shield } from "lucide-react"
 
@@ -8,7 +7,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Background Grid Pattern */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 bg-grid-black/[0.05] dark:bg-grid-white/[0.05]" />
+        <div className="absolute inset-0 bg-grid-black/[0.05]" />
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
       </div>
 
@@ -35,7 +34,6 @@ export default function LandingPage() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <ThemeToggle />
             <Link href="/auth/login">
               <Button>Get Started</Button>
             </Link>

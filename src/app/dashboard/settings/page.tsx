@@ -94,7 +94,6 @@ export default function SettingsPage() {
   ]);
 
   const [preferences, setPreferences] = useState({
-    theme: 'system',
     language: 'en',
     timezone: 'UTC',
     notifications: {
@@ -607,28 +606,12 @@ export default function SettingsPage() {
         {activeTab === 'preferences' && <div className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Appearance</CardTitle>
+              <CardTitle>Localization</CardTitle>
               <CardDescription>
-                Customize how QuickSpin looks on your device
+                Customize your language and region preferences
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="theme">Theme</Label>
-                <Select
-                  value={preferences.theme}
-                  onValueChange={(value) => setPreferences({...preferences, theme: value})}
-                >
-                  <SelectTrigger id="theme">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
               <div className="space-y-2">
                 <Label htmlFor="language">Language</Label>
                 <Select

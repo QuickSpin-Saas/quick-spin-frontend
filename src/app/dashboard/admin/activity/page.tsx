@@ -57,8 +57,8 @@ export default function AdminActivityPage() {
     <DashboardLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">System Activity</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">
+          <h1 className="text-3xl font-bold text-gray-900">System Activity</h1>
+          <p className="text-gray-600 mt-1">
             Monitor system events and user actions
           </p>
         </div>
@@ -71,17 +71,17 @@ export default function AdminActivityPage() {
           <CardContent>
             <div className="space-y-4">
               {activities.map((activity) => (
-                <div key={activity.id} className="flex items-center justify-between p-4 border rounded-lg dark:border-gray-700">
+                <div key={activity.id} className="flex items-center justify-between p-4 border rounded-lg">
                   <div className="flex items-center gap-4">
                     {getStatusIcon(activity.status)}
                     <div>
-                      <p className="font-medium text-gray-900 dark:text-white">{activity.action}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="font-medium text-gray-900">{activity.action}</p>
+                      <p className="text-sm text-gray-500">
                         by {activity.user} • {activity.target}
                       </p>
                     </div>
                   </div>
-                  <span className="text-sm text-gray-500 dark:text-gray-400">{activity.time}</span>
+                  <span className="text-sm text-gray-500">{activity.time}</span>
                 </div>
               ))}
             </div>

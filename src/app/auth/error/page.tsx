@@ -25,18 +25,18 @@ function AuthErrorContent() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="max-w-md w-full mx-4">
-        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl p-8 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-xl mb-4">
-            <AlertCircle className="w-8 h-8 text-red-600 dark:text-red-400" />
+        <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-xl mb-4">
+            <AlertCircle className="w-8 h-8 text-red-600" />
           </div>
           
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">
             Authentication Error
           </h1>
           
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
+          <p className="text-gray-600 mb-8">
             {getErrorMessage(error)}
           </p>
 
@@ -51,7 +51,7 @@ function AuthErrorContent() {
             
             <Link
               href="/"
-              className="w-full inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 font-medium py-3 px-4 rounded-lg transition-colors"
+              className="w-full inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors"
             >
               <Home className="w-4 h-4" />
               Go to homepage
@@ -65,12 +65,12 @@ function AuthErrorContent() {
 
 export default function AuthErrorPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
       <div className="text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-xl mb-4 animate-pulse">
-          <div className="w-8 h-8 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-xl mb-4 animate-pulse">
+          <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
         </div>
-        <p className="text-gray-600 dark:text-gray-400">Loading...</p>
+        <p className="text-gray-600">Loading...</p>
       </div>
     </div>}>
       <AuthErrorContent />

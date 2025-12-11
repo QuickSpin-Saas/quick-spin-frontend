@@ -62,10 +62,10 @@ export default function ServiceDetailPage() {
       <DashboardLayout>
         <div className="text-center py-12">
           <AlertCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+          <h3 className="text-lg font-medium text-gray-900 mb-2">
             Service not found
           </h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
+          <p className="text-gray-600 mb-6">
             The service you're looking for doesn't exist or has been deleted.
           </p>
           <Button onClick={() => router.push("/dashboard/services")}>
@@ -94,20 +94,20 @@ export default function ServiceDetailPage() {
   const getServiceIcon = (type: string) => {
     switch (type) {
       case "redis":
-        return <div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
-                 <span className="text-red-600 dark:text-red-400 font-bold">R</span>
+        return <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                 <span className="text-red-600 font-bold">R</span>
                </div>
       case "rabbitmq":
-        return <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-lg flex items-center justify-center">
-                 <span className="text-orange-600 dark:text-orange-400 font-bold text-sm">RM</span>
+        return <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                 <span className="text-orange-600 font-bold text-sm">RM</span>
                </div>
       case "elasticsearch":
-        return <div className="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/20 rounded-lg flex items-center justify-center">
-                 <span className="text-yellow-600 dark:text-yellow-400 font-bold text-sm">ES</span>
+        return <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                 <span className="text-yellow-600 font-bold text-sm">ES</span>
                </div>
       default:
-        return <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/20 rounded-lg flex items-center justify-center">
-                 <Server className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+        return <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                 <Server className="w-6 h-6 text-primary-600" />
                </div>
     }
   }
@@ -116,13 +116,13 @@ export default function ServiceDetailPage() {
   const getLogLevelColor = (level: string) => {
     switch (level) {
       case "error":
-        return "text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20"
+        return "text-red-600 bg-red-50"
       case "warning":
-        return "text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20"
+        return "text-yellow-600 bg-yellow-50"
       case "info":
-        return "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
+        return "text-blue-600 bg-blue-50"
       default:
-        return "text-gray-600 dark:text-gray-400 bg-gray-50 dark:bg-gray-800"
+        return "text-gray-600 bg-gray-50"
     }
   }
 
@@ -135,12 +135,12 @@ export default function ServiceDetailPage() {
             {getServiceIcon(service.type)}
             <div>
               <div className="flex items-center gap-3">
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                <h1 className="text-3xl font-bold text-gray-900">
                   {service.name}
                 </h1>
                 {getStatusBadge(service.status)}
               </div>
-              <p className="text-gray-600 dark:text-gray-400 mt-1">
+              <p className="text-gray-600 mt-1">
                 {service.type} • {service.environment} • Created {formatDistanceToNow(new Date(service.createdAt), { addSuffix: true })}
               </p>
             </div>
@@ -204,63 +204,63 @@ export default function ServiceDetailPage() {
           {activeTab === 'overview' && <div className="space-y-6">
             {/* Quick Stats */}
             <div className="grid gap-6 md:grid-cols-4">
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <CardTitle className="text-sm font-medium text-gray-600">
                     Status
                   </CardTitle>
                   <Activity className="h-4 w-4 text-gray-500" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">
+                  <div className="text-2xl font-bold text-gray-900">
                     {service.status === "running" ? "Online" : "Offline"}
                   </div>
-                  <p className="text-xs text-green-600 dark:text-green-400">
+                  <p className="text-xs text-green-600">
                     Uptime: 99.9%
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <CardTitle className="text-sm font-medium text-gray-600">
                     CPU Usage
                   </CardTitle>
                   <Cpu className="h-4 w-4 text-blue-500" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">45%</div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <div className="text-2xl font-bold text-gray-900">45%</div>
+                  <p className="text-xs text-gray-500">
                     Last 24h average
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <CardTitle className="text-sm font-medium text-gray-600">
                     Memory Usage
                   </CardTitle>
                   <MemoryStick className="h-4 w-4 text-purple-500" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">2.1 GB</div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <div className="text-2xl font-bold text-gray-900">2.1 GB</div>
+                  <p className="text-xs text-gray-500">
                     of 4 GB allocated
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <CardTitle className="text-sm font-medium text-gray-600">
                     Disk Usage
                   </CardTitle>
                   <HardDrive className="h-4 w-4 text-orange-500" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">15.2 GB</div>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                  <div className="text-2xl font-bold text-gray-900">15.2 GB</div>
+                  <p className="text-xs text-gray-500">
                     of 50 GB allocated
                   </p>
                 </CardContent>
@@ -269,54 +269,54 @@ export default function ServiceDetailPage() {
 
             {/* Service Details */}
             <div className="grid gap-6 lg:grid-cols-2">
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader>
                   <CardTitle>Service Information</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-400">Service ID:</span>
+                    <span className="text-gray-600">Service ID:</span>
                     <span className="font-mono text-sm">{service.id}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-400">Type:</span>
+                    <span className="text-gray-600">Type:</span>
                     <span className="capitalize">{service.type}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-400">Environment:</span>
+                    <span className="text-gray-600">Environment:</span>
                     <span className="capitalize">{service.environment}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-400">Region:</span>
+                    <span className="text-gray-600">Region:</span>
                     <span>us-east-1</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-400">Created:</span>
+                    <span className="text-gray-600">Created:</span>
                     <span>{formatDistanceToNow(new Date(service.createdAt), { addSuffix: true })}</span>
                   </div>
                   {service.description && (
                     <div>
-                      <span className="text-gray-600 dark:text-gray-400">Description:</span>
+                      <span className="text-gray-600">Description:</span>
                       <p className="mt-1 text-sm">{service.description}</p>
                     </div>
                   )}
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader>
                   <CardTitle>Connection Details</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <span className="text-gray-600 dark:text-gray-400">Endpoint:</span>
-                    <div className="mt-1 p-3 bg-gray-50 dark:bg-slate-800 rounded-md font-mono text-sm break-all">
+                    <span className="text-gray-600">Endpoint:</span>
+                    <div className="mt-1 p-3 bg-gray-50 rounded-md font-mono text-sm break-all">
                       redis-cluster-abc123.quickspin.internal:6379
                     </div>
                   </div>
                   <div>
-                    <span className="text-gray-600 dark:text-gray-400">Connection String:</span>
-                    <div className="mt-1 p-3 bg-gray-50 dark:bg-slate-800 rounded-md font-mono text-sm break-all">
+                    <span className="text-gray-600">Connection String:</span>
+                    <div className="mt-1 p-3 bg-gray-50 rounded-md font-mono text-sm break-all">
                       redis://username:password@redis-cluster-abc123.quickspin.internal:6379/0
                     </div>
                   </div>
@@ -332,7 +332,7 @@ export default function ServiceDetailPage() {
           {activeTab === 'metrics' && <div className="space-y-6">
             {/* Metrics Charts */}
             <div className="grid gap-6">
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader>
                   <CardTitle>CPU Usage</CardTitle>
                   <CardDescription>
@@ -354,7 +354,7 @@ export default function ServiceDetailPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader>
                   <CardTitle>Memory Usage</CardTitle>
                   <CardDescription>
@@ -377,7 +377,7 @@ export default function ServiceDetailPage() {
               </Card>
 
               <div className="grid gap-6 md:grid-cols-2">
-                <Card className="border-gray-200 dark:border-gray-700">
+                <Card className="border-gray-200">
                   <CardHeader>
                     <CardTitle>Disk I/O</CardTitle>
                     <CardDescription>
@@ -399,7 +399,7 @@ export default function ServiceDetailPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-gray-200 dark:border-gray-700">
+                <Card className="border-gray-200">
                   <CardHeader>
                     <CardTitle>Network Traffic</CardTitle>
                     <CardDescription>
@@ -425,7 +425,7 @@ export default function ServiceDetailPage() {
           </div>}
 
           {activeTab === 'logs' && <div className="space-y-6">
-            <Card className="border-gray-200 dark:border-gray-700">
+            <Card className="border-gray-200">
               <CardHeader className="flex flex-row items-center justify-between">
                 <div>
                   <CardTitle>Service Logs</CardTitle>
@@ -447,13 +447,13 @@ export default function ServiceDetailPage() {
               <CardContent>
                 <div className="space-y-2 max-h-96 overflow-y-auto">
                   {logs?.map((log, index) => (
-                    <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 dark:bg-slate-800">
+                    <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-gray-50">
                       <div className={`px-2 py-1 rounded text-xs font-medium ${getLogLevelColor(log.level)}`}>
                         {log.level.toUpperCase()}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm text-gray-900 dark:text-white">{log.message}</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                        <p className="text-sm text-gray-900">{log.message}</p>
+                        <p className="text-xs text-gray-500 mt-1">
                           {formatDistanceToNow(log.timestamp, { addSuffix: true })}
                         </p>
                       </div>
@@ -466,7 +466,7 @@ export default function ServiceDetailPage() {
 
           {activeTab === 'settings' && <div className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader>
                   <CardTitle>General Settings</CardTitle>
                   <CardDescription>
@@ -487,7 +487,7 @@ export default function ServiceDetailPage() {
                     <textarea
                       id="description"
                       defaultValue={service.description || ""}
-                      className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-slate-700 text-gray-900 dark:text-white min-h-[80px] mt-1"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900 min-h-[80px] mt-1"
                       placeholder="Describe your service..."
                     />
                   </div>
@@ -495,7 +495,7 @@ export default function ServiceDetailPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader>
                   <CardTitle>Resource Limits</CardTitle>
                   <CardDescription>
@@ -534,7 +534,7 @@ export default function ServiceDetailPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader>
                   <CardTitle>Backup Settings</CardTitle>
                   <CardDescription>
@@ -545,7 +545,7 @@ export default function ServiceDetailPage() {
                   <div className="flex items-center justify-between">
                     <div>
                       <Label>Automatic Backups</Label>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-gray-600">
                         Enable daily automatic backups
                       </p>
                     </div>
@@ -566,7 +566,7 @@ export default function ServiceDetailPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-gray-200 dark:border-gray-700">
+              <Card className="border-gray-200">
                 <CardHeader>
                   <CardTitle>Advanced Settings</CardTitle>
                   <CardDescription>
@@ -577,18 +577,18 @@ export default function ServiceDetailPage() {
                   <div className="flex items-center justify-between">
                     <div>
                       <Label>High Availability</Label>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-gray-600">
                         Enable multi-zone deployment
                       </p>
                     </div>
-                    <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 dark:bg-gray-700">
+                    <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200">
                       <span className="inline-block h-4 w-4 transform rounded-full bg-white translate-x-1" />
                     </button>
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
                       <Label>Monitoring</Label>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm text-gray-600">
                         Enable detailed monitoring
                       </p>
                     </div>

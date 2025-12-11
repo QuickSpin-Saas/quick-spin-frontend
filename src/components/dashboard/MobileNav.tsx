@@ -19,7 +19,6 @@ import {
   Building2,
   User
 } from 'lucide-react';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 interface MobileNavProps {
   onLogout: () => void;
@@ -164,12 +163,8 @@ export default function MobileNav({ onLogout }: MobileNavProps) {
             )}
           </nav>
 
-          {/* Footer with Theme Toggle and Logout */}
+          {/* Footer with Logout */}
           <div className="p-4 border-t border-border space-y-2">
-            <div className="flex items-center justify-between px-3 py-2">
-              <span className="text-sm font-medium text-foreground">Theme</span>
-              <ThemeToggle />
-            </div>
             <button
               onClick={() => {
                 closeMenu();

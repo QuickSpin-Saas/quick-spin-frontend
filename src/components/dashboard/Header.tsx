@@ -3,7 +3,6 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useAuth } from "@/lib/auth-utils"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Bell, Search, User, Settings, LogOut, Activity } from "lucide-react"
 import { cn } from "@/lib/utils"
 import MobileNav from "./MobileNav"
@@ -62,11 +61,6 @@ export default function Header({ className }: HeaderProps) {
 
         {/* Right side actions */}
         <div className="flex items-center gap-2 md:gap-4 ml-2 md:ml-6">
-          {/* Theme toggle - Hidden on mobile, visible on md and up */}
-          <div className="hidden md:block">
-            <ThemeToggle />
-          </div>
-
           {/* Notifications */}
           <div className="relative">
             <button

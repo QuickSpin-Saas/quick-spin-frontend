@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Notification } from '@/types'
 
 interface UIState {
-  theme: 'light' | 'dark' | 'system'
   sidebarCollapsed: boolean
   notifications: Notification[]
   loadingStates: {
@@ -23,7 +22,6 @@ interface UIState {
 }
 
 const initialState: UIState = {
-  theme: 'system',
   sidebarCollapsed: false,
   notifications: [],
   loadingStates: {},
@@ -35,9 +33,6 @@ const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    setTheme: (state, action: PayloadAction<'light' | 'dark' | 'system'>) => {
-      state.theme = action.payload
-    },
     toggleSidebar: (state) => {
       state.sidebarCollapsed = !state.sidebarCollapsed
     },
@@ -93,7 +88,6 @@ const uiSlice = createSlice({
 })
 
 export const {
-  setTheme,
   toggleSidebar,
   setSidebarCollapsed,
   addNotification,

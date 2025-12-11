@@ -51,15 +51,15 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 p-4">
+        <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
           <Card className="max-w-lg w-full">
             <CardHeader>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-lg flex items-center justify-center">
-                  <AlertCircle className="w-6 h-6 text-red-600 dark:text-red-400" />
-                </div>
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                <AlertCircle className="w-6 h-6 text-red-600" />
+              </div>
                 <div>
-                  <CardTitle className="text-red-600 dark:text-red-400">
+                  <CardTitle className="text-red-600">
                     Something went wrong
                   </CardTitle>
                   <CardDescription>
@@ -69,24 +69,24 @@ export class ErrorBoundary extends Component<Props, State> {
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-4">
-                <p className="text-sm font-medium text-slate-900 dark:text-slate-100 mb-2">
-                  Error Details
-                </p>
-                <p className="text-sm text-slate-600 dark:text-slate-400 font-mono">
-                  {this.state.error.name}: {this.state.error.message}
-                </p>
-                {this.state.errorInfo && (
-                  <details className="mt-3">
-                    <summary className="text-sm text-slate-500 dark:text-slate-500 cursor-pointer hover:text-slate-700 dark:hover:text-slate-300">
-                      Show technical details
-                    </summary>
-                    <pre className="mt-2 text-xs text-slate-500 dark:text-slate-500 overflow-auto max-h-32 font-mono">
-                      {this.state.errorInfo.componentStack}
-                    </pre>
-                  </details>
-                )}
-              </div>
+              <div className="bg-slate-100 rounded-lg p-4">
+              <p className="text-sm font-medium text-slate-900 mb-2">
+                Error Details
+              </p>
+              <p className="text-sm text-slate-600 font-mono">
+                {this.state.error.name}: {this.state.error.message}
+              </p>
+              {this.state.errorInfo && (
+                <details className="mt-3">
+                  <summary className="text-sm text-slate-500 cursor-pointer hover:text-slate-700">
+                    Show technical details
+                  </summary>
+                  <pre className="mt-2 text-xs text-slate-500 overflow-auto max-h-32 font-mono">
+                    {this.state.errorInfo.componentStack}
+                  </pre>
+                </details>
+              )}
+            </div>
               
               <div className="flex gap-3">
                 <Button

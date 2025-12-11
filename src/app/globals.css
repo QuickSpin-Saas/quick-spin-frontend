@@ -2,7 +2,6 @@
 
 @plugin "tailwindcss-animate";
 
-@custom-variant dark (&:is(.dark *));
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -57,22 +56,18 @@
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
     --success-light: 142 71% 95%;
-    --success-dark: 142 76% 26%;
 
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
     --warning-light: 38 100% 95%;
-    --warning-dark: 38 92% 40%;
 
     --error: 0 84% 60%;
     --error-foreground: 0 0% 100%;
     --error-light: 0 86% 95%;
-    --error-dark: 0 84% 50%;
 
     --info: 217 91% 60%;
     --info-foreground: 0 0% 100%;
     --info-light: 217 91% 95%;
-    --info-dark: 217 91% 50%;
 
     /* Service colors - Light mode */
     --service-redis: 0 84% 60%;
@@ -85,84 +80,6 @@
     --service-postgres-light: 217 91% 95%;
     --service-mongodb: 142 76% 36%;
     --service-mongodb-light: 142 71% 95%;
-  }
-
-  .dark {
-    /* Base colors - Dark mode */
-    --background: 224 71% 4%;
-    --foreground: 210 40% 98%;
-    --card: 224 71% 6%;
-    --card-foreground: 210 40% 98%;
-    --popover: 224 71% 4%;
-    --popover-foreground: 210 40% 98%;
-
-    /* Primary colors - Dark mode */
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --primary-50: 217 91% 12%;
-    --primary-100: 217 91% 18%;
-    --primary-200: 217 90% 25%;
-    --primary-300: 217 89% 35%;
-    --primary-400: 217 85% 45%;
-    --primary-500: 217 83% 55%;
-    --primary-600: 217 91% 60%;
-    --primary-700: 217 91% 65%;
-    --primary-800: 217 91% 70%;
-    --primary-900: 217 91% 80%;
-
-    /* Secondary colors - Dark mode */
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    /* Muted colors - Dark mode */
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    /* Accent colors - Dark mode */
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    /* Destructive colors - Dark mode */
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    /* Border and input - Dark mode */
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
-
-    /* Status colors - Dark mode */
-    --success: 142 71% 45%;
-    --success-foreground: 222.2 84% 4.9%;
-    --success-light: 142 71% 15%;
-    --success-dark: 142 71% 55%;
-
-    --warning: 38 92% 55%;
-    --warning-foreground: 222.2 84% 4.9%;
-    --warning-light: 38 92% 15%;
-    --warning-dark: 38 92% 65%;
-
-    --error: 0 72% 55%;
-    --error-foreground: 210 40% 98%;
-    --error-light: 0 72% 15%;
-    --error-dark: 0 72% 65%;
-
-    --info: 217 91% 65%;
-    --info-foreground: 222.2 84% 4.9%;
-    --info-light: 217 91% 20%;
-    --info-dark: 217 91% 75%;
-
-    /* Service colors - Dark mode */
-    --service-redis: 0 72% 60%;
-    --service-redis-light: 0 72% 20%;
-    --service-rabbitmq: 25 90% 60%;
-    --service-rabbitmq-light: 25 90% 20%;
-    --service-elasticsearch: 45 90% 55%;
-    --service-elasticsearch-light: 45 90% 20%;
-    --service-postgres: 217 91% 65%;
-    --service-postgres-light: 217 91% 20%;
-    --service-mongodb: 142 71% 45%;
-    --service-mongodb-light: 142 71% 15%;
   }
 }
 
@@ -413,11 +330,6 @@
     color: hsl(var(--success));
   }
 
-  .dark .status-running {
-    background-color: hsl(var(--success-dark) / 0.2);
-    color: hsl(var(--success));
-  }
-
   .status-stopped {
     background-color: hsl(var(--muted));
     color: hsl(var(--muted-foreground));
@@ -428,28 +340,13 @@
     color: hsl(var(--error));
   }
 
-  .dark .status-error {
-    background-color: hsl(var(--error-dark) / 0.2);
-    color: hsl(var(--error));
-  }
-
   .status-pending {
     background-color: hsl(var(--warning-light));
     color: hsl(var(--warning));
   }
 
-  .dark .status-pending {
-    background-color: hsl(var(--warning-dark) / 0.2);
-    color: hsl(var(--warning));
-  }
-
   .status-deploying {
     background-color: hsl(var(--info-light));
-    color: hsl(var(--info));
-  }
-
-  .dark .status-deploying {
-    background-color: hsl(var(--info-dark) / 0.2);
     color: hsl(var(--info));
   }
 
@@ -459,28 +356,13 @@
     color: hsl(var(--success));
   }
 
-  .dark .payment-paid {
-    background-color: hsl(var(--success-dark) / 0.2);
-    color: hsl(var(--success));
-  }
-
   .payment-pending {
     background-color: hsl(var(--warning-light));
     color: hsl(var(--warning));
   }
 
-  .dark .payment-pending {
-    background-color: hsl(var(--warning-dark) / 0.2);
-    color: hsl(var(--warning));
-  }
-
   .payment-failed {
     background-color: hsl(var(--error-light));
-    color: hsl(var(--error));
-  }
-
-  .dark .payment-failed {
-    background-color: hsl(var(--error-dark) / 0.2);
     color: hsl(var(--error));
   }
 
@@ -490,28 +372,13 @@
     color: hsl(var(--error));
   }
 
-  .dark .env-production {
-    background-color: hsl(var(--error-dark) / 0.2);
-    color: hsl(var(--error));
-  }
-
   .env-staging {
     background-color: hsl(var(--warning-light));
     color: hsl(var(--warning));
   }
 
-  .dark .env-staging {
-    background-color: hsl(var(--warning-dark) / 0.2);
-    color: hsl(var(--warning));
-  }
-
   .env-development {
     background-color: hsl(var(--info-light));
-    color: hsl(var(--info));
-  }
-
-  .dark .env-development {
-    background-color: hsl(var(--info-dark) / 0.2);
     color: hsl(var(--info));
   }
 }

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ReduxProvider } from "@/lib/redux/Provider";
 import AuthSessionProvider from "@/components/providers/SessionProvider";
-import { ThemeProvider } from "@/lib/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { SkipToContent } from "@/components/ui/accessibility";
 import { APP_NAME, APP_DESCRIPTION } from "@/lib/constants";
@@ -44,26 +43,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ReduxProvider>
-            <AuthSessionProvider>
-              <SkipToContent />
-              <div id="main-content" tabIndex={-1}>
-                {children}
-              </div>
-              <Toaster />
-            </AuthSessionProvider>
-          </ReduxProvider>
-        </ThemeProvider>
+        <ReduxProvider>
+          <AuthSessionProvider>
+            <SkipToContent />
+            <div id="main-content" tabIndex={-1}>
+              {children}
+            </div>
+            <Toaster />
+          </AuthSessionProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
