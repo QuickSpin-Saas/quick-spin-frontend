@@ -1,6 +1,5 @@
 "use client"
 
-import DashboardLayout from "@/components/dashboard/DashboardLayout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Activity, CheckCircle, AlertCircle, XCircle } from "lucide-react"
 
@@ -54,40 +53,38 @@ export default function AdminActivityPage() {
   }
 
   return (
-    <DashboardLayout>
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">System Activity</h1>
-          <p className="text-gray-600 mt-1">
-            Monitor system events and user actions
-          </p>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Events</CardTitle>
-            <CardDescription>Latest system activities and logs</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {activities.map((activity) => (
-                <div key={activity.id} className="flex items-center justify-between p-4 border rounded-lg">
-                  <div className="flex items-center gap-4">
-                    {getStatusIcon(activity.status)}
-                    <div>
-                      <p className="font-medium text-gray-900">{activity.action}</p>
-                      <p className="text-sm text-gray-500">
-                        by {activity.user} • {activity.target}
-                      </p>
-                    </div>
-                  </div>
-                  <span className="text-sm text-gray-500">{activity.time}</span>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold text-gray-900">System Activity</h1>
+        <p className="text-gray-600 mt-1">
+          Monitor system events and user actions
+        </p>
       </div>
-    </DashboardLayout>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Recent Events</CardTitle>
+          <CardDescription>Latest system activities and logs</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {activities.map((activity) => (
+              <div key={activity.id} className="flex items-center justify-between p-4 border rounded-lg">
+                <div className="flex items-center gap-4">
+                  {getStatusIcon(activity.status)}
+                  <div>
+                    <p className="font-medium text-gray-900">{activity.action}</p>
+                    <p className="text-sm text-gray-500">
+                      by {activity.user} • {activity.target}
+                    </p>
+                  </div>
+                </div>
+                <span className="text-sm text-gray-500">{activity.time}</span>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   )
 }

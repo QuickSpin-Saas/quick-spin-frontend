@@ -19,11 +19,11 @@ export function Loading({ size = "md", variant = "spinner", className, text }: L
     return (
       <div className={cn("flex items-center justify-center", className)}>
         <div className="flex space-x-1">
-          <div className={cn("w-2 h-2 bg-primary-600 rounded-full animate-bounce", sizeClasses[size])} />
-          <div className={cn("w-2 h-2 bg-primary-600 rounded-full animate-bounce", sizeClasses[size])} style={{ animationDelay: "0.1s" }} />
-          <div className={cn("w-2 h-2 bg-primary-600 rounded-full animate-bounce", sizeClasses[size])} style={{ animationDelay: "0.2s" }} />
+          <div className={cn("w-2 h-2 bg-primary rounded-full animate-bounce", sizeClasses[size])} />
+          <div className={cn("w-2 h-2 bg-primary rounded-full animate-bounce", sizeClasses[size])} style={{ animationDelay: "0.1s" }} />
+          <div className={cn("w-2 h-2 bg-primary rounded-full animate-bounce", sizeClasses[size])} style={{ animationDelay: "0.2s" }} />
         </div>
-        {text && <span className="ml-2 text-sm text-gray-600">{text}</span>}
+        {text && <span className="ml-2 text-sm text-muted-foreground">{text}</span>}
       </div>
     )
   }
@@ -31,16 +31,16 @@ export function Loading({ size = "md", variant = "spinner", className, text }: L
   if (variant === "pulse") {
     return (
       <div className={cn("flex items-center justify-center", className)}>
-        <div className={cn("bg-primary-600 rounded-full animate-pulse", sizeClasses[size])} />
-        {text && <span className="ml-2 text-sm text-gray-600">{text}</span>}
+        <div className={cn("bg-primary rounded-full animate-pulse", sizeClasses[size])} />
+        {text && <span className="ml-2 text-sm text-muted-foreground">{text}</span>}
       </div>
     )
   }
 
   return (
     <div className={cn("flex items-center justify-center", className)}>
-      <Loader2 className={cn("animate-spin text-primary-600", sizeClasses[size])} />
-      {text && <span className="ml-2 text-sm text-gray-600">{text}</span>}
+      <Loader2 className={cn("animate-spin text-primary", sizeClasses[size])} />
+      {text && <span className="ml-2 text-sm text-muted-foreground">{text}</span>}
     </div>
   )
 }
@@ -52,12 +52,12 @@ interface LoadingCardProps {
 
 export function LoadingCard({ className, lines = 3 }: LoadingCardProps) {
   return (
-    <div className={cn("animate-pulse", className)}>
-      <div className="h-4 bg-gray-200 rounded w-3/4 mb-2" />
+    <div className={cn("animate-pulse p-6 bg-card rounded-lg border border-border", className)}>
+      <div className="h-4 bg-muted rounded w-3/4 mb-4" />
       {Array.from({ length: lines }).map((_, i) => (
-        <div key={i} className="h-3 bg-gray-200 rounded mb-2" />
+        <div key={i} className="h-3 bg-muted rounded mb-2" />
       ))}
-      <div className="h-8 bg-gray-200 rounded w-1/4 mt-4" />
+      <div className="h-8 bg-muted rounded w-1/4 mt-4" />
     </div>
   )
 }
@@ -73,13 +73,13 @@ export function LoadingTable({ rows = 5, cols = 4, className }: LoadingTableProp
     <div className={cn("animate-pulse", className)}>
       <div className="flex space-x-4 mb-4">
         {Array.from({ length: cols }).map((_, i) => (
-          <div key={i} className="h-4 bg-gray-200 rounded flex-1" />
+          <div key={i} className="h-4 bg-muted rounded flex-1" />
         ))}
       </div>
       {Array.from({ length: rows }).map((_, rowIndex) => (
         <div key={rowIndex} className="flex space-x-4 mb-3">
           {Array.from({ length: cols }).map((_, colIndex) => (
-            <div key={colIndex} className="h-3 bg-gray-200 rounded flex-1" />
+            <div key={colIndex} className="h-3 bg-muted rounded flex-1" />
           ))}
         </div>
       ))}
@@ -93,13 +93,13 @@ interface LoadingChartProps {
 
 export function LoadingChart({ className }: LoadingChartProps) {
   return (
-    <div className={cn("animate-pulse", className)}>
-      <div className="h-64 bg-gray-200 rounded-lg flex items-end justify-center p-4">
+    <div className={cn("animate-pulse p-6 bg-card rounded-lg border border-border", className)}>
+      <div className="h-64 bg-muted/20 rounded-lg flex items-end justify-center p-4">
         <div className="flex space-x-2 items-end h-full">
           {Array.from({ length: 12 }).map((_, i) => (
             <div
               key={i}
-              className="bg-gray-300 rounded"
+              className="bg-muted rounded"
               style={{
                 width: "20px",
                 height: `${Math.random() * 80 + 20}%`,

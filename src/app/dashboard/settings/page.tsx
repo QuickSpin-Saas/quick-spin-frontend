@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 import { updateUser } from '@/lib/redux/slices/authSlice';
+import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -177,6 +178,7 @@ export default function SettingsPage() {
   };
 
   return (
+    <DashboardLayout>
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
@@ -837,5 +839,6 @@ export default function SettingsPage() {
         </div>}
       </div>
     </div>
+    </DashboardLayout>
   );
 }

@@ -9,29 +9,40 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Loading, LoadingCard } from "@/components/ui/loading"
 import { EmptyState } from "@/components/ui/empty-state"
-import { 
-  Server, 
-  Search, 
-  Filter, 
-  Plus, 
-  Play, 
-  Square, 
+import {
+  Server,
+  Search,
+  Filter,
+  Plus,
+  Play,
+  Square,
   RotateCcw,
   MoreVertical,
   Clock,
   AlertCircle,
   CheckCircle,
   ArrowRight,
-  ExternalLink
+  ExternalLink,
+  Database
 } from "lucide-react"
 import Link from "next/link"
 import { formatDistanceToNow } from "date-fns"
 
 export default function ServicesPage() {
   const { isLoading: authLoading } = useRequireAuth()
-  const { data: services = [], isLoading: servicesLoading } = useGetServicesQuery({})
+  // Mock data for UI Review
+  const services = [
+    { id: '1', name: 'Redis Cache', type: 'redis', status: 'running', environment: 'production', createdAt: new Date(Date.now() - 86400000).toISOString(), metrics: { cpu: [{ value: 45 }] } },
+    { id: '2', name: 'RabbitMQ Cluster', type: 'rabbitmq', status: 'stopped', environment: 'staging', createdAt: new Date(Date.now() - 172800000).toISOString(), metrics: { cpu: [{ value: 0 }] } },
+    { id: '3', name: 'Main DB', type: 'postgres', status: 'deploying', environment: 'development', createdAt: new Date().toISOString(), metrics: { cpu: [{ value: 12 }] } },
+    { id: '4', name: 'Search Engine', type: 'elasticsearch', status: 'error', environment: 'production', createdAt: new Date(Date.now() - 604800000).toISOString(), metrics: { cpu: [{ value: 0 }] } },
+    { id: '5', name: 'Analytics Store', type: 'mongodb', status: 'running', environment: 'production', createdAt: new Date(Date.now() - 2592000000).toISOString(), metrics: { cpu: [{ value: 78 }] } },
+  ]
+  const servicesLoading = false
+  // const { data: services = [], isLoading: servicesLoading } = useGetServicesQuery({})
   const [startService] = useStartServiceMutation()
   const [stopService] = useStopServiceMutation()
   const { toast } = useToast()
@@ -115,28 +126,28 @@ export default function ServicesPage() {
   const getServiceIcon = (type: string) => {
     switch (type) {
       case "redis":
-        return <div className="w-10 h-10 bg-service-redis-light rounded-lg flex items-center justify-center">
-                 <span className="text-service-redis font-bold text-sm">R</span>
+        return <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center shadow-md">
+                 <Database className="w-6 h-6 text-white" />
                </div>
       case "rabbitmq":
-        return <div className="w-10 h-10 bg-service-rabbitmq-light rounded-lg flex items-center justify-center">
-                 <span className="text-service-rabbitmq font-bold text-sm">RM</span>
+        return <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-md">
+                 <Server className="w-6 h-6 text-white" />
                </div>
       case "elasticsearch":
-        return <div className="w-10 h-10 bg-service-elasticsearch-light rounded-lg flex items-center justify-center">
-                 <span className="text-service-elasticsearch font-bold text-sm">ES</span>
+        return <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-md">
+                 <Database className="w-6 h-6 text-white" />
                </div>
       case "postgres":
-        return <div className="w-10 h-10 bg-service-postgres-light rounded-lg flex items-center justify-center">
-                 <span className="text-service-postgres font-bold text-sm">PG</span>
+        return <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md">
+                 <Database className="w-6 h-6 text-white" />
                </div>
       case "mongodb":
-        return <div className="w-10 h-10 bg-service-mongodb-light rounded-lg flex items-center justify-center">
-                 <span className="text-service-mongodb font-bold text-sm">MG</span>
+        return <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-md">
+                 <Database className="w-6 h-6 text-white" />
                </div>
       default:
-        return <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
-                 <Server className="w-5 h-5 text-primary" />
+        return <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center shadow-md">
+                 <Server className="w-6 h-6 text-white" />
                </div>
     }
   }
@@ -193,7 +204,7 @@ export default function ServicesPage() {
             </p>
           </div>
           <Link href="/dashboard/services/create" className="w-full md:w-auto">
-            <Button variant="gradient" className="w-full md:w-auto">
+            <Button className="w-full md:w-auto">
               <Plus className="w-4 h-4 mr-2" />
               Create Service
             </Button>
@@ -233,54 +244,57 @@ export default function ServicesPage() {
           </div>
 
           {showFilters && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 bg-muted/50 rounded-lg border border-border">
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4 bg-muted/50 rounded-lg border border-border animate-in slide-in-from-top-2">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">
                   Status
                 </label>
-                <select
-                  value={statusFilter}
-                  onChange={(e) => setStatusFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground transition-theme"
-                >
-                  <option value="all">All Status</option>
-                  <option value="running">Running</option>
-                  <option value="stopped">Stopped</option>
-                  <option value="deploying">Deploying</option>
-                  <option value="error">Error</option>
-                </select>
+                <Select value={statusFilter} onValueChange={setStatusFilter}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="All Status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Status</SelectItem>
+                    <SelectItem value="running">Running</SelectItem>
+                    <SelectItem value="stopped">Stopped</SelectItem>
+                    <SelectItem value="deploying">Deploying</SelectItem>
+                    <SelectItem value="error">Error</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">
                   Type
                 </label>
-                <select
-                  value={typeFilter}
-                  onChange={(e) => setTypeFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground transition-theme"
-                >
-                  <option value="all">All Types</option>
-                  <option value="redis">Redis</option>
-                  <option value="rabbitmq">RabbitMQ</option>
-                  <option value="elasticsearch">Elasticsearch</option>
-                  <option value="postgres">PostgreSQL</option>
-                  <option value="mongodb">MongoDB</option>
-                </select>
+                <Select value={typeFilter} onValueChange={setTypeFilter}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="All Types" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Types</SelectItem>
+                    <SelectItem value="redis">Redis</SelectItem>
+                    <SelectItem value="rabbitmq">RabbitMQ</SelectItem>
+                    <SelectItem value="elasticsearch">Elasticsearch</SelectItem>
+                    <SelectItem value="postgres">PostgreSQL</SelectItem>
+                    <SelectItem value="mongodb">MongoDB</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">
                   Environment
                 </label>
-                <select
-                  value={environmentFilter}
-                  onChange={(e) => setEnvironmentFilter(e.target.value)}
-                  className="w-full px-3 py-2 border border-input rounded-md bg-background text-foreground transition-theme"
-                >
-                  <option value="all">All Environments</option>
-                  <option value="development">Development</option>
-                  <option value="staging">Staging</option>
-                  <option value="production">Production</option>
-                </select>
+                <Select value={environmentFilter} onValueChange={setEnvironmentFilter}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="All Environments" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Environments</SelectItem>
+                    <SelectItem value="development">Development</SelectItem>
+                    <SelectItem value="staging">Staging</SelectItem>
+                    <SelectItem value="production">Production</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
           )}
@@ -301,52 +315,62 @@ export default function ServicesPage() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {filteredServices.map((service) => (
-            <Card key={service.id} className="hover-lift animate-in">
-              <CardHeader className="pb-4">
+          {filteredServices.map((service, index) => (
+            <Card key={service.id} className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300 animate-slide-up overflow-hidden group relative" style={{animationDelay: `${index * 0.05}s`}}>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+              <CardHeader className="pb-4 relative">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     {getServiceIcon(service.type)}
                     <div>
-                      <CardTitle className="text-lg">{service.name}</CardTitle>
-                      <CardDescription className="capitalize">
-                        {service.type} • {service.environment}
+                      <CardTitle className="text-lg font-bold">{service.name}</CardTitle>
+                      <CardDescription className="capitalize flex items-center gap-2 mt-1">
+                        <span className="px-2 py-0.5 bg-secondary rounded text-xs font-medium">{service.type}</span>
+                        <span className="px-2 py-0.5 bg-primary/10 text-primary rounded text-xs font-medium">{service.environment}</span>
                       </CardDescription>
                     </div>
                   </div>
-                  <button className="p-1 rounded-md hover:bg-accent transition-theme">
+                  <button className="p-2 rounded-lg hover:bg-accent transition-colors">
                     <MoreVertical className="w-4 h-4 text-muted-foreground" />
                   </button>
                 </div>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Status</span>
+              <CardContent className="relative">
+                <div className="space-y-3 mb-4">
+                  <div className="flex items-center justify-between p-2 bg-secondary/50 rounded-lg">
+                    <span className="text-sm font-medium text-muted-foreground">Status</span>
                     {getStatusBadge(service.status)}
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">Created</span>
-                    <span className="text-sm text-foreground">
+                  <div className="flex items-center justify-between p-2 bg-secondary/50 rounded-lg">
+                    <span className="text-sm font-medium text-muted-foreground">Created</span>
+                    <span className="text-sm font-semibold text-foreground">
                       {formatDistanceToNow(new Date(service.createdAt), { addSuffix: true })}
                     </span>
                   </div>
                   {service.metrics && service.metrics.cpu && service.metrics.cpu.length > 0 && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-muted-foreground">CPU Usage</span>
-                      <span className="text-sm text-foreground">
-                        {service.metrics.cpu[service.metrics.cpu.length - 1]?.value || 0}%
-                      </span>
+                    <div className="space-y-1.5 p-2 bg-secondary/50 rounded-lg">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-muted-foreground">CPU Usage</span>
+                        <span className="text-sm font-bold text-foreground">
+                          {service.metrics.cpu[service.metrics.cpu.length - 1]?.value || 0}%
+                        </span>
+                      </div>
+                      <div className="w-full bg-background rounded-full h-1.5 overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-primary transition-all duration-500"
+                          style={{ width: `${service.metrics.cpu[service.metrics.cpu.length - 1]?.value || 0}%` }}
+                        />
+                      </div>
                     </div>
                   )}
                 </div>
 
-                <div className="flex gap-2 mt-4">
+                <div className="flex gap-2">
                   {service.status === "running" ? (
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex-1"
+                      className="flex-1 hover:bg-destructive/10 hover:text-destructive hover:border-destructive/50"
                       onClick={() => handleStopService(service.id)}
                     >
                       <Square className="w-4 h-4 mr-1" />
@@ -356,7 +380,7 @@ export default function ServicesPage() {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex-1"
+                      className="flex-1 hover:bg-success/10 hover:text-success hover:border-success/50"
                       onClick={() => handleStartService(service.id)}
                     >
                       <Play className="w-4 h-4 mr-1" />
@@ -364,7 +388,7 @@ export default function ServicesPage() {
                     </Button>
                   )}
                   <Link href={`/dashboard/services/${service.id}`} className="flex-1">
-                    <Button size="sm" className="w-full">
+                    <Button size="sm" className="w-full bg-gradient-primary hover:opacity-90">
                       <ExternalLink className="w-4 h-4 mr-1" />
                       Manage
                     </Button>

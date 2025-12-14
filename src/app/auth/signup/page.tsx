@@ -142,26 +142,26 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-muted/30 to-muted">
-      <div className="max-w-md w-full mx-4">
-        <div className="bg-card rounded-2xl shadow-xl p-8 border border-border">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="max-w-md w-full">
+        <div className="glass-card p-8 md:p-10 animate-slide-up">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-xl mb-4">
-              <span className="text-2xl font-bold text-primary-foreground">QS</span>
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-primary rounded-2xl mb-4 shadow-colored">
+              <span className="text-3xl font-bold text-white">QS</span>
             </div>
-            <h1 className="text-2xl font-bold text-foreground mb-2">
+            <h1 className="text-3xl font-bold mb-2 text-gradient">
               Create your account
             </h1>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-base">
               Join QuickSpin and start deploying microservices
             </p>
           </div>
 
-          <div className="space-y-4 mb-6">
+          <div className="space-y-3 mb-6">
             <button
               onClick={handleGithubSignup}
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-foreground hover:bg-foreground/90 text-background rounded-lg transition-theme disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-3 px-5 py-3.5 glass hover:bg-white/90 text-foreground rounded-xl transition-all duration-200 disabled:opacity-50 font-medium shadow-md hover-lift"
             >
               <Github className="w-5 h-5" />
               Continue with GitHub
@@ -170,9 +170,9 @@ export default function SignupPage() {
             <button
               onClick={handleGoogleSignup}
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-background hover:bg-accent text-foreground border border-border rounded-lg transition-theme disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-3 px-5 py-3.5 glass hover:bg-white/90 text-foreground rounded-xl transition-all duration-200 disabled:opacity-50 font-medium shadow-md hover-lift"
             >
-              <Mail className="w-5 h-5" />
+              <Mail className="w-5 h-5 text-primary" />
               Continue with Google
             </button>
           </div>
@@ -182,15 +182,15 @@ export default function SignupPage() {
               <div className="w-full border-t border-border" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-card text-muted-foreground">
-                Or continue with
+              <span className="px-3 bg-white/90 text-muted-foreground font-medium">
+                Or continue with email
               </span>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-2">
+              <label htmlFor="name" className="block text-sm font-semibold text-foreground">
                 Full name
               </label>
               <input
@@ -200,13 +200,13 @@ export default function SignupPage() {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground placeholder:text-muted-foreground transition-theme"
+                className="w-full px-4 py-3.5 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary bg-input text-foreground placeholder:text-muted-foreground transition-all duration-200 font-medium"
                 placeholder="Enter your full name"
               />
             </div>
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm font-semibold text-foreground">
                 Email address
               </label>
               <input
@@ -216,13 +216,13 @@ export default function SignupPage() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground placeholder:text-muted-foreground transition-theme"
+                className="w-full px-4 py-3.5 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary bg-input text-foreground placeholder:text-muted-foreground transition-all duration-200 font-medium"
                 placeholder="Enter your email"
               />
             </div>
 
-            <div>
-              <label htmlFor="organization" className="block text-sm font-medium text-foreground mb-2">
+            <div className="space-y-2">
+              <label htmlFor="organization" className="block text-sm font-semibold text-foreground">
                 Organization
               </label>
               <input
@@ -232,13 +232,13 @@ export default function SignupPage() {
                 value={formData.organization}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 border border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground placeholder:text-muted-foreground transition-theme"
+                className="w-full px-4 py-3.5 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary bg-input text-foreground placeholder:text-muted-foreground transition-all duration-200 font-medium"
                 placeholder="Enter your organization name"
               />
             </div>
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-foreground mb-2">
+            <div className="space-y-2">
+              <label htmlFor="password" className="block text-sm font-semibold text-foreground">
                 Password
               </label>
               <div className="relative">
@@ -249,24 +249,24 @@ export default function SignupPage() {
                   value={formData.password}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 pr-12 border border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground placeholder:text-muted-foreground transition-theme"
+                  className="w-full px-4 py-3.5 pr-12 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary bg-input text-foreground placeholder:text-muted-foreground transition-all duration-200 font-medium"
                   placeholder="Create a password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-muted-foreground hover:text-foreground transition-theme"
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-xs text-muted-foreground mt-1.5">
                 Must be at least 8 characters
               </p>
             </div>
 
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-foreground mb-2">
+            <div className="space-y-2">
+              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-foreground">
                 Confirm password
               </label>
               <div className="relative">
@@ -277,13 +277,13 @@ export default function SignupPage() {
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 pr-12 border border-input rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground placeholder:text-muted-foreground transition-theme"
+                  className="w-full px-4 py-3.5 pr-12 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary bg-input text-foreground placeholder:text-muted-foreground transition-all duration-200 font-medium"
                   placeholder="Confirm your password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-muted-foreground hover:text-foreground transition-theme"
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
@@ -293,7 +293,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-gradient-primary hover:opacity-90 text-primary-foreground font-medium py-3 px-4 rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              className="w-full bg-gradient-primary text-white font-semibold py-4 px-4 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center hover-glow hover-lift shadow-md"
             >
               {isLoading ? (
                 <>
@@ -310,7 +310,7 @@ export default function SignupPage() {
             Already have an account?{" "}
             <Link
               href="/auth/login"
-              className="font-medium text-primary hover:text-primary/80 transition-theme"
+              className="font-bold text-primary hover:text-primary/80 transition-colors"
             >
               Sign in
             </Link>

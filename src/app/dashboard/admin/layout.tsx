@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { APP_NAME, APP_DESCRIPTION } from "@/lib/constants"
+import AdminLayout from "@/components/admin/AdminLayout"
 
 export const metadata: Metadata = {
   title: `Admin Dashboard | ${APP_NAME}`,
@@ -18,10 +19,10 @@ export const metadata: Metadata = {
   robots: "noindex, nofollow",
 }
 
-export default function AdminLayout({
+export default function AdminLayoutWrapper({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <>{children}</>
+  return <AdminLayout>{children}</AdminLayout>
 }

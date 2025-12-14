@@ -6,17 +6,21 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useAppSelector } from '@/lib/redux/hooks';
 import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import {
   Home,
   Server,
   Activity,
   DollarSign,
   Settings,
-  Users,
-  Database,
   LogOut,
-  X,
   Menu,
-  Building2,
   User
 } from 'lucide-react';
 
@@ -25,13 +29,9 @@ interface MobileNavProps {
 }
 
 export default function MobileNav({ onLogout }: MobileNavProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { user } = useAppSelector((state) => state.auth);
-  const role = user?.role;
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
 
   const isActive = (href: string) => {
     if (href === '/dashboard') {
@@ -48,63 +48,33 @@ export default function MobileNav({ onLogout }: MobileNavProps) {
     { title: 'Settings', href: '/dashboard/settings', icon: Settings },
   ];
 
-  const adminNavItems = [
-    { title: 'Admin Dashboard', href: '/dashboard/admin', icon: Database },
-    { title: 'User Management', href: '/dashboard/admin/users', icon: Users },
-  ];
-
   return (
-    <>
-      {/* Mobile Menu Button - Only visible on mobile */}
-      <button
-        onClick={toggleMenu}
-        className="md:hidden p-2 rounded-lg hover:bg-accent transition-theme"
-        aria-label="Toggle mobile menu"
-      >
-        <Menu className="w-6 h-6 text-foreground" />
-      </button>
-
-      {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 md:hidden"
-          onClick={closeMenu}
-        />
-      )}
-
-      {/* Mobile Menu Sidebar */}
-      <div
-        className={cn(
-          "fixed top-0 left-0 h-full w-[280px] bg-background border-r border-border z-50 transform transition-transform duration-300 ease-in-out md:hidden",
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        )}
-      >
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <Button variant="ghost" size="icon" className="md:hidden">
+          <Menu className="h-5 w-5" />
+          <span className="sr-only">Toggle menu</span>
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" className="w-[280px] p-0">
         <div className="flex h-full flex-col">
-          {/* Header with Close Button */}
-          <div className="flex items-center justify-between p-4 border-b border-border">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+          <SheetHeader className="p-4 border-b">
+             <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">QS</span>
               </div>
-              <span className="font-semibold text-foreground">QuickSpin</span>
+              <SheetTitle className="text-left">QuickSpin</SheetTitle>
             </div>
-            <button
-              onClick={closeMenu}
-              className="p-1 rounded-md hover:bg-accent transition-theme"
-              aria-label="Close menu"
-            >
-              <X className="w-5 h-5 text-muted-foreground" />
-            </button>
-          </div>
+          </SheetHeader>
 
           {/* User Profile */}
-          <div className="p-4 border-b border-border">
+          <div className="p-4 border-b bg-muted/30">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
-                <User className="w-5 h-5 text-primary-foreground" />
+              <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                <User className="w-5 h-5 text-primary" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-foreground truncate">
+                <p className="text-sm font-medium truncate">
                   {user?.name || "User"}
                 </p>
                 <p className="text-xs text-muted-foreground truncate">
@@ -114,70 +84,47 @@ export default function MobileNav({ onLogout }: MobileNavProps) {
             </div>
           </div>
 
-          {/* Navigation */}
-          <nav className="flex-1 overflow-y-auto p-4">
-            <div className="space-y-1">
-              <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 px-3">
-                Main
-              </h3>
+          <div className="flex-1 overflow-y-auto py-4">
+            <nav className="space-y-1 px-2">
+              <div className="px-2 mb-2">
+                 <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  Main
+                </h3>
+              </div>
               {mainNavItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={closeMenu}
+                  onClick={() => setOpen(false)}
                   className={cn(
-                    "flex items-center gap-3 px-3 py-3 text-sm font-medium rounded-lg transition-theme",
+                    "flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md transition-colors",
                     isActive(item.href)
-                      ? "bg-primary/10 text-primary"
-                      : "text-foreground hover:bg-accent"
+                      ? "bg-primary text-primary-foreground"
+                      : "hover:bg-accent hover:text-accent-foreground"
                   )}
                 >
-                  <item.icon className="w-5 h-5 flex-shrink-0" />
-                  <span>{item.title}</span>
+                  <item.icon className="w-4 h-4" />
+                  {item.title}
                 </Link>
               ))}
-            </div>
+            </nav>
+          </div>
 
-            {role === 'admin' && (
-              <div className="space-y-1 mt-6">
-                <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 px-3">
-                  Admin
-                </h3>
-                {adminNavItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={closeMenu}
-                    className={cn(
-                      "flex items-center gap-3 px-3 py-3 text-sm font-medium rounded-lg transition-theme",
-                      isActive(item.href)
-                        ? "bg-primary/10 text-primary"
-                        : "text-foreground hover:bg-accent"
-                    )}
-                  >
-                    <item.icon className="w-5 h-5 flex-shrink-0" />
-                    <span>{item.title}</span>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </nav>
-
-          {/* Footer with Logout */}
-          <div className="p-4 border-t border-border space-y-2">
-            <button
+          <div className="p-4 border-t">
+            <Button
+              variant="ghost"
+              className="w-full justify-start gap-3 text-destructive hover:text-destructive hover:bg-destructive/10"
               onClick={() => {
-                closeMenu();
+                setOpen(false);
                 onLogout();
               }}
-              className="flex items-center gap-3 px-3 py-3 text-sm font-medium text-foreground hover:bg-accent rounded-lg transition-theme w-full"
             >
-              <LogOut className="w-5 h-5 flex-shrink-0" />
-              <span>Logout</span>
-            </button>
+              <LogOut className="w-4 h-4" />
+              Logout
+            </Button>
           </div>
         </div>
-      </div>
-    </>
+      </SheetContent>
+    </Sheet>
   );
 }

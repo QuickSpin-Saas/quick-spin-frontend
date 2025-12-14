@@ -76,7 +76,7 @@ export default function BillingPage() {
               <FileText className="w-4 h-4 mr-2" />
               View Invoices
             </Button>
-            <Button variant="gradient" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto">
               <Plus className="w-4 h-4 mr-2" />
               Add Payment Method
             </Button>
@@ -84,7 +84,7 @@ export default function BillingPage() {
         </div>
 
         {/* Current Balance Card */}
-        <Card className="border-border bg-primary/5">
+        <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl bg-gradient-to-br from-purple-50/80 to-blue-50/80">
           <CardContent className="p-4 sm:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
@@ -140,7 +140,7 @@ export default function BillingPage() {
           {activeTab === 'overview' && <div className="space-y-6">
             {/* Usage Summary */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-              <Card className="border-border">
+              <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
                     This Month
@@ -156,7 +156,7 @@ export default function BillingPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-border">
+              <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
                     Active Services
@@ -171,7 +171,7 @@ export default function BillingPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-border">
+              <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
                     Average Daily Cost
@@ -227,7 +227,7 @@ export default function BillingPage() {
           {activeTab === 'usage' && <div className="space-y-6">
             {/* Service Usage Breakdown */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-              <Card className="border-border">
+              <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-foreground">Service Usage Breakdown</CardTitle>
                   <CardDescription className="text-muted-foreground">
@@ -251,7 +251,7 @@ export default function BillingPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-border">
+              <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-foreground">Usage Statistics</CardTitle>
                   <CardDescription className="text-muted-foreground">
@@ -290,36 +290,36 @@ export default function BillingPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-warning-light border border-warning rounded-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-warning/10 border border-warning/20 rounded-lg">
                     <div className="flex items-center gap-3">
                       <AlertCircle className="w-5 h-5 text-warning flex-shrink-0" />
                       <div>
                         <p className="font-medium text-warning">
                           80% of monthly budget reached
                         </p>
-                        <p className="text-sm text-warning-dark">
+                        <p className="text-sm text-warning/80">
                           You've used $249.96 of your $300 monthly budget
                         </p>
                       </div>
                     </div>
-                    <Button variant="outline" size="sm" className="w-full sm:w-auto">
+                    <Button variant="outline" size="sm" className="w-full sm:w-auto border-warning/20 hover:bg-warning/20 text-warning hover:text-warning">
                       View Details
                     </Button>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-info-light border border-info rounded-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-info/10 border border-info/20 rounded-lg">
                     <div className="flex items-center gap-3">
                       <CheckCircle className="w-5 h-5 text-info flex-shrink-0" />
                       <div>
                         <p className="font-medium text-info">
                           Auto-scaling enabled
                         </p>
-                        <p className="text-sm text-info-dark">
+                        <p className="text-sm text-info/80">
                           Your services will automatically scale based on demand
                         </p>
                       </div>
                     </div>
-                    <Button variant="outline" size="sm" className="w-full sm:w-auto">
+                    <Button variant="outline" size="sm" className="w-full sm:w-auto border-info/20 hover:bg-info/20 text-info hover:text-info">
                       Configure
                     </Button>
                   </div>

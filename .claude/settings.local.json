@@ -2,7 +2,23 @@
   "permissions": {
     "allow": [
       "Bash(npm run build:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(kill:*)",
+      "Bash(pkill:*)",
+      "Bash(powershell.exe -Command \"Stop-Process -Id 9388 -Force\")",
+      "Bash(powershell.exe -Command \"Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force\")",
+      "Bash(if exist .next rmdir /s /q .next)",
+      "Bash(if exist node_modules.cache rmdir /s /q node_modules.cache)",
+      "Bash(npm start)",
+      "Bash(timeout /t 2 /nobreak)",
+      "Bash(next.config \")",
+      "Bash(npm install:*)",
+      "Bash(timeout /t 5 /nobreak)",
+      "Bash(powershell.exe -Command \"Stop-Process -Id 15952 -Force\")",
+      "Bash(if exist .nextdev rmdir /s /q .nextdev)"
     ],
     "deny": [],
     "ask": []

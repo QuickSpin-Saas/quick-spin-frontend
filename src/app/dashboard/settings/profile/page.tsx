@@ -79,8 +79,8 @@ export default function ProfilePage() {
             {/* Profile Photo */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <Avatar className="h-20 w-20 sm:h-24 sm:w-24">
-                <AvatarImage src={user?.image} alt={user?.name} />
-                <AvatarFallback className="text-xl sm:text-2xl bg-gradient-primary text-primary-foreground">
+                <AvatarImage src={user?.image || undefined} alt={user?.name || "User"} />
+                <AvatarFallback className="text-xl sm:text-2xl bg-primary text-primary-foreground">
                   {user?.name?.charAt(0).toUpperCase()}
                 </AvatarFallback>
               </Avatar>

@@ -129,7 +129,7 @@ export default function DashboardPage() {
             </p>
           </div>
           <Link href="/dashboard/services/create" className="w-full md:w-auto">
-            <Button variant="gradient" className="w-full md:w-auto">
+            <Button className="w-full md:w-auto">
               <Plus className="w-4 h-4 mr-2" />
               Create Service
             </Button>
@@ -138,70 +138,82 @@ export default function DashboardPage() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          <Card className="border-border hover-lift animate-slide-up">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
+          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-purple-500 to-purple-600 text-white overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
+              <CardTitle className="text-sm font-medium text-white/90">
                 Total Services
               </CardTitle>
-              <Server className="h-4 w-4 text-muted-foreground" />
+              <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                <Server className="h-4 w-4 text-white" />
+              </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-foreground">
+            <CardContent className="relative z-10">
+              <div className="text-3xl font-bold text-white">
                 {totalServices}
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-white/80 mt-1">
                 {runningServices} running, {totalServices - runningServices} stopped
               </p>
             </CardContent>
           </Card>
 
-          <Card className="border-border hover-lift animate-slide-up">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
+          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-cyan-500 to-blue-600 text-white overflow-hidden relative" style={{animationDelay: '0.1s'}}>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
+              <CardTitle className="text-sm font-medium text-white/90">
                 Monthly Usage
               </CardTitle>
-              <Activity className="h-4 w-4 text-muted-foreground" />
+              <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                <Activity className="h-4 w-4 text-white" />
+              </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-foreground">
+            <CardContent className="relative z-10">
+              <div className="text-3xl font-bold text-white">
                 {stats?.usage?.currentMonth || 0} GB
               </div>
-              <p className="text-xs text-success flex items-center">
+              <p className="text-xs text-white/80 flex items-center mt-1">
                 <TrendingUp className="h-3 w-3 mr-1" />
                 {stats?.usage?.growth || 0}% from last month
               </p>
             </CardContent>
           </Card>
 
-          <Card className="border-border hover-lift animate-slide-up">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
+          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-emerald-500 to-green-600 text-white overflow-hidden relative" style={{animationDelay: '0.2s'}}>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
+              <CardTitle className="text-sm font-medium text-white/90">
                 Monthly Cost
               </CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
+              <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                <DollarSign className="h-4 w-4 text-white" />
+              </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-foreground">
+            <CardContent className="relative z-10">
+              <div className="text-3xl font-bold text-white">
                 ${stats?.billing?.currentMonth || 0}
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-white/80 mt-1">
                 of ${stats?.billing?.limit || 0} limit
               </p>
             </CardContent>
           </Card>
 
-          <Card className="border-border hover-lift animate-slide-up">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
+          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-amber-500 to-orange-600 text-white overflow-hidden relative" style={{animationDelay: '0.3s'}}>
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
+              <CardTitle className="text-sm font-medium text-white/90">
                 Uptime
               </CardTitle>
-              <Clock className="h-4 w-4 text-muted-foreground" />
+              <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
+                <Clock className="h-4 w-4 text-white" />
+              </div>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-foreground">
+            <CardContent className="relative z-10">
+              <div className="text-3xl font-bold text-white">
                 {stats?.uptime || 99.9}%
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-white/80 mt-1">
                 Last 30 days
               </p>
             </CardContent>
@@ -210,15 +222,18 @@ export default function DashboardPage() {
 
         {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-          <Card className="border-border animate-in">
+          <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300 animate-in">
             <CardHeader>
-              <CardTitle className="text-foreground">Service Status Overview</CardTitle>
+              <CardTitle className="text-foreground flex items-center gap-2">
+                <div className="w-2 h-8 bg-gradient-primary rounded-full"></div>
+                Service Status Overview
+              </CardTitle>
               <CardDescription className="text-muted-foreground">
                 Current status of all your services
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {["running", "stopped", "deploying", "error"].map((status) => {
                   const count = services.filter(s => s.status === status).length
                   const percentage = totalServices > 0 ? (count / totalServices) * 100 : 0
@@ -233,18 +248,36 @@ export default function DashboardPage() {
                     }
                   }
 
+                  const getBarColor = (status: string) => {
+                    switch(status) {
+                      case "running": return "bg-gradient-success"
+                      case "stopped": return "bg-gray-300"
+                      case "deploying": return "bg-gradient-info"
+                      case "error": return "bg-gradient-to-r from-red-500 to-red-600"
+                      default: return "bg-gray-200"
+                    }
+                  }
+
                   return (
-                    <div key={status} className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <Badge variant={getBadgeVariant(status) as any} className="capitalize">
-                          {status}
-                        </Badge>
-                        <span className="text-sm text-muted-foreground">
-                          {count} services
-                        </span>
+                    <div key={status} className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <Badge variant={getBadgeVariant(status) as any} className="capitalize w-24 justify-center">
+                            {status}
+                          </Badge>
+                          <span className="text-sm text-muted-foreground">
+                            {count} services
+                          </span>
+                        </div>
+                        <div className="text-sm font-semibold text-foreground">
+                          {percentage.toFixed(1)}%
+                        </div>
                       </div>
-                      <div className="text-sm font-medium text-foreground">
-                        {percentage.toFixed(1)}%
+                      <div className="w-full bg-secondary rounded-full h-2 overflow-hidden">
+                        <div
+                          className={cn("h-full transition-all duration-500 rounded-full", getBarColor(status))}
+                          style={{ width: `${percentage}%` }}
+                        />
                       </div>
                     </div>
                   )
@@ -253,28 +286,32 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-border animate-in">
+          <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300 animate-in">
             <CardHeader>
-              <CardTitle className="text-foreground">Recent Activity</CardTitle>
+              <CardTitle className="text-foreground flex items-center gap-2">
+                <div className="w-2 h-8 bg-gradient-info rounded-full"></div>
+                Recent Activity
+              </CardTitle>
               <CardDescription className="text-muted-foreground">
                 Latest events and updates
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {recentActivity.map((activity) => (
-                  <div key={activity.id} className="flex items-start gap-3">
-                    <div className="mt-1">
+                  <div key={activity.id} className="flex items-start gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors">
+                    <div className="mt-0.5 p-2 rounded-lg bg-gradient-to-br from-purple-100 to-blue-100">
                       {getActivityIcon(activity.status)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-foreground">
+                      <p className="text-sm font-semibold text-foreground">
                         {activity.title}
                       </p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-muted-foreground mt-0.5">
                         {activity.description}
                       </p>
-                      <p className="text-xs text-muted-foreground mt-1">
+                      <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
+                        <Clock3 className="w-3 h-3" />
                         {formatDistanceToNow(activity.timestamp, { addSuffix: true })}
                       </p>
                     </div>
@@ -284,10 +321,10 @@ export default function DashboardPage() {
               <div className="mt-4 pt-4 border-t border-border">
                 <Link
                   href="/dashboard/activity"
-                  className="text-sm text-primary hover:text-primary/80 font-medium flex items-center gap-1 transition-theme"
+                  className="text-sm text-primary hover:text-primary/80 font-semibold flex items-center justify-center gap-2 transition-theme bg-primary/5 hover:bg-primary/10 rounded-lg py-2"
                 >
                   View all activity
-                  <ArrowRight className="w-3 h-3" />
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </CardContent>
