@@ -70,7 +70,7 @@ export const getDefaultChartOptions = (isDark: boolean = false): ChartOptions<an
       padding: 12,
       displayColors: true,
       callbacks: {
-        labelColor: function(context) {
+        labelColor: function(context: any) {
           return {
             borderColor: context.dataset.borderColor as string,
             backgroundColor: context.dataset.backgroundColor as string,
