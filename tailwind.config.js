@@ -93,22 +93,23 @@ module.exports = {
           'error': '#ef4444',
         },
         dark: {
-          'primary': '#B399D4',
-          'primary-content': '#0a0a0a',
+          // Improved dark theme with better contrast ratios (WCAG AA compliant)
+          'primary': '#b794f6',            // Brighter, more vibrant purple
+          'primary-content': '#1a1629',    // Dark text for high contrast
           'secondary': '#8A68C6',
-          'secondary-content': '#ffffff',
-          'accent': '#9370DB',
+          'secondary-content': '#f5f5f6',
+          'accent': '#9b87f5',
           'accent-content': '#ffffff',
-          'neutral': '#1f2937',
-          'neutral-content': '#d1d5db',
-          'base-100': '#0a0a0a',
-          'base-200': '#141414',
-          'base-300': '#1f1f1f',
-          'base-content': '#e5e7eb',
-          'info': '#3b82f6',
-          'success': '#10b981',
-          'warning': '#f59e0b',
-          'error': '#ef4444',
+          'neutral': '#1f1a2e',
+          'neutral-content': '#e5e5e8',
+          'base-100': '#1a1629',           // Richer dark slate-purple
+          'base-200': '#1f1a2e',           // Slightly lighter
+          'base-300': '#2a2440',           // More elevated surfaces
+          'base-content': '#f5f5f6',       // Softer white
+          'info': '#3498db',               // Brighter blue
+          'success': '#3ecf8e',            // Brighter green
+          'warning': '#f39c12',            // Brighter amber
+          'error': '#e74c3c',              // Softer red
         },
       },
     ],

@@ -44,7 +44,7 @@ export function Modal({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm" />
+          <div className="fixed inset-0 bg-black/60 dark:bg-black/85 backdrop-blur-md" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
@@ -61,12 +61,13 @@ export function Modal({
               <Dialog.Panel
                 className={cn(
                   'w-full transform overflow-hidden rounded-2xl bg-card text-left align-middle shadow-2xl transition-all',
+                  'border border-border dark:border-border dark:shadow-[0_20px_80px_-20px_rgba(183,148,246,0.3)]',
                   sizeClasses[size],
                   className
                 )}
               >
                 {(title || description) && (
-                  <div className="flex items-start justify-between p-6 border-b border-border">
+                  <div className="flex items-start justify-between p-6 border-b border-border dark:border-border/50">
                     <div className="flex-1">
                       {title && (
                         <Dialog.Title
@@ -84,10 +85,11 @@ export function Modal({
                     </div>
                     <button
                       type="button"
-                      className="ml-4 rounded-lg p-2 hover:bg-accent transition-colors"
+                      className="ml-4 rounded-lg p-2 hover:bg-accent dark:hover:bg-accent/60 transition-colors"
                       onClick={onClose}
+                      aria-label="Close modal"
                     >
-                      <X className="h-5 w-5 text-muted-foreground" />
+                      <X className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
                     </button>
                   </div>
                 )}
