@@ -93,23 +93,23 @@ module.exports = {
           'error': '#ef4444',
         },
         dark: {
-          // Improved dark theme with better contrast ratios (WCAG AA compliant)
-          'primary': '#b794f6',            // Brighter, more vibrant purple
-          'primary-content': '#1a1629',    // Dark text for high contrast
-          'secondary': '#8A68C6',
-          'secondary-content': '#f5f5f6',
-          'accent': '#9b87f5',
-          'accent-content': '#ffffff',
-          'neutral': '#1f1a2e',
-          'neutral-content': '#e5e5e8',
-          'base-100': '#1a1629',           // Richer dark slate-purple
-          'base-200': '#1f1a2e',           // Slightly lighter
-          'base-300': '#2a2440',           // More elevated surfaces
-          'base-content': '#f5f5f6',       // Softer white
-          'info': '#3498db',               // Brighter blue
-          'success': '#3ecf8e',            // Brighter green
-          'warning': '#f39c12',            // Brighter amber
-          'error': '#e74c3c',              // Softer red
+          // Vibrant Purple Universe Theme - NO GRAYS, only rich colors!
+          'primary': '#c77dff',            // NEON electric purple
+          'primary-content': '#1a0f2e',    // Deep purple for contrast
+          'secondary': '#9d4edd',          // Vibrant purple-violet
+          'secondary-content': '#f5f0ff',  // Purple-tinted white
+          'accent': '#b794f6',             // Bright lavender
+          'accent-content': '#1a0f2e',     // Deep purple
+          'neutral': '#261952',            // Rich violet (not gray!)
+          'neutral-content': '#f5f0ff',    // Purple-white
+          'base-100': '#1a0f2e',           // Deep purple cosmos base
+          'base-200': '#261952',           // Rich violet surface
+          'base-300': '#3d2f7f',           // Royal indigo elevated
+          'base-content': '#f5f0ff',       // Purple-tinted white
+          'info': '#0ec9ff',               // Electric neon cyan
+          'success': '#26d97f',            // Neon green glow
+          'warning': '#ffa31a',            // Bright glowing amber
+          'error': '#f24766',              // Hot pink-red vibrant
         },
       },
     ],

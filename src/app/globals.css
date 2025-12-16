@@ -99,90 +99,102 @@
 }
 
 .dark {
-  /* Dark Mode - Improved Purple Accent Theme with WCAG AA Compliance */
-  /* Base Colors - Softer dark backgrounds for better readability */
-  --background: 258 20% 14%;           /* Richer dark slate-purple #1a1629 */
-  --foreground: 270 5% 96%;            /* Softer white for reduced eye strain */
+  /* Dark Mode - Vibrant Purple Universe Theme (NO GRAYS - Only Rich Colors!) */
+  /* Inspired by cosmic nebulas, deep space, and neon cyberpunk aesthetics */
 
-  /* Card & Surfaces - Elevated from background with subtle purple tint */
-  --card: 258 18% 17%;                 /* #1f1a2e - Lighter than background */
-  --card-foreground: 270 5% 96%;
+  /* Base Colors - Deep purple cosmos, NOT gray! */
+  --background: 265 45% 12%;           /* #1a0f2e - Rich deep purple base */
+  --foreground: 280 30% 96%;           /* #f5f0ff - Warm white with purple tint */
 
-  /* Popovers & Dropdowns */
-  --popover: 258 20% 16%;              /* Slightly lighter for depth */
-  --popover-foreground: 270 5% 96%;
+  /* Card & Surfaces - Elevated vibrant purple surfaces */
+  --card: 270 40% 16%;                 /* #261952 - Rich violet cards */
+  --card-foreground: 280 25% 97%;      /* Bright purple-tinted white */
 
-  /* Primary - Vibrant purple with high contrast */
-  --primary: 268 65% 72%;              /* #b794f6 - Brighter, more vibrant */
-  --primary-foreground: 258 25% 10%;   /* Dark text for contrast on primary */
+  /* Popovers & Dropdowns - Floating colorful surfaces */
+  --popover: 268 42% 18%;              /* #291a5c - Deep vibrant purple */
+  --popover-foreground: 280 25% 97%;
 
-  /* Secondary - Muted purple-gray */
-  --secondary: 258 12% 24%;            /* #353045 - Elevated secondary */
-  --secondary-foreground: 270 5% 94%;
+  /* Primary - Electric ultra-vibrant purple */
+  --primary: 270 80% 70%;              /* #c77dff - NEON purple! */
+  --primary-foreground: 265 60% 10%;   /* Very deep purple for contrast */
 
-  /* Muted - Subtle backgrounds */
-  --muted: 258 15% 20%;                /* #29233a */
-  --muted-foreground: 260 5% 70%;      /* #afafb8 - WCAG AA compliant */
+  /* Secondary - Rich royal indigo, never gray */
+  --secondary: 245 50% 30%;            /* #3d2f7f - Royal indigo */
+  --secondary-foreground: 280 20% 95%;
 
-  /* Accent - Interactive elements */
-  --accent: 258 18% 26%;               /* #3a3250 - Hover states */
-  --accent-foreground: 268 55% 80%;    /* Light purple text */
+  /* Muted - Purple-blue muted tones, zero gray */
+  --muted: 265 35% 22%;                /* #2d1f52 - Deep muted purple */
+  --muted-foreground: 275 25% 75%;     /* #c5b3e6 - Purple-tinted light */
 
-  /* Destructive - Error states */
-  --destructive: 0 72% 58%;            /* #e74c3c - Softer red */
-  --destructive-foreground: 0 0% 98%;
+  /* Accent - Vibrant purple for interactions */
+  --accent: 280 60% 28%;               /* #5d2d91 - Rich purple hover */
+  --accent-foreground: 270 70% 85%;    /* Bright electric lavender */
 
-  /* Borders & Inputs */
-  --border: 258 15% 25%;               /* #35304a - Visible but subtle */
-  --input: 258 18% 20%;                /* #2a2440 */
-  --ring: 268 65% 72%;                 /* Matches primary */
+  /* Destructive - Vibrant magenta-red, not plain red */
+  --destructive: 340 80% 60%;          /* #f24973 - Hot pink-red */
+  --destructive-foreground: 340 20% 98%;
 
-  /* Chart Colors - Dark Mode - Vibrant and distinguishable */
-  --chart-1: 268 60% 68%;              /* Purple */
-  --chart-2: 200 70% 60%;              /* Cyan */
-  --chart-3: 145 65% 55%;              /* Green */
-  --chart-4: 30 75% 62%;               /* Orange */
-  --chart-5: 335 70% 65%;              /* Pink */
+  /* Borders & Inputs - Visible purple borders */
+  --border: 268 40% 30%;               /* #4a2f7a - Clear purple border */
+  --input: 268 45% 18%;                /* #281854 - Deep purple input */
+  --ring: 270 80% 70%;                 /* Electric purple ring */
 
-  /* Semantic Colors - Dark Mode - WCAG Compliant */
-  --success: 145 65% 55%;              /* #3ecf8e - Bright green */
-  --success-foreground: 145 10% 10%;
-  --warning: 38 95% 62%;               /* #f39c12 - Bright amber */
-  --warning-foreground: 38 10% 10%;
-  --info: 200 85% 62%;                 /* #3498db - Bright blue */
-  --info-foreground: 200 10% 10%;
-  --error: 0 72% 58%;                  /* #e74c3c - Bright red */
-  --error-foreground: 0 0% 98%;
+  /* Chart Colors - Neon cyberpunk palette */
+  --chart-1: 270 75% 65%;              /* Electric Purple */
+  --chart-2: 195 100% 55%;             /* Neon Cyan */
+  --chart-3: 150 70% 50%;              /* Vibrant Green */
+  --chart-4: 30 100% 58%;              /* Bright Orange */
+  --chart-5: 330 85% 60%;              /* Hot Pink */
 
-  /* Sidebar Colors - Dark Mode - Distinct from main area */
-  --sidebar-background: 258 22% 12%;   /* #17121f - Darker than main */
-  --sidebar-foreground: 270 5% 92%;
-  --sidebar-primary: 268 65% 72%;
-  --sidebar-primary-foreground: 258 25% 10%;
-  --sidebar-accent: 258 18% 20%;       /* Subtle hover */
-  --sidebar-accent-foreground: 270 5% 94%;
-  --sidebar-border: 258 15% 18%;
-  --sidebar-ring: 268 65% 72%;
+  /* Semantic Colors - Vivid and saturated */
+  --success: 150 70% 50%;              /* #26d97f - Neon green glow */
+  --success-foreground: 150 100% 95%;
+  --warning: 38 100% 55%;              /* #ffa31a - Bright glowing amber */
+  --warning-foreground: 38 100% 95%;
+  --info: 195 100% 55%;                /* #0ec9ff - Electric cyan */
+  --info-foreground: 195 100% 95%;
+  --error: 340 85% 58%;                /* #f24766 - Vibrant hot pink-red */
+  --error-foreground: 340 20% 98%;
 
-  /* Dark Mode Gradients - More vibrant and modern */
-  --gradient-primary: linear-gradient(135deg, #b794f6 0%, #8b5cf6 100%);
-  --gradient-light: linear-gradient(135deg, #2a2440 0%, #1f1a2e 100%);
-  --gradient-success: linear-gradient(135deg, #3ecf8e 0%, #2ecc71 100%);
-  --gradient-warning: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
-  --gradient-info: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-  --gradient-purple-soft: linear-gradient(135deg, #9b87f5 0%, #7c3aed 100%);
-  --gradient-lavender: linear-gradient(135deg, #6d28d9 0%, #b794f6 100%);
-  --gradient-bg: linear-gradient(135deg, #17121f 0%, #1f1a2e 30%, #1a1629 60%, #17121f 100%);
+  /* Sidebar - Deep cosmic purple abyss */
+  --sidebar-background: 265 50% 10%;   /* #180a2e - Very deep purple void */
+  --sidebar-foreground: 280 25% 92%;
+  --sidebar-primary: 270 80% 70%;
+  --sidebar-primary-foreground: 265 60% 10%;
+  --sidebar-accent: 270 45% 20%;       /* Rich purple hover */
+  --sidebar-accent-foreground: 280 25% 95%;
+  --sidebar-border: 268 45% 22%;
+  --sidebar-ring: 270 80% 70%;
 
-  /* Dark Mode Shadows - Enhanced depth with purple tint */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
-  --shadow: 0 2px 8px 0 rgb(0 0 0 / 0.5), 0 0 0 1px rgb(183 148 246 / 0.05);
-  --shadow-md: 0 4px 12px 0 rgb(0 0 0 / 0.6), 0 0 0 1px rgb(183 148 246 / 0.08);
-  --shadow-lg: 0 10px 20px -5px rgb(0 0 0 / 0.7), 0 0 0 1px rgb(183 148 246 / 0.1);
-  --shadow-xl: 0 20px 30px -10px rgb(0 0 0 / 0.8), 0 0 0 1px rgb(183 148 246 / 0.12);
-  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.9), 0 0 0 1px rgb(183 148 246 / 0.15);
-  --shadow-colored: 0 10px 40px -10px rgba(183, 148, 246, 0.4), 0 4px 16px -4px rgba(139, 92, 246, 0.3);
-  --shadow-glass: 0 8px 32px 0 rgba(183, 148, 246, 0.15), 0 2px 8px 0 rgba(0, 0, 0, 0.4);
+  /* Gradients - Cosmic vibrant multi-color gradients */
+  --gradient-primary: linear-gradient(135deg, #c77dff 0%, #9d4edd 50%, #7b2cbf 100%);
+  --gradient-light: linear-gradient(135deg, #291a5c 0%, #1a0f2e 100%);
+  --gradient-success: linear-gradient(135deg, #26d97f 0%, #00f5a0 100%);
+  --gradient-warning: linear-gradient(135deg, #ffa31a 0%, #ff6b35 100%);
+  --gradient-info: linear-gradient(135deg, #0ec9ff 0%, #00d4ff 100%);
+  --gradient-purple-soft: linear-gradient(135deg, #b794f6 0%, #9d4edd 100%);
+  --gradient-lavender: linear-gradient(135deg, #7b2cbf 0%, #c77dff 100%);
+  --gradient-bg: linear-gradient(135deg,
+    #0d0221 0%,
+    #1a0f2e 20%,
+    #240046 40%,
+    #1a0f2e 60%,
+    #10002b 80%,
+    #0d0221 100%);
+
+  /* Shadows - Glowing purple/pink shadows with color */
+  --shadow-sm: 0 1px 3px 0 rgb(122 0 255 / 0.2);
+  --shadow: 0 2px 10px 0 rgb(157 78 221 / 0.25), 0 0 0 1px rgb(199 125 255 / 0.1);
+  --shadow-md: 0 4px 16px 0 rgb(157 78 221 / 0.3), 0 0 0 1px rgb(199 125 255 / 0.15);
+  --shadow-lg: 0 10px 24px -5px rgb(157 78 221 / 0.4), 0 0 0 1px rgb(199 125 255 / 0.2);
+  --shadow-xl: 0 20px 40px -10px rgb(157 78 221 / 0.5), 0 0 0 1px rgb(199 125 255 / 0.25);
+  --shadow-2xl: 0 25px 60px -12px rgb(157 78 221 / 0.6), 0 0 12px 0 rgb(199 125 255 / 0.3);
+  --shadow-colored: 0 10px 50px -10px rgba(199, 125, 255, 0.6),
+                    0 4px 20px -4px rgba(157, 78, 221, 0.5),
+                    0 0 20px 0 rgba(123, 44, 191, 0.3);
+  --shadow-glass: 0 8px 32px 0 rgba(199, 125, 255, 0.25),
+                  0 4px 16px 0 rgba(157, 78, 221, 0.2),
+                  inset 0 0 0 1px rgba(199, 125, 255, 0.1);
 }
 
 @theme inline {
@@ -352,31 +364,36 @@
     background: var(--gradient-lavender);
   }
 
-  /* Glassmorphism Effects - Enhanced for dark mode */
+  /* Glassmorphism Effects - Vibrant cosmic glass */
   .glass {
-    @apply backdrop-blur-xl bg-white/80 dark:bg-card/60 border border-white/30 dark:border-border;
+    @apply backdrop-blur-xl bg-white/80 dark:bg-card/60 border border-white/30 dark:border-primary/20;
     box-shadow: var(--shadow-glass);
     transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .glass-card {
-    @apply backdrop-blur-xl bg-white/90 dark:bg-card/70 border border-white/40 dark:border-border shadow-lg rounded-2xl;
+    @apply backdrop-blur-xl bg-white/90 dark:bg-card/70 border border-white/40 dark:border-primary/25 shadow-lg rounded-2xl;
     transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .glass-card:hover {
-    @apply dark:bg-card/80 dark:border-primary/30;
+    @apply dark:bg-card/80 dark:border-primary/50;
     box-shadow: var(--shadow-xl);
   }
   .glass-light {
-    @apply backdrop-blur-lg bg-white/95 dark:bg-card/80 border border-purple-200/30 dark:border-border/80 shadow-md;
+    @apply backdrop-blur-lg bg-white/95 dark:bg-card/80 border border-purple-200/30 dark:border-primary/30 shadow-md;
     transition: all 250ms ease-out;
   }
   .glass-purple {
-    @apply backdrop-blur-xl bg-purple-50/80 dark:bg-primary/10 border border-purple-200/50 dark:border-primary/30;
+    @apply backdrop-blur-xl bg-purple-50/80 dark:bg-primary/15 border border-purple-200/50 dark:border-primary/40;
     box-shadow: var(--shadow-glass);
     transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+  .glass-purple:hover {
+    @apply dark:bg-primary/20 dark:border-primary/60;
+    box-shadow: 0 8px 32px 0 rgba(199, 125, 255, 0.3),
+                0 0 24px 0 rgba(157, 78, 221, 0.2);
+  }
   .glass-effect {
-    @apply backdrop-blur-lg bg-white/70 dark:bg-card/50 border border-white/20 dark:border-border/50;
+    @apply backdrop-blur-lg bg-white/70 dark:bg-card/50 border border-white/20 dark:border-primary/15;
     transition: all 250ms ease-out;
   }
 
@@ -418,7 +435,9 @@
     box-shadow: 0 0 24px rgba(179, 153, 212, 0.5), 0 0 48px rgba(183, 148, 246, 0.3);
   }
   .dark .hover-glow:hover {
-    box-shadow: 0 0 28px rgba(183, 148, 246, 0.6), 0 0 56px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 32px rgba(199, 125, 255, 0.8),
+                0 0 64px rgba(157, 78, 221, 0.6),
+                0 0 96px rgba(123, 44, 191, 0.4);
   }
 
   .hover-glow-subtle {
@@ -428,7 +447,8 @@
     box-shadow: 0 0 16px rgba(183, 148, 246, 0.3);
   }
   .dark .hover-glow-subtle:hover {
-    box-shadow: 0 0 20px rgba(183, 148, 246, 0.4);
+    box-shadow: 0 0 24px rgba(199, 125, 255, 0.5),
+                0 0 48px rgba(157, 78, 221, 0.3);
   }
 
   .hover-border-glow {
@@ -439,8 +459,21 @@
     box-shadow: 0 0 0 1px hsl(var(--primary) / 0.5), var(--shadow-md);
   }
   .dark .hover-border-glow:hover {
-    @apply border-primary/70;
-    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.7), var(--shadow-md);
+    @apply border-primary/90;
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.8),
+                0 0 20px hsl(var(--primary) / 0.5),
+                var(--shadow-lg);
+  }
+
+  /* Neon glow effects for dark mode */
+  .neon-glow-purple {
+    @apply dark:shadow-[0_0_20px_rgba(199,125,255,0.5),0_0_40px_rgba(157,78,221,0.3)];
+  }
+  .neon-glow-cyan {
+    @apply dark:shadow-[0_0_20px_rgba(14,201,255,0.5),0_0_40px_rgba(0,212,255,0.3)];
+  }
+  .neon-glow-green {
+    @apply dark:shadow-[0_0_20px_rgba(38,217,127,0.5),0_0_40px_rgba(0,245,160,0.3)];
   }
 
   /* Transitions */
