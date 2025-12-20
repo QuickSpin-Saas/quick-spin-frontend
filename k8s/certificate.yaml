@@ -4,9 +4,9 @@ metadata:
   name: quickspin-frontend-tls
   namespace: quickspin-frontend
 spec:
-  secretName: quickspin-frontend-tls
-  issuerRef:
-    name: letsencrypt-prod-traefik
-    kind: ClusterIssuer
   dnsNames:
     - app.quickspin.cloud
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod-traefik
+  secretName: quickspin-frontend-tls
