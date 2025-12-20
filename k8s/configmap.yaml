@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: quickspin-frontend-config
+  namespace: quickspin-frontend
+data:
+  NODE_ENV: "production"
+  NEXT_PUBLIC_API_URL: "https://api.quickspin.cloud/api/v1"
+  NEXTAUTH_URL: "https://app.quickspin.cloud"

@@ -1,0 +1,110 @@
+name: CI - Build and Push Docker Image
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - 'quick-spin-frontend/**'
+  pull_request:
+    branches: [master, main]
+    paths:
+      - 'quick-spin-frontend/**'
+  workflow_dispatch:
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository_owner }}/quick-spin-frontend
+
+# Add concurrency to cancel in-progress runs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-push:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    defaults:
+      run:
+        working-directory: quick-spin-frontend
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Diagnose network connectivity
+        continue-on-error: true
+        run: |
+          echo "=== Network Diagnostics ==="
+          echo "Testing DNS resolution..."
+          nslookup ghcr.io || echo "DNS lookup failed"
+          echo ""
+          echo "Testing HTTP connectivity..."
+          curl -v --connect-timeout 10 --max-time 30 https://ghcr.io/v2/ 2>&1 || echo "HTTP test failed"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: |
+            network=host
+
+      - name: Log in to Container Registry (with retry)
+        run: |
+          max_attempts=3
+          attempt=1
+          while [ $attempt -le $max_attempts ]; do
+            echo "Attempt $attempt of $max_attempts..."
+            if echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin; then
+              echo "Login successful!"
+              exit 0
+            else
+              echo "Login failed. Waiting 10 seconds before retry..."
+              sleep 10
+              attempt=$((attempt + 1))
+            fi
+          done
+          echo "All login attempts failed"
+          exit 1
+
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./quick-spin-frontend
+          file: ./quick-spin-frontend/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          network: host
+          build-args: |
+            NEXT_PUBLIC_API_URL=https://api.quickspin.cloud/api/v1
+        timeout-minutes: 30
+
+      - name: Image digest
+        run: echo "Image pushed with digest ${{ steps.meta.outputs.digest }}"
+
+      - name: Send Discord notification
+        if: always()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "Discord webhook URL not configured, skipping notification"
+            exit 0
+          fi

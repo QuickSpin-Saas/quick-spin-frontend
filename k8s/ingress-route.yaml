@@ -1,0 +1,43 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: quickspin-frontend
+  namespace: quickspin-frontend
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`app.quickspin.cloud`)
+      kind: Rule
+      services:
+        - name: quickspin-frontend
+          port: 80
+  tls:
+    secretName: quickspin-frontend-tls
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: quickspin-frontend-redirect
+  namespace: quickspin-frontend
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`app.quickspin.cloud`)
+      kind: Rule
+      middlewares:
+        - name: https-redirect
+      services:
+        - name: quickspin-frontend
+          port: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: https-redirect
+  namespace: quickspin-frontend
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
