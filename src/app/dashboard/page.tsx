@@ -9,12 +9,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Loading, LoadingCard, LoadingChart } from "@/components/ui/loading"
-import { 
-  Server, 
-  Activity, 
-  DollarSign, 
-  Clock, 
-  TrendingUp, 
+import {
+  Server,
+  Activity,
+  DollarSign,
+  Clock,
+  TrendingUp,
   AlertCircle,
   Plus,
   ArrowRight,
@@ -138,7 +138,7 @@ export default function DashboardPage() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-purple-500 to-purple-600 text-white overflow-hidden relative">
+          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-primary-800 to-primary-600 text-white overflow-hidden relative">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
               <CardTitle className="text-sm font-medium text-white/90">
@@ -158,7 +158,7 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-cyan-500 to-blue-600 text-white overflow-hidden relative" style={{animationDelay: '0.1s'}}>
+          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-primary-700 to-primary-500 text-white overflow-hidden relative" style={{ animationDelay: '0.1s' }}>
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
               <CardTitle className="text-sm font-medium text-white/90">
@@ -179,7 +179,7 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-emerald-500 to-green-600 text-white overflow-hidden relative" style={{animationDelay: '0.2s'}}>
+          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-primary-600 to-primary-400 text-white overflow-hidden relative" style={{ animationDelay: '0.2s' }}>
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
               <CardTitle className="text-sm font-medium text-white/90">
@@ -199,7 +199,7 @@ export default function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-amber-500 to-orange-600 text-white overflow-hidden relative" style={{animationDelay: '0.3s'}}>
+          <Card className="border-none shadow-lg hover-lift animate-slide-up bg-gradient-to-br from-primary-500 to-primary-300 text-white overflow-hidden relative" style={{ animationDelay: '0.3s' }}>
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8"></div>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
               <CardTitle className="text-sm font-medium text-white/90">
@@ -239,7 +239,7 @@ export default function DashboardPage() {
                   const percentage = totalServices > 0 ? (count / totalServices) * 100 : 0
 
                   const getBadgeVariant = (status: string) => {
-                    switch(status) {
+                    switch (status) {
                       case "running": return "success"
                       case "stopped": return "secondary"
                       case "deploying": return "info"
@@ -249,7 +249,7 @@ export default function DashboardPage() {
                   }
 
                   const getBarColor = (status: string) => {
-                    switch(status) {
+                    switch (status) {
                       case "running": return "bg-gradient-success"
                       case "stopped": return "bg-gray-300"
                       case "deploying": return "bg-gradient-info"

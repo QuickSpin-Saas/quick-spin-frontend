@@ -8,21 +8,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Light Purple Theme - Primary: #B399D4
+        // Dark Purple Theme - Primary: #2E0249
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: '#B399D4',
-          50: '#FAF5FF',
-          100: '#F5F3FF',
-          200: '#E6E6FA',
-          300: '#D8BFD8',
-          400: '#DDA0DD',
-          500: '#B399D4',
-          600: '#9370DB',
-          700: '#8A68C6',
-          800: '#7454B8',
-          900: '#5E3A9E',
+          DEFAULT: '#2E0249',
+          50: '#F5F0FF',
+          100: '#EBE0FF',
+          200: '#D6C1FF',
+          300: '#B894FF',
+          400: '#9966FF',
+          500: '#7B3FF2',
+          600: '#5E2ECC',
+          700: '#4521A6',
+          800: '#2E0249',
+          900: '#1F0133',
           foreground: 'hsl(var(--primary-foreground))',
         },
         // Additional semantic colors
@@ -75,17 +75,17 @@ module.exports = {
     themes: [
       {
         light: {
-          'primary': '#B399D4',
+          'primary': '#2E0249',
           'primary-content': '#ffffff',
-          'secondary': '#DDA0DD',
-          'secondary-content': '#1f1f1f',
-          'accent': '#9370DB',
+          'secondary': '#9966FF',
+          'secondary-content': '#ffffff',
+          'accent': '#7B3FF2',
           'accent-content': '#ffffff',
           'neutral': '#3d4451',
           'neutral-content': '#ffffff',
           'base-100': '#ffffff',
-          'base-200': '#F5F3FF',
-          'base-300': '#E6E6FA',
+          'base-200': '#F5F0FF',
+          'base-300': '#EBE0FF',
           'base-content': '#1f2937',
           'info': '#06b6d4',
           'success': '#10b981',
