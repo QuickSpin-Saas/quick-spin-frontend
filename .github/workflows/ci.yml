@@ -2,14 +2,9 @@ name: CI - Build and Push Docker Image
 
 on:
   push:
-    branches: [master, main]
-    paths:
-      - 'quick-spin-frontend/**'
+    branches: [master]
   pull_request:
-    branches: [master, main]
-    paths:
-      - 'quick-spin-frontend/**'
-  workflow_dispatch:
+    branches: [master]
 
 env:
   REGISTRY: ghcr.io
