@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 env:
-  REGISTRY: ghcr.io
+  REGISTRY: docker.io
   IMAGE_NAME: ${{ github.repository }}
 
 # Add concurrency to cancel in-progress runs
@@ -32,10 +32,10 @@ jobs:
         run: |
           echo "=== Network Diagnostics ==="
           echo "Testing DNS resolution..."
-          nslookup ghcr.io || echo "DNS lookup failed"
+          nslookup registry-1.docker.io || echo "DNS lookup failed"
           echo ""
           echo "Testing HTTP connectivity..."
-          curl -v --connect-timeout 10 --max-time 30 https://ghcr.io/v2/ 2>&1 || echo "HTTP test failed"
+          curl -v --connect-timeout 10 --max-time 30 https://registry-1.docker.io/v2/ 2>&1 || echo "HTTP test failed"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -43,13 +43,20 @@ jobs:
           driver-opts: |
             network=host
 
-      - name: Log in to Container Registry (with retry)
+      - name: Log in to Docker Hub (with retry)
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
+          if [ -z "$DOCKERHUB_USERNAME" ] || [ -z "$DOCKERHUB_TOKEN" ]; then
+            echo "Docker Hub credentials not configured"
+            exit 1
+          fi
           max_attempts=3
           attempt=1
           while [ $attempt -le $max_attempts ]; do
             echo "Attempt $attempt of $max_attempts..."
-            if echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin; then
+            if echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin; then
               echo "Login successful!"
               exit 0
             else
