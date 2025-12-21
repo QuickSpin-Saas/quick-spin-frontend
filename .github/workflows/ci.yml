@@ -2,9 +2,14 @@ name: CI - Build and Push Docker Image
 
 on:
   push:
-    branches: [master]
+    branches: [master, main]
+    paths:
+      - 'quick-spin-frontend/**'
   pull_request:
-    branches: [master]
+    branches: [master, main]
+    paths:
+      - 'quick-spin-frontend/**'
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
@@ -103,3 +108,76 @@ jobs:
             echo "Discord webhook URL not configured, skipping notification"
             exit 0
           fi
+
+          # Determine status and color
+          if [ "${{ job.status }}" == "success" ]; then
+            STATUS="Success"
+            COLOR=3066993
+            EMOJI=":white_check_mark:"
+          else
+            STATUS="Failed"
+            COLOR=15158332
+            EMOJI=":x:"
+          fi
+
+          # Get short commit SHA
+          SHORT_SHA="${{ github.sha }}"
+          SHORT_SHA="${SHORT_SHA:0:7}"
+
+          # Build JSON payload
+          PAYLOAD=$(cat <<EOF
+          {
+            "embeds": [{
+              "title": "${EMOJI} CI/CD: Docker Image Build ${STATUS}",
+              "description": "Docker image build and push workflow completed",
+              "color": ${COLOR},
+              "fields": [
+                {
+                  "name": "Repository",
+                  "value": "${{ github.repository }}",
+                  "inline": true
+                },
+                {
+                  "name": "Branch",
+                  "value": "${{ github.ref_name }}",
+                  "inline": true
+                },
+                {
+                  "name": "Commit",
+                  "value": "${SHORT_SHA}",
+                  "inline": true
+                },
+                {
+                  "name": "Author",
+                  "value": "${{ github.actor }}",
+                  "inline": true
+                },
+                {
+                  "name": "Workflow",
+                  "value": "${{ github.workflow }}",
+                  "inline": true
+                },
+                {
+                  "name": "Status",
+                  "value": "${STATUS}",
+                  "inline": true
+                },
+                {
+                  "name": "Image",
+                  "value": "\`${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest\`",
+                  "inline": false
+                }
+              ],
+              "footer": {
+                "text": "QuickSpin CI/CD"
+              },
+              "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%S.000Z)"
+            }]
+          }
+          EOF
+          )
+
+          # Send to Discord
+          curl -H "Content-Type: application/json" \
+               -d "$PAYLOAD" \
+               "$DISCORD_WEBHOOK"
