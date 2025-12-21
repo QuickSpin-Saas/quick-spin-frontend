@@ -20,11 +20,9 @@ spec:
       labels:
         app: quickspin-frontend
     spec:
-      imagePullSecrets:
-        - name: ghcr-secret
       containers:
         - name: quickspin-frontend
-          image: ghcr.io/quickspin-saas/quick-spin-frontend:latest
+          image: docker.io/shettyanna/quick-spin-frontend:latest
           imagePullPolicy: Always
           ports:
             - name: http
