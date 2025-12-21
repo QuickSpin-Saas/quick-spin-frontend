@@ -30,7 +30,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: quick-spin-frontend
+        working-directory: .
 
     steps:
       - name: Checkout code
