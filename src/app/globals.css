@@ -7,28 +7,45 @@
 @theme {
   --font-sans: var(--font-inter);
   --font-mono: var(--font-roboto-mono);
-  
+
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
   --animate-spin-slow: spin-slow 3s linear infinite;
   --animate-pulse-slow: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  
+
   --keyframes-accordion-down: accordion-down {
-    from { height: 0 }
-    to { height: var(--radix-accordion-content-height) }
-  };
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
   --keyframes-accordion-up: accordion-up {
-    from { height: var(--radix-accordion-content-height) }
-    to { height: 0 }
-  };
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
   --keyframes-spin-slow: spin-slow {
-    from { transform: rotate(0deg) }
-    to { transform: rotate(360deg) }
-  };
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
   --keyframes-pulse-slow: pulse-slow {
-    0%, 100% { opacity: 1 }
-    50% { opacity: 0.5 }
-  };
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
 }
 
 :root {
@@ -78,14 +95,14 @@
   --sidebar-ring: 280 85% 20%;
 
   /* Dark Purple Gradients */
-  --gradient-primary: linear-gradient(135deg, #2E0249 0%, #5E2ECC 100%);
-  --gradient-light: linear-gradient(135deg, #EBE0FF 0%, #D6C1FF 100%);
+  --gradient-primary: linear-gradient(135deg, #2e0249 0%, #5e2ecc 100%);
+  --gradient-light: linear-gradient(135deg, #ebe0ff 0%, #d6c1ff 100%);
   --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   --gradient-info: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-  --gradient-purple-soft: linear-gradient(135deg, #9966FF 0%, #7B3FF2 100%);
-  --gradient-lavender: linear-gradient(135deg, #D6C1FF 0%, #B894FF 100%);
-  --gradient-bg: linear-gradient(135deg, #FFFFFF 0%, #F5F0FF 50%, #EBE0FF 100%);
+  --gradient-purple-soft: linear-gradient(135deg, #9966ff 0%, #7b3ff2 100%);
+  --gradient-lavender: linear-gradient(135deg, #d6c1ff 0%, #b894ff 100%);
+  --gradient-bg: linear-gradient(135deg, #ffffff 0%, #f5f0ff 50%, #ebe0ff 100%);
 
   /* Glassmorphism Shadows with purple tints */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -103,98 +120,109 @@
   /* Inspired by cosmic nebulas, deep space, and neon cyberpunk aesthetics */
 
   /* Base Colors - Deep purple cosmos, NOT gray! */
-  --background: 265 45% 12%;           /* #1a0f2e - Rich deep purple base */
-  --foreground: 280 30% 96%;           /* #f5f0ff - Warm white with purple tint */
+  --background: 265 45% 12%; /* #1a0f2e - Rich deep purple base */
+  --foreground: 280 30% 96%; /* #f5f0ff - Warm white with purple tint */
 
   /* Card & Surfaces - Elevated vibrant purple surfaces */
-  --card: 270 40% 16%;                 /* #261952 - Rich violet cards */
-  --card-foreground: 280 25% 97%;      /* Bright purple-tinted white */
+  --card: 270 40% 16%; /* #261952 - Rich violet cards */
+  --card-foreground: 280 25% 97%; /* Bright purple-tinted white */
 
   /* Popovers & Dropdowns - Floating colorful surfaces */
-  --popover: 268 42% 18%;              /* #291a5c - Deep vibrant purple */
+  --popover: 268 42% 18%; /* #291a5c - Deep vibrant purple */
   --popover-foreground: 280 25% 97%;
 
   /* Primary - Electric ultra-vibrant purple */
-  --primary: 270 80% 70%;              /* #c77dff - NEON purple! */
-  --primary-foreground: 265 60% 10%;   /* Very deep purple for contrast */
+  --primary: 270 80% 70%; /* #c77dff - NEON purple! */
+  --primary-foreground: 265 60% 10%; /* Very deep purple for contrast */
 
   /* Secondary - Rich royal indigo, never gray */
-  --secondary: 245 50% 30%;            /* #3d2f7f - Royal indigo */
+  --secondary: 245 50% 30%; /* #3d2f7f - Royal indigo */
   --secondary-foreground: 280 20% 95%;
 
   /* Muted - Purple-blue muted tones, zero gray */
-  --muted: 265 35% 22%;                /* #2d1f52 - Deep muted purple */
-  --muted-foreground: 275 25% 75%;     /* #c5b3e6 - Purple-tinted light */
+  --muted: 265 35% 22%; /* #2d1f52 - Deep muted purple */
+  --muted-foreground: 275 25% 75%; /* #c5b3e6 - Purple-tinted light */
 
   /* Accent - Vibrant purple for interactions */
-  --accent: 280 60% 28%;               /* #5d2d91 - Rich purple hover */
-  --accent-foreground: 270 70% 85%;    /* Bright electric lavender */
+  --accent: 280 60% 28%; /* #5d2d91 - Rich purple hover */
+  --accent-foreground: 270 70% 85%; /* Bright electric lavender */
 
   /* Destructive - Vibrant magenta-red, not plain red */
-  --destructive: 340 80% 60%;          /* #f24973 - Hot pink-red */
+  --destructive: 340 80% 60%; /* #f24973 - Hot pink-red */
   --destructive-foreground: 340 20% 98%;
 
   /* Borders & Inputs - Visible purple borders */
-  --border: 268 40% 30%;               /* #4a2f7a - Clear purple border */
-  --input: 268 45% 18%;                /* #281854 - Deep purple input */
-  --ring: 270 80% 70%;                 /* Electric purple ring */
+  --border: 268 40% 30%; /* #4a2f7a - Clear purple border */
+  --input: 268 45% 18%; /* #281854 - Deep purple input */
+  --ring: 270 80% 70%; /* Electric purple ring */
 
   /* Chart Colors - Neon cyberpunk palette */
-  --chart-1: 270 75% 65%;              /* Electric Purple */
-  --chart-2: 195 100% 55%;             /* Neon Cyan */
-  --chart-3: 150 70% 50%;              /* Vibrant Green */
-  --chart-4: 30 100% 58%;              /* Bright Orange */
-  --chart-5: 330 85% 60%;              /* Hot Pink */
+  --chart-1: 270 75% 65%; /* Electric Purple */
+  --chart-2: 195 100% 55%; /* Neon Cyan */
+  --chart-3: 150 70% 50%; /* Vibrant Green */
+  --chart-4: 30 100% 58%; /* Bright Orange */
+  --chart-5: 330 85% 60%; /* Hot Pink */
 
   /* Semantic Colors - Vivid and saturated */
-  --success: 150 70% 50%;              /* #26d97f - Neon green glow */
+  --success: 150 70% 50%; /* #26d97f - Neon green glow */
   --success-foreground: 150 100% 95%;
-  --warning: 38 100% 55%;              /* #ffa31a - Bright glowing amber */
+  --warning: 38 100% 55%; /* #ffa31a - Bright glowing amber */
   --warning-foreground: 38 100% 95%;
-  --info: 195 100% 55%;                /* #0ec9ff - Electric cyan */
+  --info: 195 100% 55%; /* #0ec9ff - Electric cyan */
   --info-foreground: 195 100% 95%;
-  --error: 340 85% 58%;                /* #f24766 - Vibrant hot pink-red */
+  --error: 340 85% 58%; /* #f24766 - Vibrant hot pink-red */
   --error-foreground: 340 20% 98%;
 
   /* Sidebar - Deep cosmic purple abyss */
-  --sidebar-background: 265 50% 10%;   /* #180a2e - Very deep purple void */
+  --sidebar-background: 265 50% 10%; /* #180a2e - Very deep purple void */
   --sidebar-foreground: 280 25% 92%;
   --sidebar-primary: 270 80% 70%;
   --sidebar-primary-foreground: 265 60% 10%;
-  --sidebar-accent: 270 45% 20%;       /* Rich purple hover */
+  --sidebar-accent: 270 45% 20%; /* Rich purple hover */
   --sidebar-accent-foreground: 280 25% 95%;
   --sidebar-border: 268 45% 22%;
   --sidebar-ring: 270 80% 70%;
 
   /* Gradients - Cosmic vibrant multi-color gradients */
-  --gradient-primary: linear-gradient(135deg, #c77dff 0%, #9d4edd 50%, #7b2cbf 100%);
+  --gradient-primary: linear-gradient(
+    135deg,
+    #c77dff 0%,
+    #9d4edd 50%,
+    #7b2cbf 100%
+  );
   --gradient-light: linear-gradient(135deg, #291a5c 0%, #1a0f2e 100%);
   --gradient-success: linear-gradient(135deg, #26d97f 0%, #00f5a0 100%);
   --gradient-warning: linear-gradient(135deg, #ffa31a 0%, #ff6b35 100%);
   --gradient-info: linear-gradient(135deg, #0ec9ff 0%, #00d4ff 100%);
   --gradient-purple-soft: linear-gradient(135deg, #b794f6 0%, #9d4edd 100%);
   --gradient-lavender: linear-gradient(135deg, #7b2cbf 0%, #c77dff 100%);
-  --gradient-bg: linear-gradient(135deg,
+  --gradient-bg: linear-gradient(
+    135deg,
     #0d0221 0%,
     #1a0f2e 20%,
     #240046 40%,
     #1a0f2e 60%,
     #10002b 80%,
-    #0d0221 100%);
+    #0d0221 100%
+  );
 
   /* Shadows - Glowing purple/pink shadows with color */
   --shadow-sm: 0 1px 3px 0 rgb(122 0 255 / 0.2);
-  --shadow: 0 2px 10px 0 rgb(157 78 221 / 0.25), 0 0 0 1px rgb(199 125 255 / 0.1);
-  --shadow-md: 0 4px 16px 0 rgb(157 78 221 / 0.3), 0 0 0 1px rgb(199 125 255 / 0.15);
-  --shadow-lg: 0 10px 24px -5px rgb(157 78 221 / 0.4), 0 0 0 1px rgb(199 125 255 / 0.2);
-  --shadow-xl: 0 20px 40px -10px rgb(157 78 221 / 0.5), 0 0 0 1px rgb(199 125 255 / 0.25);
-  --shadow-2xl: 0 25px 60px -12px rgb(157 78 221 / 0.6), 0 0 12px 0 rgb(199 125 255 / 0.3);
+  --shadow: 0 2px 10px 0 rgb(157 78 221 / 0.25),
+    0 0 0 1px rgb(199 125 255 / 0.1);
+  --shadow-md: 0 4px 16px 0 rgb(157 78 221 / 0.3),
+    0 0 0 1px rgb(199 125 255 / 0.15);
+  --shadow-lg: 0 10px 24px -5px rgb(157 78 221 / 0.4),
+    0 0 0 1px rgb(199 125 255 / 0.2);
+  --shadow-xl: 0 20px 40px -10px rgb(157 78 221 / 0.5),
+    0 0 0 1px rgb(199 125 255 / 0.25);
+  --shadow-2xl: 0 25px 60px -12px rgb(157 78 221 / 0.6),
+    0 0 12px 0 rgb(199 125 255 / 0.3);
   --shadow-colored: 0 10px 50px -10px rgba(199, 125, 255, 0.6),
-                    0 4px 20px -4px rgba(157, 78, 221, 0.5),
-                    0 0 20px 0 rgba(123, 44, 191, 0.3);
+    0 4px 20px -4px rgba(157, 78, 221, 0.5), 0 0 20px 0 rgba(123, 44, 191, 0.3);
   --shadow-glass: 0 8px 32px 0 rgba(199, 125, 255, 0.25),
-                  0 4px 16px 0 rgba(157, 78, 221, 0.2),
-                  inset 0 0 0 1px rgba(199, 125, 255, 0.1);
+    0 4px 16px 0 rgba(157, 78, 221, 0.2),
+    inset 0 0 0 1px rgba(199, 125, 255, 0.1);
 }
 
 @theme inline {
@@ -226,14 +254,14 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  
+
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);
-  
+
   --color-sidebar: var(--sidebar-background);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -257,7 +285,8 @@
     @apply text-foreground antialiased;
     background: var(--gradient-bg);
     background-attachment: fixed;
-    transition: background 400ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background 400ms cubic-bezier(0.4, 0, 0.2, 1),
+      color 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   /* Dark mode body background */
@@ -390,7 +419,7 @@
   .glass-purple:hover {
     @apply dark:bg-primary/20 dark:border-primary/60;
     box-shadow: 0 8px 32px 0 rgba(199, 125, 255, 0.3),
-                0 0 24px 0 rgba(157, 78, 221, 0.2);
+      0 0 24px 0 rgba(157, 78, 221, 0.2);
   }
   .glass-effect {
     @apply backdrop-blur-lg bg-white/70 dark:bg-card/50 border border-white/20 dark:border-primary/15;
@@ -432,12 +461,12 @@
     @apply transition-all duration-300 ease-out;
   }
   .hover-glow:hover {
-    box-shadow: 0 0 24px rgba(179, 153, 212, 0.5), 0 0 48px rgba(183, 148, 246, 0.3);
+    box-shadow: 0 0 24px rgba(179, 153, 212, 0.5),
+      0 0 48px rgba(183, 148, 246, 0.3);
   }
   .dark .hover-glow:hover {
     box-shadow: 0 0 32px rgba(199, 125, 255, 0.8),
-                0 0 64px rgba(157, 78, 221, 0.6),
-                0 0 96px rgba(123, 44, 191, 0.4);
+      0 0 64px rgba(157, 78, 221, 0.6), 0 0 96px rgba(123, 44, 191, 0.4);
   }
 
   .hover-glow-subtle {
@@ -448,7 +477,7 @@
   }
   .dark .hover-glow-subtle:hover {
     box-shadow: 0 0 24px rgba(199, 125, 255, 0.5),
-                0 0 48px rgba(157, 78, 221, 0.3);
+      0 0 48px rgba(157, 78, 221, 0.3);
   }
 
   .hover-border-glow {
@@ -461,8 +490,7 @@
   .dark .hover-border-glow:hover {
     @apply border-primary/90;
     box-shadow: 0 0 0 2px hsl(var(--primary) / 0.8),
-                0 0 20px hsl(var(--primary) / 0.5),
-                var(--shadow-lg);
+      0 0 20px hsl(var(--primary) / 0.5), var(--shadow-lg);
   }
 
   /* Neon glow effects for dark mode */
@@ -538,5 +566,152 @@
   /* Dark mode specific utilities */
   .dark-mode-image {
     @apply dark:brightness-90 dark:contrast-110;
+  }
+
+  /* Skeleton Loading States */
+  .skeleton {
+    @apply relative overflow-hidden bg-muted/50 rounded;
+  }
+  .skeleton::before {
+    content: "";
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
+  .dark .skeleton::before {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(199, 125, 255, 0.15),
+      transparent
+    );
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Input Validation States */
+  .input-error {
+    @apply border-destructive focus-visible:ring-destructive focus-visible:border-destructive;
+  }
+  .input-success {
+    @apply border-success focus-visible:ring-success focus-visible:border-success;
+  }
+  .input-warning {
+    @apply border-warning focus-visible:ring-warning focus-visible:border-warning;
+  }
+
+  /* Enhanced Focus States for Accessibility */
+  .focus-glow:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--primary)),
+      0 0 12px hsl(var(--primary) / 0.3);
+  }
+  .dark .focus-glow:focus-visible {
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--primary)),
+      0 0 20px hsl(var(--primary) / 0.6), 0 0 40px hsl(var(--primary) / 0.3);
+  }
+
+  /* Interactive Card States */
+  .card-interactive {
+    @apply transition-all duration-300 cursor-pointer;
+  }
+  .card-interactive:hover {
+    @apply -translate-y-1 shadow-lg;
+    box-shadow: var(--shadow-lg);
+  }
+  .dark .card-interactive:hover {
+    @apply border-primary/30;
+    box-shadow: 0 10px 24px -5px rgba(199, 125, 255, 0.4),
+      0 0 20px rgba(157, 78, 221, 0.3);
+  }
+  .card-interactive:active {
+    @apply translate-y-0 shadow-md;
+  }
+
+  /* Loading State */
+  .loading {
+    @apply pointer-events-none opacity-60;
+  }
+  .loading-spinner {
+    @apply animate-spin h-5 w-5 border-2 border-current border-t-transparent rounded-full;
+  }
+
+  /* Badge Utilities */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold transition-colors;
+  }
+  .badge-primary {
+    @apply bg-primary/10 text-primary border border-primary/20;
+  }
+  .badge-success {
+    @apply bg-success/10 text-success border border-success/20;
+  }
+  .badge-warning {
+    @apply bg-warning/10 text-warning border border-warning/20;
+  }
+  .badge-error {
+    @apply bg-destructive/10 text-destructive border border-destructive/20;
+  }
+  .badge-info {
+    @apply bg-info/10 text-info border border-info/20;
+  }
+
+  /* Typography Utilities */
+  .heading-xl {
+    @apply text-4xl font-bold tracking-tight lg:text-5xl;
+  }
+  .heading-lg {
+    @apply text-3xl font-bold tracking-tight lg:text-4xl;
+  }
+  .heading-md {
+    @apply text-2xl font-semibold tracking-tight lg:text-3xl;
+  }
+  .heading-sm {
+    @apply text-xl font-semibold tracking-tight lg:text-2xl;
+  }
+  .text-body-lg {
+    @apply text-base lg:text-lg leading-relaxed;
+  }
+  .text-body {
+    @apply text-sm lg:text-base leading-relaxed;
+  }
+  .text-caption {
+    @apply text-xs text-muted-foreground;
+  }
+
+  /* Divider Utilities */
+  .divider {
+    @apply border-t border-border my-6;
+  }
+  .divider-vertical {
+    @apply border-l border-border mx-4 h-full;
+  }
+
+  /* Backdrop Utilities */
+  .backdrop-overlay {
+    @apply fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm;
+  }
+
+  /* Pulse Glow Animation */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 10px rgba(199, 125, 255, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(199, 125, 255, 0.6);
+    }
   }
 }

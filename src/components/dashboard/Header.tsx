@@ -6,7 +6,6 @@ import { useAuth } from "@/lib/auth-utils"
 import { Bell, Search, User, Settings, LogOut, Activity } from "lucide-react"
 import { cn } from "@/lib/utils"
 import MobileNav from "./MobileNav"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import {
@@ -72,9 +71,6 @@ export default function Header({ className }: HeaderProps) {
 
         {/* Right side actions */}
         <div className="flex items-center gap-2 md:gap-4 ml-auto">
-          {/* Theme Toggle */}
-          <ThemeToggle />
-
           {/* Notifications */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
