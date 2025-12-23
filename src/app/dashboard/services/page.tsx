@@ -55,12 +55,12 @@ export default function ServicesPage() {
   const filteredServices = useMemo(() => {
     return services.filter(service => {
       const matchesSearch = service.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           service.type.toLowerCase().includes(searchTerm.toLowerCase())
-      
+        service.type.toLowerCase().includes(searchTerm.toLowerCase())
+
       const matchesStatus = statusFilter === "all" || service.status === statusFilter
       const matchesType = typeFilter === "all" || service.type === typeFilter
       const matchesEnvironment = environmentFilter === "all" || service.environment === environmentFilter
-      
+
       return matchesSearch && matchesStatus && matchesType && matchesEnvironment
     })
   }, [services, searchTerm, statusFilter, typeFilter, environmentFilter])
@@ -127,28 +127,28 @@ export default function ServicesPage() {
     switch (type) {
       case "redis":
         return <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center shadow-md">
-                 <Database className="w-6 h-6 text-white" />
-               </div>
+          <Database className="w-6 h-6 text-white" />
+        </div>
       case "rabbitmq":
         return <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-md">
-                 <Server className="w-6 h-6 text-white" />
-               </div>
+          <Server className="w-6 h-6 text-white" />
+        </div>
       case "elasticsearch":
         return <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-md">
-                 <Database className="w-6 h-6 text-white" />
-               </div>
+          <Database className="w-6 h-6 text-white" />
+        </div>
       case "postgres":
         return <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-md">
-                 <Database className="w-6 h-6 text-white" />
-               </div>
+          <Database className="w-6 h-6 text-white" />
+        </div>
       case "mongodb":
         return <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center shadow-md">
-                 <Database className="w-6 h-6 text-white" />
-               </div>
+          <Database className="w-6 h-6 text-white" />
+        </div>
       default:
         return <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center shadow-md">
-                 <Server className="w-6 h-6 text-white" />
-               </div>
+          <Server className="w-6 h-6 text-white" />
+        </div>
     }
   }
 
@@ -316,48 +316,48 @@ export default function ServicesPage() {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {filteredServices.map((service, index) => (
-            <Card key={service.id} className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300 animate-slide-up overflow-hidden group relative" style={{animationDelay: `${index * 0.05}s`}}>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-              <CardHeader className="pb-4 relative">
+            <Card key={service.id} variant="gradient" className="hover-lift animate-slide-up group relative" style={{ animationDelay: `${index * 0.05}s` }}>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500 blur-xl"></div>
+              <CardHeader className="pb-4 relative z-10">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     {getServiceIcon(service.type)}
                     <div>
-                      <CardTitle className="text-lg font-bold">{service.name}</CardTitle>
+                      <CardTitle className="text-lg font-bold text-white">{service.name}</CardTitle>
                       <CardDescription className="capitalize flex items-center gap-2 mt-1">
-                        <span className="px-2 py-0.5 bg-secondary rounded text-xs font-medium">{service.type}</span>
-                        <span className="px-2 py-0.5 bg-primary/10 text-primary rounded text-xs font-medium">{service.environment}</span>
+                        <Badge variant="secondary" className="bg-white/10 text-white/80 hover:bg-white/20 border-none">{service.type}</Badge>
+                        <Badge variant="outline" className="border-white/20 text-white/70">{service.environment}</Badge>
                       </CardDescription>
                     </div>
                   </div>
-                  <button className="p-2 rounded-lg hover:bg-accent transition-colors">
-                    <MoreVertical className="w-4 h-4 text-muted-foreground" />
+                  <button className="p-2 rounded-lg hover:bg-white/10 transition-colors text-white/70 hover:text-white">
+                    <MoreVertical className="w-4 h-4" />
                   </button>
                 </div>
               </CardHeader>
-              <CardContent className="relative">
+              <CardContent className="relative z-10">
                 <div className="space-y-3 mb-4">
-                  <div className="flex items-center justify-between p-2 bg-secondary/50 rounded-lg">
-                    <span className="text-sm font-medium text-muted-foreground">Status</span>
+                  <div className="flex items-center justify-between p-2 bg-black/20 rounded-lg border border-white/5">
+                    <span className="text-sm font-medium text-white/70">Status</span>
                     {getStatusBadge(service.status)}
                   </div>
-                  <div className="flex items-center justify-between p-2 bg-secondary/50 rounded-lg">
-                    <span className="text-sm font-medium text-muted-foreground">Created</span>
-                    <span className="text-sm font-semibold text-foreground">
+                  <div className="flex items-center justify-between p-2 bg-black/20 rounded-lg border border-white/5">
+                    <span className="text-sm font-medium text-white/70">Created</span>
+                    <span className="text-sm font-semibold text-white/90">
                       {formatDistanceToNow(new Date(service.createdAt), { addSuffix: true })}
                     </span>
                   </div>
                   {service.metrics && service.metrics.cpu && service.metrics.cpu.length > 0 && (
-                    <div className="space-y-1.5 p-2 bg-secondary/50 rounded-lg">
+                    <div className="space-y-1.5 p-2 bg-black/20 rounded-lg border border-white/5">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-muted-foreground">CPU Usage</span>
-                        <span className="text-sm font-bold text-foreground">
+                        <span className="text-sm font-medium text-white/70">CPU Usage</span>
+                        <span className="text-sm font-bold text-white/90">
                           {service.metrics.cpu[service.metrics.cpu.length - 1]?.value || 0}%
                         </span>
                       </div>
-                      <div className="w-full bg-background rounded-full h-1.5 overflow-hidden">
+                      <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
                         <div
-                          className="h-full bg-gradient-primary transition-all duration-500"
+                          className="h-full bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-500"
                           style={{ width: `${service.metrics.cpu[service.metrics.cpu.length - 1]?.value || 0}%` }}
                         />
                       </div>
@@ -368,9 +368,9 @@ export default function ServicesPage() {
                 <div className="flex gap-2">
                   {service.status === "running" ? (
                     <Button
-                      variant="outline"
+                      variant="glass"
                       size="sm"
-                      className="flex-1 hover:bg-destructive/10 hover:text-destructive hover:border-destructive/50"
+                      className="flex-1 hover:bg-red-500/20 hover:text-red-200 hover:border-red-500/30"
                       onClick={() => handleStopService(service.id)}
                     >
                       <Square className="w-4 h-4 mr-1" />
@@ -378,9 +378,9 @@ export default function ServicesPage() {
                     </Button>
                   ) : (
                     <Button
-                      variant="outline"
+                      variant="glass"
                       size="sm"
-                      className="flex-1 hover:bg-success/10 hover:text-success hover:border-success/50"
+                      className="flex-1 hover:bg-emerald-500/20 hover:text-emerald-200 hover:border-emerald-500/30"
                       onClick={() => handleStartService(service.id)}
                     >
                       <Play className="w-4 h-4 mr-1" />
@@ -388,7 +388,7 @@ export default function ServicesPage() {
                     </Button>
                   )}
                   <Link href={`/dashboard/services/${service.id}`} className="flex-1">
-                    <Button size="sm" className="w-full bg-gradient-primary hover:opacity-90">
+                    <Button size="sm" variant="default" className="w-full bg-white text-purple-900 hover:bg-white/90 shadow-none">
                       <ExternalLink className="w-4 h-4 mr-1" />
                       Manage
                     </Button>
@@ -411,13 +411,13 @@ export default function ServicesPage() {
             action={
               !(searchTerm || statusFilter !== "all" || typeFilter !== "all" || environmentFilter !== "all")
                 ? {
-                    label: "Create Service",
-                    href: "/dashboard/services/create"
-                  }
+                  label: "Create Service",
+                  href: "/dashboard/services/create"
+                }
                 : {
-                    label: "Clear Filters",
-                    onClick: clearFilters
-                  }
+                  label: "Clear Filters",
+                  onClick: clearFilters
+                }
             }
           />
         )}

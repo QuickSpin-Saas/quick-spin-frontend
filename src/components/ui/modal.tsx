@@ -60,8 +60,8 @@ export function Modal({
             >
               <Dialog.Panel
                 className={cn(
-                  'w-full transform overflow-hidden rounded-2xl bg-card text-left align-middle shadow-2xl transition-all',
-                  'border border-border dark:border-border dark:shadow-[0_20px_80px_-20px_rgba(183,148,246,0.3)]',
+                  'w-full transform overflow-hidden rounded-2xl bg-white/95 dark:bg-[#1a0f2e]/95 backdrop-blur-xl text-left align-middle shadow-2xl transition-all',
+                  'border border-border dark:border-white/10 dark:shadow-[0_20px_80px_-20px_rgba(183,148,246,0.15)]',
                   sizeClasses[size],
                   className
                 )}

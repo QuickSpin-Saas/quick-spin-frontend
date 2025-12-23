@@ -10,13 +10,13 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
-import { 
-  DollarSign, 
-  CreditCard, 
-  TrendingUp, 
-  TrendingDown, 
-  Calendar, 
-  Download, 
+import {
+  DollarSign,
+  CreditCard,
+  TrendingUp,
+  TrendingDown,
+  Calendar,
+  Download,
   AlertCircle,
   CheckCircle,
   Clock,
@@ -84,7 +84,7 @@ export default function BillingPage() {
         </div>
 
         {/* Current Balance Card */}
-        <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl bg-gradient-to-br from-purple-50/80 to-blue-50/80">
+        <Card variant="gradient" className="hover-lift animate-slide-up">
           <CardContent className="p-4 sm:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
@@ -111,25 +111,25 @@ export default function BillingPage() {
         {/* Tabs */}
         <Tabs>
           <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-2">
-            <TabsTrigger 
+            <TabsTrigger
               className={activeTab === 'overview' ? 'data-[state=active]' : ''}
               onClick={() => setActiveTab('overview')}
             >
               Overview
             </TabsTrigger>
-            <TabsTrigger 
+            <TabsTrigger
               className={activeTab === 'usage' ? 'data-[state=active]' : ''}
               onClick={() => setActiveTab('usage')}
             >
               Usage
             </TabsTrigger>
-            <TabsTrigger 
+            <TabsTrigger
               className={activeTab === 'payment' ? 'data-[state=active]' : ''}
               onClick={() => setActiveTab('payment')}
             >
               Payment Methods
             </TabsTrigger>
-            <TabsTrigger 
+            <TabsTrigger
               className={activeTab === 'history' ? 'data-[state=active]' : ''}
               onClick={() => setActiveTab('history')}
             >
@@ -140,7 +140,7 @@ export default function BillingPage() {
           {activeTab === 'overview' && <div className="space-y-6">
             {/* Usage Summary */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-              <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300">
+              <Card className="hover-lift animate-slide-up">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
                     This Month
@@ -156,7 +156,7 @@ export default function BillingPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300">
+              <Card className="hover-lift animate-slide-up">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
                     Active Services
@@ -171,7 +171,7 @@ export default function BillingPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300">
+              <Card className="hover-lift animate-slide-up">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium text-muted-foreground">
                     Average Daily Cost
@@ -227,7 +227,7 @@ export default function BillingPage() {
           {activeTab === 'usage' && <div className="space-y-6">
             {/* Service Usage Breakdown */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-              <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300">
+              <Card className="hover-lift animate-slide-up">
                 <CardHeader>
                   <CardTitle className="text-foreground">Service Usage Breakdown</CardTitle>
                   <CardDescription className="text-muted-foreground">
@@ -251,7 +251,7 @@ export default function BillingPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-white/60 backdrop-blur-xl border-white/20 shadow-xl hover:bg-white/70 hover:shadow-2xl transition-all duration-300">
+              <Card className="hover-lift animate-slide-up">
                 <CardHeader>
                   <CardTitle className="text-foreground">Usage Statistics</CardTitle>
                   <CardDescription className="text-muted-foreground">

@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { 
-  Users, 
-  Server, 
-  DollarSign, 
+import {
+  Users,
+  Server,
+  DollarSign,
   Activity,
   TrendingUp,
   TrendingDown,
@@ -130,26 +130,29 @@ export default function AdminDashboard() {
 
       {/* Metrics Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-        {systemMetrics.map((metric) => {
+        {systemMetrics.map((metric, index) => {
           const Icon = metric.icon;
           return (
-            <Card key={metric.name}>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">{metric.name}</CardTitle>
-                <Icon className={`h-4 w-4 ${metric.color}`} />
+            <Card key={metric.name} variant="gradient" className="hover-lift animate-slide-up group relative" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-12 -mt-12 blur-2xl group-hover:bg-white/10 transition-colors duration-500"></div>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 relative z-10">
+                <CardTitle className="text-sm font-medium text-white/90">{metric.name}</CardTitle>
+                <div className="p-2 bg-white/10 rounded-lg backdrop-blur-sm border border-white/10 group-hover:bg-white/20 transition-colors">
+                  <Icon className="h-4 w-4 text-white" />
+                </div>
               </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">
+              <CardContent className="relative z-10">
+                <div className="text-2xl font-bold text-white mb-1">
                   {metric.name === 'Revenue' ? `$${metric.value.toLocaleString()}` : metric.value.toLocaleString()}
                   {metric.name === 'System Health' && '%'}
                 </div>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1 text-xs text-white/70 font-medium">
                   {metric.trend === 'up' ? (
-                    <TrendingUp className="h-3 w-3 text-success" />
+                    <TrendingUp className="h-3 w-3 text-emerald-400" />
                   ) : (
-                    <TrendingDown className="h-3 w-3 text-error" />
+                    <TrendingDown className="h-3 w-3 text-red-400" />
                   )}
-                  <span className={metric.trend === 'up' ? 'text-success' : 'text-error'}>
+                  <span className={metric.trend === 'up' ? 'text-emerald-400' : 'text-red-400'}>
                     {Math.abs(metric.change)}%
                   </span>
                   <span>from last period</span>

@@ -12,12 +12,12 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
-import { 
-  Server, 
-  Database, 
-  MessageSquare, 
-  Search, 
-  ArrowLeft, 
+import {
+  Server,
+  Database,
+  MessageSquare,
+  Search,
+  ArrowLeft,
   ArrowRight,
   CheckCircle,
   AlertCircle,
@@ -100,7 +100,7 @@ export default function CreateServicePage() {
   const router = useRouter()
   const [createService, { isLoading }] = useCreateServiceMutation()
   const { toast } = useToast()
-  
+
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
     name: "",
@@ -249,11 +249,10 @@ export default function CreateServicePage() {
                 {serviceTypes.map((serviceType) => (
                   <div
                     key={serviceType.id}
-                    className={`p-4 border rounded-lg cursor-pointer transition-theme ${
-                      formData.type === serviceType.id
-                        ? 'border-primary bg-primary/5'
-                        : 'border-border hover:border-primary/50'
-                    }`}
+                    className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 ${formData.type === serviceType.id
+                        ? 'border-primary bg-primary/10 shadow-[0_0_20px_rgba(157,78,221,0.3)] scale-[1.02]'
+                        : 'border-white/10 hover:border-primary/50 hover:bg-white/5 hover:-translate-y-1'
+                      }`}
                     onClick={() => setFormData({ ...formData, type: serviceType.id })}
                   >
                     <div className="flex items-center space-x-3">
@@ -278,11 +277,10 @@ export default function CreateServicePage() {
                 {environments.map((env) => (
                   <div
                     key={env.id}
-                    className={`p-4 border rounded-lg cursor-pointer transition-theme ${
-                      formData.environment === env.id
-                        ? 'border-primary bg-primary/5'
-                        : 'border-border hover:border-primary/50'
-                    }`}
+                    className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 ${formData.environment === env.id
+                        ? 'border-primary bg-primary/10 shadow-[0_0_20px_rgba(157,78,221,0.3)] scale-[1.02]'
+                        : 'border-white/10 hover:border-primary/50 hover:bg-white/5 hover:-translate-y-1'
+                      }`}
                     onClick={() => setFormData({ ...formData, environment: env.id })}
                   >
                     <h3 className="font-medium text-foreground">{env.name}</h3>
@@ -297,11 +295,10 @@ export default function CreateServicePage() {
                 {plans.map((plan) => (
                   <div
                     key={plan.id}
-                    className={`p-4 border rounded-lg cursor-pointer transition-theme ${
-                      formData.plan === plan.id
-                        ? 'border-primary bg-primary/5'
-                        : 'border-border hover:border-primary/50'
-                    }`}
+                    className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 ${formData.plan === plan.id
+                        ? 'border-primary bg-primary/10 shadow-[0_0_20px_rgba(157,78,221,0.3)] scale-[1.02]'
+                        : 'border-white/10 hover:border-primary/50 hover:bg-white/5 hover:-translate-y-1'
+                      }`}
                     onClick={() => setFormData({ ...formData, plan: plan.id })}
                   >
                     <div className="flex justify-between items-start mb-2">
@@ -422,7 +419,7 @@ export default function CreateServicePage() {
           </CardHeader>
           <CardContent>
             {renderStepContent()}
-            
+
             <div className="flex flex-col sm:flex-row justify-between gap-3 mt-6">
               <Button
                 variant="outline"

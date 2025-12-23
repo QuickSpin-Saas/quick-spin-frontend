@@ -99,7 +99,7 @@ export default function AdminHeader({ className }: HeaderProps) {
   }
 
   return (
-    <header className={cn("sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-border/50 shadow-sm", className)}>
+    <header className={cn("sticky top-0 z-40 bg-white/80 dark:bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm transition-colors duration-300", className)}>
       <div className="flex items-center justify-between px-4 md:px-6 h-16">
         {/* Mobile Navigation */}
         <AdminMobileNav onLogout={logout} />

@@ -5,6 +5,10 @@ import { useAuth } from "@/lib/auth-utils"
 import { useToast } from "@/hooks/use-toast"
 import Link from "next/link"
 import { Github, Mail, Eye, EyeOff, Loader2 } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -15,7 +19,7 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     try {
       await login(email, password)
       toast({
@@ -64,138 +68,114 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
-        <div className="glass-card p-8 md:p-10 animate-slide-up">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-primary rounded-2xl mb-4 shadow-colored">
-              <span className="text-3xl font-bold text-white">QS</span>
-            </div>
-            <h1 className="text-3xl font-bold mb-2 text-gradient">
-              Welcome back
-            </h1>
-            <p className="text-muted-foreground text-base">
-              Sign in to your QuickSpin account
-            </p>
-          </div>
-
-          <div className="space-y-3 mb-6">
-            <button
-              onClick={handleGithubLogin}
-              disabled={isLoading}
-              className="w-full flex items-center justify-center gap-3 px-5 py-3.5 glass hover:bg-white/90 text-foreground rounded-xl transition-all duration-200 disabled:opacity-50 font-medium shadow-md hover-lift"
-            >
-              <Github className="w-5 h-5" />
-              Continue with GitHub
-            </button>
-
-            <button
-              onClick={handleGoogleLogin}
-              disabled={isLoading}
-              className="w-full flex items-center justify-center gap-3 px-5 py-3.5 glass hover:bg-white/90 text-foreground rounded-xl transition-all duration-200 disabled:opacity-50 font-medium shadow-md hover-lift"
-            >
-              <Mail className="w-5 h-5 text-primary" />
-              Continue with Google
-            </button>
-          </div>
-
-          <div className="relative mb-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-border" />
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-3 bg-white/90 text-muted-foreground font-medium">
-                Or continue with email
-              </span>
-            </div>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-semibold text-foreground">
-                Email address
-              </label>
-              <input
+    <>
+      <div className="flex flex-col space-y-2 text-center">
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground">Welcome back</h1>
+        <p className="text-sm text-muted-foreground">
+          Enter your email to sign in to your account
+        </p>
+      </div>
+      <div className="grid gap-6">
+        <form onSubmit={handleSubmit}>
+          <div className="grid gap-4">
+            <div className="grid gap-1">
+              <Label className="sr-only" htmlFor="email">
+                Email
+              </Label>
+              <Input
                 id="email"
+                placeholder="name@example.com"
                 type="email"
+                autoCapitalize="none"
+                autoComplete="email"
+                autoCorrect="off"
+                disabled={isLoading}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="bg-background"
                 required
-                className="w-full px-4 py-3.5 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary bg-input text-foreground placeholder:text-muted-foreground transition-all duration-200 font-medium"
-                placeholder="you@example.com"
               />
             </div>
-
-            <div className="space-y-2">
-              <label htmlFor="password" className="block text-sm font-semibold text-foreground">
+            <div className="grid gap-1">
+              <Label className="sr-only" htmlFor="password">
                 Password
-              </label>
+              </Label>
               <div className="relative">
-                <input
+                <Input
                   id="password"
+                  placeholder="Password"
                   type={showPassword ? "text" : "password"}
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                  disabled={isLoading}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="bg-background pr-10"
                   required
-                  className="w-full px-4 py-3.5 pr-12 border-2 border-border rounded-xl focus:ring-2 focus:ring-ring focus:border-primary bg-input text-foreground placeholder:text-muted-foreground transition-all duration-200 font-medium"
-                  placeholder="Enter your password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-muted-foreground hover:text-foreground transition-colors"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
             </div>
-
-            <div className="flex items-center justify-between pt-1">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
-                />
-                <label htmlFor="remember-me" className="ml-2 block text-sm font-medium text-foreground">
-                  Remember me
-                </label>
-              </div>
-              <Link
-                href="/auth/forgot-password"
-                className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
-              >
-                Forgot password?
-              </Link>
-            </div>
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-gradient-primary text-white font-semibold py-4 px-4 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center hover-glow hover-lift shadow-md"
-            >
-              {isLoading ? (
-                <>
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                  Signing in...
-                </>
-              ) : (
-                "Sign in"
+            <Button disabled={isLoading} className="bg-gradient-primary hover:opacity-90 transition-opacity">
+              {isLoading && (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               )}
-            </button>
-          </form>
-
-          <p className="text-center text-sm text-muted-foreground mt-6">
-            Don't have an account?{" "}
-            <Link
-              href="/auth/signup"
-              className="font-bold text-primary hover:text-primary/80 transition-colors"
-            >
-              Sign up for free
-            </Link>
-          </p>
+              Sign In with Email
+            </Button>
+          </div>
+        </form>
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t border-border" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-background px-2 text-muted-foreground">
+              Or continue with
+            </span>
+          </div>
         </div>
+        <div className="grid grid-cols-2 gap-4">
+          <Button variant="outline" type="button" disabled={isLoading} onClick={handleGithubLogin}>
+            {isLoading ? (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            ) : (
+              <Github className="mr-2 h-4 w-4" />
+            )}
+            GitHub
+          </Button>
+          <Button variant="outline" type="button" disabled={isLoading} onClick={handleGoogleLogin}>
+            {isLoading ? (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            ) : (
+              <Mail className="mr-2 h-4 w-4 text-primary" />
+            )}
+            Google
+          </Button>
+        </div>
+        <p className="px-8 text-center text-sm text-muted-foreground">
+          <Link
+            href="/auth/forgot-password"
+            className="hover:text-primary underline underline-offset-4"
+          >
+            Forgot password?
+          </Link>
+        </p>
+        <p className="px-8 text-center text-sm text-muted-foreground">
+          Don't have an account?{" "}
+          <Link
+            href="/auth/signup"
+            className="hover:text-primary underline underline-offset-4 font-semibold"
+          >
+            Sign up
+          </Link>
+        </p>
       </div>
-    </div>
+    </>
   )
 }

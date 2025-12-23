@@ -10,17 +10,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-md hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5 dark:shadow-primary/20 dark:hover:shadow-primary/30 dark:hover:shadow-lg",
+          "bg-primary text-white shadow-md hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5 dark:shadow-primary/30 dark:hover:shadow-primary/50 dark:hover:bg-primary/95 transition-all duration-300",
         destructive:
           "bg-destructive text-destructive-foreground shadow-md hover:bg-destructive/90 hover:shadow-lg hover:-translate-y-0.5 dark:shadow-destructive/20 dark:hover:shadow-destructive/30",
         outline:
-          "border-2 border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground hover:border-primary/50 hover:shadow-md dark:border-border dark:hover:bg-accent/50 dark:hover:border-primary/60",
+          "border-2 border-primary/20 bg-transparent shadow-sm hover:bg-primary/10 hover:text-white hover:border-primary/50 hover:shadow-md dark:border-primary/30 dark:hover:bg-primary/20 dark:hover:border-primary/70 transition-all",
         secondary:
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 hover:shadow-md dark:bg-secondary/80 dark:hover:bg-secondary/90 dark:hover:shadow-secondary/20",
-        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/60 dark:hover:shadow-sm",
+        ghost: "hover:bg-primary/10 hover:text-white dark:hover:bg-primary/20 dark:hover:shadow-sm transition-colors",
         link: "text-primary underline-offset-4 hover:underline hover:text-primary/80 dark:hover:text-primary/90",
         gradient:
-          "bg-gradient-primary text-white shadow-colored hover:shadow-lg hover:shadow-colored hover:-translate-y-0.5 dark:shadow-primary/30 dark:hover:shadow-primary/40",
+          "bg-gradient-primary text-white shadow-colored hover:shadow-lg hover:shadow-colored hover:-translate-y-0.5 dark:shadow-primary/40 dark:hover:shadow-primary/60 transition-all duration-300 border border-white/10",
+        glass: "bg-white/10 text-white backdrop-blur-md border border-white/10 hover:bg-white/20 hover:shadow-lg hover:border-white/20 dark:bg-white/5 dark:hover:bg-white/15 transition-all duration-300 shadow-sm",
         success:
           "bg-success text-success-foreground shadow-md hover:bg-success/90 hover:shadow-lg hover:-translate-y-0.5 dark:shadow-success/20 dark:hover:shadow-success/30",
         warning:
@@ -44,7 +45,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean
 }
 
